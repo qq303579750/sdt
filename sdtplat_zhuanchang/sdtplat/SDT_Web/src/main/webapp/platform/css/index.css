@@ -1,0 +1,317 @@
+
+.x-layout-collapsed-north {
+    background-image: url("../images/top-collapse-bg.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.btn_vend {
+    background-image: url("../images/vendBtn.png") !important;
+    background-repeat: no-repeat;
+    height: 40px !important; 
+    width: 150px !important; 
+}
+
+.btn_vend_x {
+    background-image: url("../images/vendBtn-x.png") !important;
+    background-repeat: repeat-x;
+}
+
+.btn_ok {
+    background-image: url("../images/ok_btn.png") !important;
+    background-repeat: no-repeat;
+    height: 40px !important; 
+    width: 100px !important; 
+}
+
+.btn_search {
+    background-image: url("../images/b_search.png") !important;
+    background-repeat: no-repeat;
+    height: 319px !important; 
+    width: 218px !important; 
+}
+
+.btn_buy {
+    background-image: url("../images/b_buy.png") !important;
+    background-repeat: no-repeat;
+    height: 319px !important; 
+    width: 218px !important;
+}
+
+.btn_buyrecord {
+    background-image: url("../images/b_buyrecord.png") !important;
+    background-repeat: no-repeat;
+    height: 319px !important; 
+    width: 218px !important;
+}
+
+#west-panel-xcollapsed {
+    background-image: url("../images/left-collapse-bg.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+body{
+	font-size:12px;
+	font-family:'宋体';
+}
+.clear{
+	clear:both;
+	margin:0;
+	padding:0;
+	border:0;
+}
+div button{
+	border:none;
+	cursor:pointer;
+	width:16px;
+	height:16px;
+}
+
+#app-header{
+	background:url('../images/bg.gif') repeat-x;height:60px;width:100%;
+}
+#header-left{
+	width:300px;
+	float:left;
+}
+#header-main{
+	width:440px;
+	float:left;
+	margin-left:6px;
+}
+#header-right{
+	width:260px;
+	float:right;
+}
+#setting{
+	float:right;
+	width:40px;
+	padding-top:6px;
+	padding-right:6px;
+}
+#welcomeMsg{
+	float:left;
+	width:290px;
+	padding-top:6px;
+}
+#currentTime{
+	float:left;
+	width:180px;
+	padding-top:6px;
+}
+#header-topnav{
+	display:inline;
+	padding-top:4px;
+}
+#header-topnav .activeli{
+	background:url('../images/header-li-chose.png') no-repeat;
+	display:block;
+	float:left;
+}
+#header-topnav li{
+	background:url('../images/header-li.png') no-repeat;
+}
+#header-topnav li a{
+	color:#1E3A65;
+	display:block;
+	text-align:left;
+	text-indent:32px;
+	height:30px;
+	font-size:12px;
+	font-weight:bold;
+	line-height:30px;
+	position:relative;
+	text-decoration:none;
+	width:120px;
+}
+#header-topnav .commonli{
+	display:block;
+	float:left;
+	color:#4B6888;
+}
+.key{ 
+    background:url(../../images/key.gif)  no-repeat!important; 
+}
+
+.contact {
+    background-image: url(../images/contact.png) !important;
+}
+.onlineUser {
+    background-image: url( ../images/online.gif ) !important;
+}
+.logout {
+    background-image: url( ../images/logout.png ) !important;
+}
+.expand {
+    background-image: url(../images/expand-all.gif) !important;
+}
+.collapse {
+    background-image: url(../images/collapse-all.gif) !important;
+}
+.computer {
+    background-image: url(../images/computer.png) !important;
+}
+.indexTip {
+    background-image: url(../images/indexTip.png) !important;
+}
+.closeOther {
+    background-image: url(../images/closeOther.png) !important;
+}
+.close {
+    background-image: url(../images/close.png) !important;
+}
+.search-bg {
+    background-image: url( ../images/search-bg.png ) !important;
+}
+.menu {
+    background-image: url(../images/menu.png) !important;
+}
+
+.refresh {
+    background-image: url( ../images/refresh.png ) !important;
+}
+.read_tip{
+    background-image: url( ../images/readonly.png ) !important;
+    font-size:large;
+    font-style: italic;
+    color:red;
+}
+
+.detail_field{
+    color:#000000;
+}
+
+.attr{
+    color:#dd0000;
+}
+
+.columnh{
+	line-height:32px;
+	padding:2px 0 18px 0;
+	text-align:center;
+	font-size:14px;
+}
+
+.readonly{
+    color:#555555;
+    background-image: url( ../images/readonly.png) !important;
+}
+
+.css_1{
+    color:#333333;
+    background:RGB(255,255,195);
+}
+
+.css_2{
+    color:#333333;
+    background:RGB(200,250,180);
+}
+
+.css_3{
+    color:#000000;
+    background:RGB(180,200,250);
+}
+
+.css_4{
+    color:#555555;
+    background:RGB(200,250,180);
+}
+.title{ 
+    padding:10px 30px 5px 30px; 
+    letter-spacing:15px; 
+    text-align:center; 
+    font-size:17px; 
+    color:#444444;
+    font-weight:bold;
+}
+.labyle_text_S{ 
+	text-align:left; 
+    font-size:17px; 
+    color:#0000AA;
+    font-weight:700;
+    font-family:'微软雅黑';
+}
+.labyle_Text_B{ 
+	text-align:left; 
+    font-size:50px; 
+    color:#444444;
+    font-weight:900;
+    font-family:'微软雅黑';
+}
+.labyle_Text_B2{ 
+	text-align:left; 
+    color:#444444;
+    line-height:20px;
+}
+.labyle_Text_B3{ 
+	text-align:left;
+	font-size:18px;  
+    color:#444444;
+    line-height:20px;
+    font-weight:700;
+    font-family:'微软雅黑';
+}
+.labyle_Text_S_Boder{ 
+	border:1px solid #444444;
+	padding:5px; 
+	text-align:left; 
+    font-size:17px; 
+    color:#444444;
+    font-weight:900;
+    font-family:'微软雅黑';
+}
+.cash {
+    background-image: url( ../images/cash.png ) !important;
+}
+.remit {
+    background-image: url( ../images/remit.png ) !important;
+}
+.batch {
+    background-image: url( ../images/batch.png ) !important;
+}
+.refund {
+    background-image: url( ../images/remove.png ) !important;
+}
+.print {
+    background-image: url( ../images/print.png ) !important;
+}
+.detail {
+    background-image: url( ../images/detail.png ) !important;
+}
+.save {
+    background-image: url( ../images/save.png ) !important;
+}
+.cancel {
+    background-image: url( ../images/cancel.png ) !important;
+}
+.remove {
+    background-image: url( ../images/remove.png ) !important;
+}
+
+
+        .j_username{ background:url(../../images/j_username.gif)  no-repeat!important;padding:2px 0 2px 18px; }
+        .j_password{ background:url(../../images/j_password.gif)  no-repeat!important;padding:2px 0 2px 18px;  }
+        .j_rand{ background:url(../../images/j_rand.gif)  no-repeat!important;padding:2px 0 2px 18px;  }
+
+        .save {
+            background-image: url(../../images/save.png ) !important;
+        }
+        .reset {
+            background-image: url(../../images/reset.png ) !important;
+        }
+.pluginLink {
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: underline;
+}
+.pluginLinkSel {
+    color: #00FFFF;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+.xgridcolorredtable{
+	color: red; 
+	}

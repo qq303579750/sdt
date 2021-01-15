@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring.xml</param-value>
+    </context-param>
+    <listener>
+        <description>经过定制的spring监听器</description>
+        <listener-class>org.sdt.platform.spring.SDTContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <description>用户登录注销监听</description>
+        <listener-class>org.sdt.module.security.service.UserLoginListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+    </listener>
+    <!-- 性能过滤器放置到最前, 放置到最后不起作用，放置到最前的统计时间更准确地表示了服务器的处理速度 -->
+    <filter>
+        <description>记录请求的处理时间，为性能分析提供数据</description>
+        <filter-name>PerformanceFilter</filter-name>
+        <filter-class>org.sdt.module.monitor.filter.PerformanceFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>PerformanceFilter</filter-name>
+        <url-pattern>*.action</url-pattern>
+    </filter-mapping>
+    <!--
+    <filter>
+        <filter-name>ResponseHeaderFilter</filter-name>
+        <filter-class>org.sdt.platform.filter.ResponseHeaderFilter</filter-class>
+        <init-param>
+          <param-name>expiresSeconds</param-name>
+          <param-value>2592000</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+      <filter-name>ResponseHeaderFilter</filter-name>
+      <url-pattern>*.png</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+      <filter-name>ResponseHeaderFilter</filter-name>
+      <url-pattern>*.gif</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+      <filter-name>ResponseHeaderFilter</filter-name>
+      <url-pattern>*.jpg</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+      <filter-name>ResponseHeaderFilter</filter-name>
+      <url-pattern>*.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+      <filter-name>ResponseHeaderFilter</filter-name>
+      <url-pattern>*.htm</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+      <filter-name>ResponseHeaderFilter</filter-name>
+      <url-pattern>*.js</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+      <filter-name>ResponseHeaderFilter</filter-name>
+      <url-pattern>*.css</url-pattern>
+    </filter-mapping>
+    -->
+    
+    <!-- 对于每一个数据库，都需要一个OpenEntityManagerInViewFilter  -->
+    <!-- 默认数据库 -->
+    <filter>
+        <description>在每一次请求到来的时候打开Jpa的实体管理器，在请求结束的时候关闭</description>
+        <filter-name>OpenEntityManagerInViewFilter</filter-name>
+        <filter-class>org.sdt.platform.filter.OpenEntityManagerInViewFilter</filter-class>
+        <init-param>
+            <param-name>excludeSuffixs</param-name>
+            <param-value>js,css,jpg,gif,png</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>OpenEntityManagerInViewFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>    
+    <!-- ForLog数据库 -->    
+    <!-- LOG数据不需要在WEB前端进行删除和修改，所以不需要OpenEntityManagerInViewFilter
+    <filter>
+        <description>在每一次请求到来的时候打开Jpa的实体管理器，在请求结束的时候关闭</description>
+        <filter-name>OpenEntityManagerInViewFilterForLog</filter-name>
+        <filter-class>org.sdt.platform.filter.OpenEntityManagerInViewFilter</filter-class>
+        <init-param>
+            <param-name>excludeSuffixs</param-name>
+            <param-value>js,css,jpg,gif,png</param-value>
+        </init-param>
+        <init-param>
+            <param-name>entityManagerFactoryBeanName</param-name>
+            <param-value>entityManagerFactoryForLog</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>OpenEntityManagerInViewFilterForLog</filter-name>
+        <url-pattern>/log/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>OpenEntityManagerInViewFilterForLog</filter-name>
+        <url-pattern>/monitor/*</url-pattern>
+    </filter-mapping>
+     -->    
+        
+    <filter>
+        <description>对POST方式提交的数据做编码转换，对GET方式提交的数据需要在应用服务器中配置URIEncoding="utf-8"</description>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>
+            org.springframework.web.filter.CharacterEncodingFilter
+        </filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <description>生成随机验证码</description>
+        <filter-name>jcaptchaFilter</filter-name>
+        <filter-class>org.sdt.module.security.service.filter.JCaptchaFilter</filter-class>
+    </filter>
+    <!-- jcaptcha图片生成URL. -->
+    <filter-mapping>
+            <filter-name>jcaptchaFilter</filter-name>
+            <url-pattern>/security/jcaptcha.png</url-pattern>
+    </filter-mapping>
+
+    <!-- jcaptcha登录表单处理URL.
+                 必须放在springSecurityFilter的filter-mapping定义之前 -->
+    <filter-mapping>
+            <filter-name>jcaptchaFilter</filter-name>
+            <url-pattern>/j_spring_security_check</url-pattern>
+    </filter-mapping>
+    <filter>
+        <description>系统安全过滤模块，负责整个系统的安全拦截工作</description>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <description>在开发阶段，可使用自动登录功能，去除登录步骤，减少麻烦</description>
+        <filter-name>autoLoginFilter</filter-name>
+        <filter-class>org.sdt.module.security.service.filter.AutoLoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>autoLoginFilter</filter-name>
+        <url-pattern>/platform/*</url-pattern>
+    </filter-mapping>
+   
+    <!-- Default locale setting.
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_LOCALE</param-name>
+		<param-value>en-US</param-value>
+	</context-param>
+
+	<!-- 
+		Default timezone setting.
+		Examples: "Europe/Paris", "GMT+1".
+		Defaults to the container's timezone.		
+	 -->
+	<context-param>
+		<param-name>BIRT_VIEWER_TIMEZONE</param-name>
+		<param-value></param-value>
+	</context-param>
+	
+	<!--
+		Report resources directory for preview. Defaults to ${birt home}
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_WORKING_FOLDER</param-name>
+		<param-value>/platform/reports</param-value>
+	</context-param>
+	
+	<!--
+		Temporary document files directory. Defaults to ${birt home}/documents
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_DOCUMENT_FOLDER</param-name>
+		<param-value>/platform/reports/documents</param-value>
+	</context-param>
+
+	<!--
+		Flag whether the report resources can only be accessed under the
+		working folder. Defaults to true
+	-->
+	<context-param>
+		<param-name>WORKING_FOLDER_ACCESS_ONLY</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<!--
+		Settings for how to deal with the url report path. e.g. "http://host/repo/test.rptdesign". 
+		
+		Following values are supported:
+		
+		<all> 		- All paths.
+		<domain>	- Only the paths with host matches current domain. Note the comparison is literal, "127.0.0.1" and "localhost" are considered as different hosts.
+		<none> 		- URL paths are not supported.
+		
+		Defaults to "domain".
+	-->
+	<context-param>
+		<param-name>URL_REPORT_PATH_POLICY</param-name>
+		<param-value>domain</param-value>
+	</context-param>
+
+	<!--
+		Temporary image/chart directory. Defaults to ${birt home}/report/images
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_IMAGE_DIR</param-name>
+		<param-value>/platform/reports/images</param-value>
+	</context-param>
+
+	<!-- Engine log directory. Defaults to ${birt home}/logs -->
+	<context-param>
+		<param-name>BIRT_VIEWER_LOG_DIR</param-name>
+		<param-value>/platform/reports/logs</param-value>
+	</context-param>
+
+	<!-- Report engine log level -->
+	<context-param>
+		<param-name>BIRT_VIEWER_LOG_LEVEL</param-name>
+		<param-value>ALL</param-value>
+	</context-param>
+
+	<!--
+		Directory where to store all the birt report script libraries (JARs).
+		Defaults to ${birt home}/scriptlib
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_SCRIPTLIB_DIR</param-name>
+		<param-value>/WEB-INF/lib</param-value>
+	</context-param>
+	
+	<!-- Resource location directory. Defaults to ${birt home} -->
+	<context-param>
+		<param-name>BIRT_RESOURCE_PATH</param-name>
+		<param-value>/platform/reports</param-value>
+	</context-param>
+
+	<!-- Preview report rows limit. An empty value means no limit. -->
+	<context-param>
+		<param-name>BIRT_VIEWER_MAX_ROWS</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!--
+		Max cube fetch levels limit for report preview (Only used when
+		previewing a report design file using the preview pattern)
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_MAX_CUBE_ROWLEVELS</param-name>
+		<param-value></param-value>
+	</context-param>
+	<context-param>
+		<param-name>BIRT_VIEWER_MAX_CUBE_COLUMNLEVELS</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Memory size in MB for creating a cube. -->
+	<context-param>
+		<param-name>BIRT_VIEWER_CUBE_MEMORY_SIZE</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Defines the BIRT viewer configuration file -->
+	<context-param>
+		<param-name>BIRT_VIEWER_CONFIG_FILE</param-name>
+		<param-value>WEB-INF/viewer.properties</param-value>
+	</context-param>
+
+	<!--
+		Flag whether to allow server-side printing. Possible values are "ON"
+		and "OFF". Defaults to "ON".
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_PRINT_SERVERSIDE</param-name>
+		<param-value>ON</param-value>
+	</context-param>
+
+	<!--
+		Flag whether to force browser-optimized HTML output. Defaults to true
+	-->
+	<context-param>
+		<param-name>HTML_ENABLE_AGENTSTYLE_ENGINE</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<!--
+		Filename generator class/factory to use for the exported reports.
+	-->
+	<context-param>
+		<param-name>BIRT_FILENAME_GENERATOR_CLASS</param-name>
+		<param-value>org.eclipse.birt.report.utility.filename.DefaultFilenameGenerator</param-value>
+	</context-param>
+
+	<!--
+		Viewer Filter used to set the request character encoding to UTF-8.
+	-->
+	<filter>
+    	<filter-name>ViewerFilter</filter-name>
+        <filter-class>org.eclipse.birt.report.filter.ViewerFilter</filter-class>
+	</filter>
+    <filter-mapping>
+        <filter-name>ViewerFilter</filter-name>
+        <servlet-name>ViewerServlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>ViewerFilter</filter-name>
+        <servlet-name>EngineServlet</servlet-name>
+    </filter-mapping>
+    				
+	<!-- Viewer Servlet Context Listener -->
+	<listener>
+		<listener-class>org.eclipse.birt.report.listener.ViewerServletContextListener</listener-class>
+	</listener>
+
+	<!-- Viewer HttpSession Listener -->
+	<listener>
+		<listener-class>org.eclipse.birt.report.listener.ViewerHttpSessionListener</listener-class>
+	</listener>
+	
+	<!-- Viewer Servlet, Supports SOAP -->
+	<servlet>
+		<servlet-name>ViewerServlet</servlet-name>
+		<servlet-class>org.eclipse.birt.report.servlet.ViewerServlet</servlet-class>
+	</servlet>
+
+	<!-- Engine Servlet -->
+	<servlet>
+		<servlet-name>EngineServlet</servlet-name>
+		<servlet-class>org.eclipse.birt.report.servlet.BirtEngineServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ViewerServlet</servlet-name>
+		<url-pattern>/frameset</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ViewerServlet</servlet-name>
+		<url-pattern>/run</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/preview</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/download</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/parameter</url-pattern>
+	</servlet-mapping>	
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/document</url-pattern>
+	</servlet-mapping>	
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/output</url-pattern>
+	</servlet-mapping>	
+	
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/extract</url-pattern>
+	</servlet-mapping>
+
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/birt.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/birt.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+	
+    <filter>
+        <description>WEB前端控制器</description>
+        <filter-name>struts2</filter-name>
+        <filter-class>
+            org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+        </filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--
+    启用服务器Gzip，包括css、js、jsp、png、gif、jpg等文件
+    <filter>
+        <filter-name>gzipFilter</filter-name>
+        <filter-class>org.sdt.platform.filter.GzipFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>gzipFilter</filter-name>
+        <url-pattern>*.css</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>gzipFilter</filter-name>
+        <url-pattern>*.js</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>gzipFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+        <filter-mapping>
+      <filter-name>gzipFilter</filter-name>
+      <url-pattern>*.png</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+      <filter-name>gzipFilter</filter-name>
+      <url-pattern>*.gif</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+      <filter-name>gzipFilter</filter-name>
+      <url-pattern>*.jpg</url-pattern>
+    </filter-mapping>
+    -->
+
+    <!--CXF 配置  WEB服务-->
+    <servlet>
+        <description>WEB服务</description>
+        <servlet-name>CXFServlet</servlet-name>
+        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CXFServlet</servlet-name>
+        <url-pattern>/ws/*</url-pattern>
+    </servlet-mapping>
+
+    <!--
+    在线编辑器
+    -->
+    <servlet>
+            <servlet-name>ConnectorServlet</servlet-name>
+            <servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
+            <init-param>
+                    <param-name>XMLConfig</param-name>
+                    <param-value>/WEB-INF/classes/ckfinder.xml</param-value>
+            </init-param>
+            <init-param>
+                    <param-name>debug</param-name>
+                    <param-value>false</param-value>
+            </init-param>
+            <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+            <servlet-name>ConnectorServlet</servlet-name>
+            <url-pattern>
+                    /ckfinder/core/connector/java/connector.java
+            </url-pattern>
+    </servlet-mapping>
+    
+	<!--
+    <resource-ref>
+		<description>Resource reference to a factory for java.sql.Connection</description>
+		<res-ref-name>jdbc/sdt_db</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref> 
+	-->
+	<resource-ref>
+	    <description>Database Source</description>
+	    <res-ref-name>jdbc/sdtplat_db</res-ref-name>
+	    <res-type>javax.sql.DataSource</res-type>
+	    <res-auth>Container</res-auth>
+	</resource-ref>
+
+  <!--会话超时时间，单位为分钟-->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+        <welcome-file>touchform/index.jsp</welcome-file>
+        <welcome-file>touchform/main.jsp</welcome-file>
+        <welcome-file>touchform/shop.jsp</welcome-file>
+        <welcome-file>touchform/bill.jsp</welcome-file>
+        <welcome-file>touchform/tel.jsp</welcome-file>
+        <welcome-file>touchform/orderlist.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

@@ -1,0 +1,1143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.3.1.v201309091055 Build &lt;4.3.1.v20130917-1035></property>
+    <list-property name="scriptLibs">
+        <structure>
+            <property name="name">SDT_Core-2.5.jar</property>
+        </structure>
+    </list-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/crosstab.gif</property>
+    <property name="cheatSheet">org.eclipse.birt.report.designer.ui.cheatsheet.crosstab</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">common.rptlibrary</property>
+            <property name="namespace">common</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="title" id="1026" extends="common.title"/>
+        <scalar-parameter name="infoLeft" id="1027" extends="common.infoLeft"/>
+        <scalar-parameter name="infoRight" id="1028" extends="common.infoRight"/>
+        <scalar-parameter name="condition" id="1029" extends="common.condition"/>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="sdtplatdb" id="1023"
+ extends="common.sdtplatdb">
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://localhost:3306/sdtplat_db</property>
+            <property name="odaUser">root</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">cm9vdA==</encrypted-property>
+            <property name="odaJndiName">java:comp/env/jdbc/sdtplat_db</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="v_stock_all" id="1249"
+ extends="common.v_stock_all">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">id</text-property>
+                    <text-property name="heading">id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">HPBM</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">HPBM</text-property>
+                    <text-property name="heading">HPBM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">FLMC</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">FLMC</text-property>
+                    <text-property name="heading">FLMC</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">HPMC</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">HPMC</text-property>
+                    <text-property name="heading">HPMC</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">GGXH</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">GGXH</text-property>
+                    <text-property name="heading">GGXH</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">DW</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">DW</text-property>
+                    <text-property name="heading">DW</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">KCYJL</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">KCYJL</text-property>
+                    <text-property name="heading">KCYJL</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">HPFL_id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">HPFL_id</text-property>
+                    <text-property name="heading">HPFL_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SLori</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">SLori</text-property>
+                    <text-property name="heading">SLori</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SLrk</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">SLrk</text-property>
+                    <text-property name="heading">SLrk</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SLsale</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">SLsale</text-property>
+                    <text-property name="heading">SLsale</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SLloss</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">SLloss</text-property>
+                    <text-property name="heading">SLloss</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SLdbc</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">SLdbc</text-property>
+                    <text-property name="heading">SLdbc</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SLdbr</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">SLdbr</text-property>
+                    <text-property name="heading">SLdbr</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">ZSLdbc</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">ZSLdbc</text-property>
+                    <text-property name="heading">ZSLdbc</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">ZSLcsjc</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">ZSLcsjc</text-property>
+                    <text-property name="heading">ZSLcsjc</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">ZSLkcjc</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">ZSLkcjc</text-property>
+                    <text-property name="heading">ZSLkcjc</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">ZSLzjc</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">ZSLzjc</text-property>
+                    <text-property name="heading">ZSLzjc</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">ZSLsjzjc</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">ZSLsjzjc</text-property>
+                    <text-property name="heading">ZSLsjzjc</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">HPBM</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">FLMC</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">HPMC</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">GGXH</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">DW</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">KCYJL</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">HPFL_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">SLori</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">SLrk</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">SLsale</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">SLloss</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">SLdbc</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">SLdbr</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">ZSLdbc</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">ZSLcsjc</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">ZSLkcjc</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">ZSLzjc</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">ZSLsjzjc</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
+                        <property name="name">ZJEsjzjc</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                </list-property>
+            </structure>
+        </oda-data-set>
+    </data-sets>
+    <cubes>
+        <tabular-cube name="v_stock_all_cube" id="1250" extends="common.v_stock_all_cube">
+            <overridden-values>
+                <ref-entry baseId="258" name="分类名称__" id="258">
+                    <property name="defaultHierarchy">NewTabularHierarchy11</property>
+                </ref-entry>
+                <ref-entry baseId="259" name="NewTabularHierarchy11" id="259"/>
+                <ref-entry baseId="260" name="FLMC" id="260"/>
+                <ref-entry baseId="261" name="规格型号__" id="261">
+                    <property name="defaultHierarchy">NewTabularHierarchy13</property>
+                </ref-entry>
+                <ref-entry baseId="262" name="NewTabularHierarchy13" id="262"/>
+                <ref-entry baseId="263" name="GGXH" id="263"/>
+                <ref-entry baseId="264" name="货品编码__" id="264">
+                    <property name="defaultHierarchy">NewTabularHierarchy14</property>
+                </ref-entry>
+                <ref-entry baseId="265" name="NewTabularHierarchy14" id="265"/>
+                <ref-entry baseId="266" name="HPBM" id="266"/>
+                <ref-entry baseId="267" name="货品名称__" id="267">
+                    <property name="defaultHierarchy">NewTabularHierarchy15</property>
+                </ref-entry>
+                <ref-entry baseId="268" name="NewTabularHierarchy15" id="268"/>
+                <ref-entry baseId="269" name="HPMC" id="269"/>
+                <ref-entry baseId="270" name="调拨出数量__" id="270"/>
+                <ref-entry baseId="271" name="SLdbc" id="271"/>
+                <ref-entry baseId="272" name="调拨入数量___" id="272"/>
+                <ref-entry baseId="273" name="SLdbr" id="273"/>
+                <ref-entry baseId="274" name="库损数量" id="274"/>
+                <ref-entry baseId="275" name="SLloss" id="275"/>
+                <ref-entry baseId="276" name="初期数量" id="276"/>
+                <ref-entry baseId="277" name="SLori" id="277"/>
+                <ref-entry baseId="278" name="入库数量" id="278"/>
+                <ref-entry baseId="279" name="SLrk" id="279"/>
+                <ref-entry baseId="280" name="销售数量__" id="280"/>
+                <ref-entry baseId="281" name="SLsale" id="281"/>
+                <ref-entry baseId="283" name="超市结存量" id="283"/>
+                <ref-entry baseId="284" name="ZSLcsjc" id="284"/>
+                <ref-entry baseId="285" name="总调拨出数量" id="285"/>
+                <ref-entry baseId="286" name="ZSLdbc" id="286"/>
+                <ref-entry baseId="287" name="库存应存数量" id="287"/>
+                <ref-entry baseId="288" name="ZSLkcjc" id="288"/>
+                <ref-entry baseId="289" name="总应存量" id="289"/>
+                <ref-entry baseId="290" name="ZSLzjc" id="290"/>
+                <ref-entry baseId="291" name="总实存量" id="291"/>
+                <ref-entry baseId="292" name="ZSLsjzjc" id="292"/>
+            </overridden-values>
+        </tabular-cube>
+    </cubes>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="rightMargin">0in</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <data id="821">
+            <property name="fontSize">16pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="paddingTop">10pt</property>
+            <property name="paddingBottom">10pt</property>
+            <structure name="numberFormat">
+                <property name="category">Custom</property>
+            </structure>
+            <property name="textAlign">center</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">title</property>
+                    <expression name="expression" type="javascript">params["title"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="resultSetColumn">title</property>
+        </data>
+        <grid id="832">
+            <column id="833"/>
+            <column id="834"/>
+            <row id="835">
+                <cell id="836">
+                    <data id="839">
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">infoLeft</property>
+                                <expression name="expression" type="javascript">params["infoLeft"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">infoLeft</property>
+                    </data>
+                </cell>
+                <cell id="837">
+                    <data id="841">
+                        <property name="textAlign">right</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">infoRight</property>
+                                <expression name="expression" type="javascript">params["infoRight"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">infoRight</property>
+                    </data>
+                </cell>
+            </row>
+        </grid>
+        <extended-item extensionName="Crosstab" extensionVersion="3.7.0" id="1368">
+            <property name="cube">v_stock_all_cube</property>
+            <property name="measures">
+                <extended-item extensionName="MeasureView" id="1369">
+                    <property name="measure">SLori</property>
+                    <property name="detail">
+                        <extended-item extensionName="AggregationCell" id="1370">
+                            <property name="aggregationOnRow">规格型号__/GGXH</property>
+                            <property name="content">
+                                <data id="1371">
+                                    <property name="resultSetColumn">SLori_规格型号__/GGXH</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="aggregations">
+                        <extended-item extensionName="AggregationCell" id="1372">
+                            <property name="backgroundColor">orange</property>
+                            <property name="content">
+                                <data id="1373">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="resultSetColumn">SLori</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="header">
+                        <extended-item extensionName="CrosstabCell" id="1374">
+                            <property name="content">
+                                <label id="1375">
+                                    <text-property name="text">初期库存</text-property>
+                                </label>
+                            </property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+                <extended-item extensionName="MeasureView" id="1397">
+                    <property name="measure">SLrk</property>
+                    <property name="detail">
+                        <extended-item extensionName="AggregationCell" id="1398">
+                            <property name="aggregationOnRow">规格型号__/GGXH</property>
+                            <property name="content">
+                                <data id="1399">
+                                    <property name="resultSetColumn">SLrk_规格型号__/GGXH</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="aggregations">
+                        <extended-item extensionName="AggregationCell" id="1400">
+                            <property name="backgroundColor">orange</property>
+                            <property name="content">
+                                <data id="1401">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="resultSetColumn">SLrk</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="header">
+                        <extended-item extensionName="CrosstabCell" id="1402">
+                            <property name="content">
+                                <label id="1403">
+                                    <text-property name="text">入库量</text-property>
+                                </label>
+                            </property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+                <extended-item extensionName="MeasureView" id="1404">
+                    <property name="measure">SLsale</property>
+                    <property name="detail">
+                        <extended-item extensionName="AggregationCell" id="1405">
+                            <property name="aggregationOnRow">规格型号__/GGXH</property>
+                            <property name="content">
+                                <data id="1406">
+                                    <property name="resultSetColumn">SLsale_规格型号__/GGXH</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="aggregations">
+                        <extended-item extensionName="AggregationCell" id="1407">
+                            <property name="backgroundColor">orange</property>
+                            <property name="content">
+                                <data id="1408">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="resultSetColumn">SLsale</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="header">
+                        <extended-item extensionName="CrosstabCell" id="1409">
+                            <property name="content">
+                                <label id="1410">
+                                    <text-property name="text">销售量</text-property>
+                                </label>
+                            </property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+                <extended-item extensionName="MeasureView" id="1494">
+                    <property name="measure">ZSLcsjc</property>
+                    <property name="detail">
+                        <extended-item extensionName="AggregationCell" id="1495">
+                            <property name="aggregationOnRow">规格型号__/GGXH</property>
+                            <property name="content">
+                                <data id="1498">
+                                    <property name="resultSetColumn">ZSLcsjc_规格型号__/GGXH</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="aggregations">
+                        <extended-item extensionName="AggregationCell" id="1496">
+                            <property name="backgroundColor">orange</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">1px</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">1px</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">1px</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">1px</property>
+                            <property name="content">
+                                <data id="1497">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="resultSetColumn">ZSLcsjc</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="header">
+                        <extended-item extensionName="CrosstabCell" id="1499">
+                            <property name="content">
+                                <label id="1500">
+                                    <text-property name="text">超市存量</text-property>
+                                </label>
+                            </property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">1px</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">1px</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">1px</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">1px</property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+                <extended-item extensionName="MeasureView" id="1501">
+                    <property name="measure">ZSLkcjc</property>
+                    <property name="detail">
+                        <extended-item extensionName="AggregationCell" id="1502">
+                            <property name="aggregationOnRow">规格型号__/GGXH</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">1px</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">1px</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">1px</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">1px</property>
+                            <property name="content">
+                                <data id="1505">
+                                    <property name="resultSetColumn">ZSLkcjc_规格型号__/GGXH</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="aggregations">
+                        <extended-item extensionName="AggregationCell" id="1503">
+                            <property name="backgroundColor">orange</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">1px</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">1px</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">1px</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">1px</property>
+                            <property name="content">
+                                <data id="1504">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="resultSetColumn">ZSLkcjc</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="header">
+                        <extended-item extensionName="CrosstabCell" id="1506">
+                            <property name="content">
+                                <label id="1507">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="textAlign">center</property>
+                                    <text-property name="text">仓库存量</text-property>
+                                </label>
+                            </property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">1px</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">1px</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">1px</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">1px</property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+                <extended-item extensionName="MeasureView" id="1432">
+                    <property name="measure">ZSLzjc</property>
+                    <property name="detail">
+                        <extended-item extensionName="AggregationCell" id="1433">
+                            <property name="aggregationOnRow">规格型号__/GGXH</property>
+                            <property name="content">
+                                <data id="1434">
+                                    <property name="resultSetColumn">ZSLzjc_规格型号__/GGXH</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="aggregations">
+                        <extended-item extensionName="AggregationCell" id="1435">
+                            <property name="backgroundColor">orange</property>
+                            <property name="content">
+                                <data id="1436">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="resultSetColumn">ZSLzjc</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="header">
+                        <extended-item extensionName="CrosstabCell" id="1437">
+                            <property name="content">
+                                <label id="1438">
+                                    <text-property name="text">总应存量</text-property>
+                                </label>
+                            </property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+                <extended-item extensionName="MeasureView" id="1473">
+                    <property name="measure">SLloss</property>
+                    <property name="detail">
+                        <extended-item extensionName="AggregationCell" id="1474">
+                            <property name="aggregationOnRow">规格型号__/GGXH</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">1px</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">1px</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">1px</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">1px</property>
+                            <property name="content">
+                                <data id="1477">
+                                    <property name="resultSetColumn">SLloss_规格型号__/GGXH</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="aggregations">
+                        <extended-item extensionName="AggregationCell" id="1475">
+                            <property name="backgroundColor">orange</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">1px</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">1px</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">1px</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">1px</property>
+                            <property name="content">
+                                <data id="1476">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="resultSetColumn">SLloss</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="header">
+                        <extended-item extensionName="CrosstabCell" id="1478">
+                            <property name="content">
+                                <label id="1479">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="textAlign">center</property>
+                                    <text-property name="text">库损量</text-property>
+                                </label>
+                            </property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">1px</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">1px</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">1px</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">1px</property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+                <extended-item extensionName="MeasureView" id="1439">
+                    <property name="measure">ZSLsjzjc</property>
+                    <property name="detail">
+                        <extended-item extensionName="AggregationCell" id="1440">
+                            <property name="aggregationOnRow">规格型号__/GGXH</property>
+                            <property name="content">
+                                <data id="1441">
+                                    <property name="resultSetColumn">ZSLsjzjc_规格型号__/GGXH</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="aggregations">
+                        <extended-item extensionName="AggregationCell" id="1442">
+                            <property name="backgroundColor">orange</property>
+                            <property name="content">
+                                <data id="1443">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="resultSetColumn">ZSLsjzjc</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="header">
+                        <extended-item extensionName="CrosstabCell" id="1444">
+                            <property name="content">
+                                <label id="1445">
+                                    <text-property name="text">总实存量</text-property>
+                                </label>
+                            </property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+                <extended-item extensionName="MeasureView" id="1508">
+                    <property name="measure">ZJEsjzjc</property>
+                    <property name="detail">
+                        <extended-item extensionName="AggregationCell" id="1509">
+                            <property name="aggregationOnRow">规格型号__/GGXH</property>
+                            <property name="content">
+                                <data id="1512">
+                                    <structure name="numberFormat">
+                                        <property name="category">Currency</property>
+                                        <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                                    </structure>
+                                    <property name="resultSetColumn">ZJEsjzjc_规格型号__/GGXH</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="aggregations">
+                        <extended-item extensionName="AggregationCell" id="1510">
+                            <property name="backgroundColor">orange</property>
+                            <property name="content">
+                                <data id="1511">
+                                    <property name="fontWeight">bold</property>
+                                    <structure name="numberFormat">
+                                        <property name="category">Custom</property>
+                                        <property name="pattern">¤###,##0.00</property>
+                                    </structure>
+                                    <structure name="stringFormat">
+                                        <property name="category">Custom</property>
+                                    </structure>
+                                    <property name="resultSetColumn">ZJEsjzjc</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="header">
+                        <extended-item extensionName="CrosstabCell" id="1513">
+                            <property name="content">
+                                <label id="1514">
+                                    <text-property name="text">总实存金额</text-property>
+                                </label>
+                            </property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+            </property>
+            <property name="rows">
+                <extended-item extensionName="CrosstabView" id="1446">
+                    <property name="grandTotal">
+                        <extended-item extensionName="CrosstabCell" id="1447">
+                            <property name="content">
+                                <label id="1448">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="textAlign">right</property>
+                                    <text-property name="text">合计   </text-property>
+                                </label>
+                            </property>
+                            <property name="backgroundColor">orange</property>
+                        </extended-item>
+                    </property>
+                    <property name="views">
+                        <extended-item extensionName="DimensionView" id="1449">
+                            <property name="dimension">分类名称__</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View4" id="1450">
+                                    <property name="level">分类名称__/FLMC</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1451">
+                                            <property name="content">
+                                                <data name="FLMC1" id="1452">
+                                                    <property name="resultSetColumn">FLMC</property>
+                                                </data>
+                                            </property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1453">
+                            <property name="dimension">货品名称__</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View11" id="1454">
+                                    <property name="level">货品名称__/HPMC</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1455">
+                                            <property name="content">
+                                                <data name="HPMC1" id="1456">
+                                                    <property name="resultSetColumn">HPMC</property>
+                                                </data>
+                                            </property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1457">
+                            <property name="dimension">货品编码__</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View21" id="1458">
+                                    <property name="level">货品编码__/HPBM</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1459">
+                                            <property name="content">
+                                                <data name="HPBM1" id="1460">
+                                                    <property name="resultSetColumn">HPBM</property>
+                                                </data>
+                                            </property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1461">
+                            <property name="dimension">规格型号__</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View31" id="1462">
+                                    <property name="level">规格型号__/GGXH</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1463">
+                                            <property name="content">
+                                                <data name="GGXH1" id="1464">
+                                                    <property name="resultSetColumn">GGXH</property>
+                                                </data>
+                                            </property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="grandTotalLocation">after</property>
+                </extended-item>
+            </property>
+            <property name="header">
+                <extended-item extensionName="CrosstabCell" id="1465">
+                    <property name="content">
+                        <label id="1466">
+                            <text-property name="text">分类名称</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">bold</property>
+                    <property name="textAlign">center</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1467">
+                    <property name="content">
+                        <label id="1468">
+                            <text-property name="text">货品名称</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">bold</property>
+                    <property name="textAlign">center</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1469">
+                    <property name="content">
+                        <label id="1470">
+                            <text-property name="text">货品编码</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">bold</property>
+                    <property name="textAlign">center</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1471">
+                    <property name="content">
+                        <label id="1472">
+                            <text-property name="text">规格型号</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">bold</property>
+                    <property name="textAlign">center</property>
+                </extended-item>
+            </property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">FLMC</property>
+                    <expression name="expression">dimension["分类名称__"]["FLMC"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">HPMC</property>
+                    <expression name="expression">dimension["货品名称__"]["HPMC"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">HPBM</property>
+                    <expression name="expression">dimension["货品编码__"]["HPBM"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">GGXH</property>
+                    <expression name="expression">dimension["规格型号__"]["GGXH"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">SLdbc_规格型号__/GGXH</property>
+                    <expression name="expression">measure["SLdbc"]</expression>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>规格型号__/GGXH</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">SLdbr_规格型号__/GGXH</property>
+                    <expression name="expression">measure["SLdbr"]</expression>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>规格型号__/GGXH</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">SLloss_规格型号__/GGXH</property>
+                    <expression name="expression">measure["SLloss"]</expression>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>规格型号__/GGXH</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">SLori_规格型号__/GGXH</property>
+                    <expression name="expression">measure["SLori"]</expression>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>规格型号__/GGXH</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">SLrk_规格型号__/GGXH</property>
+                    <expression name="expression">measure["SLrk"]</expression>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>规格型号__/GGXH</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">SLsale_规格型号__/GGXH</property>
+                    <expression name="expression">measure["SLsale"]</expression>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>规格型号__/GGXH</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">ZSLcsjc_规格型号__/GGXH</property>
+                    <expression name="expression">measure["ZSLcsjc"]</expression>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>规格型号__/GGXH</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">ZSLdbc_规格型号__/GGXH</property>
+                    <expression name="expression">measure["ZSLdbc"]</expression>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>规格型号__/GGXH</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">ZSLkcjc_规格型号__/GGXH</property>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>规格型号__/GGXH</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">measure["ZSLkcjc"]</expression>
+                        </structure>
+                    </list-property>
+                </structure>
+                <structure>
+                    <property name="name">ZSLzjc_规格型号__/GGXH</property>
+                    <expression name="expression">measure["ZSLzjc"]</expression>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>规格型号__/GGXH</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">ZSLsjzjc_规格型号__/GGXH</property>
+                    <expression name="expression">measure["ZSLsjzjc"]</expression>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>规格型号__/GGXH</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">SLori</property>
+                    <expression name="expression">measure["SLori"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">SLdbc</property>
+                    <expression name="expression">measure["SLdbc"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">SLdbr</property>
+                    <expression name="expression">measure["SLdbr"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">SLloss</property>
+                    <expression name="expression">measure["SLloss"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">SLrk</property>
+                    <expression name="expression">measure["SLrk"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">SLsale</property>
+                    <expression name="expression">measure["SLsale"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">ZSLcsjc</property>
+                    <expression name="expression">measure["ZSLcsjc"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">ZSLdbc</property>
+                    <expression name="expression">measure["ZSLdbc"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">ZSLkcjc</property>
+                    <expression name="expression">measure["ZSLkcjc"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">ZSLzjc</property>
+                    <expression name="expression">measure["ZSLzjc"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">ZSLsjzjc</property>
+                    <expression name="expression">measure["ZSLsjzjc"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">ZJEsjzjc</property>
+                    <expression name="expression">measure["ZJEsjzjc"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">ZJEsjzjc_规格型号__/GGXH</property>
+                    <expression name="expression">measure["ZJEsjzjc"]</expression>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>规格型号__/GGXH</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+            </list-property>
+        </extended-item>
+    </body>
+</report>

@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module SYSTEM  "module.dtd">
+<module english="root" chinese="功能菜单">
+	<subModules>
+		<module english="personMgt" chinese="人员管理">
+			<subModules>
+				<module english="person" chinese="人员信息">
+					<subModules>
+						<module english="personInfo" chinese="人员信息">
+							<commands>
+								<command english="create" chinese="添加信息" />
+								<command english="batch" chinese="批量添加" />
+								<command english="detail" chinese="详细信息" />
+								<command english="search" chinese="高级搜索" />
+								<command english="delete" chinese="删除信息" />
+								<command english="update" chinese="修改信息" />
+								<command english="query" chinese="显示全部" />
+								<command english="export" chinese="导出Excel" />
+							</commands>
+						</module>
+						<module english="leavePerson" chinese="离监人员">
+							<commands>
+								<command english="detail" chinese="详细信息" />
+								<command english="search" chinese="高级搜索" />
+								<command english="query" chinese="显示全部" />
+								<command english="export" chinese="导出Excel" />
+							</commands>
+						</module>
+					</subModules>
+				</module>
+				<module english="cardInfo" chinese="IC卡信息">
+					<commands>
+						<command english="create" chinese="开卡" />
+						<command english="destroy" chinese="销卡" />
+						<command english="loss" chinese="挂失" />
+						<command english="delete" chinese="删除" />
+						<command english="query" chinese="查询" />
+						<command english="export" chinese="导出" />
+					</commands>
+				</module>
+				<module english="changeRecord" chinese="转监记录">
+					<commands>
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+			</subModules>
+		</module>
+		<module english="fundMgt" chinese="资金管理">
+			<subModules>
+				<module english="recharge" chinese="资金充值入账">
+					<commands>
+						<command english="cash" chinese="现金充值" />
+						<command english="remit" chinese="汇款充值" />
+						<command english="batch" chinese="批量充值" />
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="详细信息" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+						<command english="print" chinese="打印单据" />
+
+					</commands>
+				</module>
+				<module english="rewardApply" chinese="劳动报酬发放">
+					<commands>
+						<command english="grant" chinese="报酬发放" />
+						<command english="batch" chinese="批量发放" />
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+				<module english="bonusApply" chinese="劳动奖金发放">
+					<commands>
+						<command english="grant" chinese="奖金发放" />
+						<command english="batch" chinese="批量发放" />
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+				<module english="subsidyIn" chinese="生活补贴发放">
+					<commands>
+						<command english="grant" chinese="补贴发放" />
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+				<module english="hjxfIn" chinese="会见消费收款">
+					<commands>
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+				<module english="leavePrison" chinese="人员离监退款">
+					<commands>
+						<command english="refund" chinese="办理退款" />
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="print" chinese="打印单据" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+				<module english="medical" chinese="资金下账">
+					<commands>
+						<command english="create" chinese="单笔下账" />
+						<command english="batch" chinese="批量下账" />
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+						<command english="print" chinese="打印单据" />
+					</commands>
+				</module>
+				<module english="balance" chinese="资金对账">
+					<commands>
+						<command english="create" chinese="对账" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+			</subModules>
+		</module>
+		<module english="telMgt" chinese="话费管理">
+			<subModules>
+				<module english="telcard" chinese="电话卡号信息">
+					<commands>
+						<command english="update" chinese="卡号设置" />
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+				<module english="billInfo" chinese="话费充值记录">
+					<commands>
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+				<module english="billRecord" chinese="充值报表">
+					<subModules>
+						<module english="billdetail" chinese="充值详单">
+							<commands>
+								<command english="query" chinese="查询" />
+							</commands>
+						</module>
+						<module english="billsum" chinese="充值汇总">
+							<commands>
+								<command english="query" chinese="查询" />
+							</commands>
+						</module>
+					</subModules>
+				</module>
+			</subModules>
+		</module>
+		<module english="hospitalMgt" chinese="医疗管理">
+			<subModules>
+				<module english="chargeInfo" chinese="收费管理">
+					<commands>
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+				<module english="changeRecord" chinese="收费报表">
+					<subModules>
+						<module english="changetail" chinese="收费详单">
+							<commands>
+								<command english="query" chinese="查询" />
+							</commands>
+						</module>
+						<module english="changsum" chinese="充值汇总">
+							<commands>
+								<command english="query" chinese="查询" />
+							</commands>
+						</module>
+					</subModules>
+				</module>
+			</subModules>
+		</module>
+		<module english="finance" chinese="资金汇总">
+			<subModules>
+				<module english="funsRechargeSts" chinese="资金上账统计">
+					<commands>
+						<command english="query" chinese="查询" />
+					</commands>
+				</module>
+				<module english="medicalSts" chinese="资金下账统计">
+					<commands>
+						<command english="query" chinese="查询" />
+					</commands>
+				</module>
+				<module english="ljtkSts" chinese="离监退款统计">
+					<commands>
+						<command english="query" chinese="查询" />
+					</commands>
+				</module>
+				
+				<module english="finance_jq" chinese="监狱资金统计">
+					<subModules>
+						<module english="balanceInfo" chinese="按时间统计">
+							<commands>
+								<command english="query" chinese="查询" />
+							</commands>
+						</module>
+						<module english="zjhz" chinese="按监区统计">
+							<commands>
+								<command english="query" chinese="查询" />
+							</commands>
+						</module>
+					</subModules>
+				</module>
+				<module english="finance_gr" chinese="犯人资金统计">
+					<subModules>
+						<module english="personBalance" chinese="余额统计">
+							<commands>
+								<command english="query" chinese="查询" />
+							</commands>
+						</module>
+						<module english="grzj" chinese="资金流水">
+							<commands>
+								<command english="query" chinese="查询" />
+							</commands>
+						</module>
+						<module english="moneyDetail" chinese="个人资金明细">
+							<commands>
+								<command english="search" chinese="高级搜索" />
+								<command english="query" chinese="显示全部" />
+								<command english="export" chinese="导出Excel" />
+							</commands>
+						</module>
+
+					</subModules>
+				</module>
+				<module english="voucher" chinese="收款单据取汇总">
+					<subModules>
+						<module english="lyqhz" chinese="会见充值单汇总">
+							<commands>
+								<command english="query" chinese="查询" />
+							</commands>
+						</module>
+					</subModules>
+				</module>
+			</subModules>
+		</module>
+		<module english="superMarketMgt" chinese="消费管理">
+			<subModules>
+				<module english="product" chinese="货品管理">
+					<subModules>
+						<module english="productCategory" chinese="货品分类">
+							<commands>
+								<command english="create" chinese="添加货品分类" />
+								<command english="delete" chinese="删除货品分类" />
+								<command english="update" chinese="修改货品分类" />
+								<command english="query" chinese="查询货品分类" />
+							</commands>
+						</module>
+						<module english="productInfo" chinese="上架货品">
+							<commands>
+								<command english="create" chinese="添加货品信息"/>
+								<command english="delete" chinese="删除货品信息"/>
+								<command english="update" chinese="修改货品信息"/>
+								<command english="detail" chinese="详细信息" />
+								<command english="query" chinese="查询货品信息"/>
+								<command english="export" chinese="导出Excel"/>
+							</commands>
+						</module>
+						<module english="underProduct" chinese="下架货品">
+							<commands>
+								<command english="create" chinese="添加货品信息"/>
+								<command english="delete" chinese="删除货品信息"/>
+								<command english="update" chinese="修改货品信息"/>
+								<command english="detail" chinese="详细信息" />
+								<command english="query" chinese="查询货品信息"/>
+								<command english="export" chinese="导出Excel"/>
+							</commands>
+						</module>
+						<module english="cigaretteMgt" chinese="香烟限量">
+							<commands>
+								<command english="create" chinese="限量管理"/>
+								<command english="detail" chinese="详细信息" />
+								<command english="query" chinese="查询货品信息"/>
+							</commands>
+						</module>
+						<module english="productRep" chinese="商品计划单">
+							<commands>
+								<command english="query" chinese="查询计划单" />
+							</commands>
+						</module>
+					</subModules>
+				</module>
+				<module english="vending" chinese="点购台消费管理">
+					<subModules>
+						<module english="vendingMachineRecord" chinese="点购台消费记录">
+							<commands>
+								<command english="detail" chinese="详细信息" />
+								<command english="search" chinese="高级搜索" />
+								<command english="query" chinese="显示全部" />
+								<command english="export" chinese="导出Excel" />
+							</commands>
+						</module>
+						<module english="vendingMachineOrder" chinese="点购台订单">
+							<commands>
+								<command english="create" chinese="生成点购订单" />
+								<command english="thuo" chinese="订单退货" />
+								<command english="detail" chinese="详细信息" />
+								<command english="search" chinese="高级搜索" />
+								<command english="query" chinese="显示全部" />
+								<command english="export" chinese="导出Excel" />
+							</commands>
+						</module>
+						<module english="blank" chinese="配货单">
+							<subModules>
+								<module english="cgdd" chinese="采购订单">
+									<commands>
+										<command english="query" chinese="查询采购订单" />
+									</commands>
+								</module>
+								<module english="jyff" chinese="监区分发单">
+									<commands>
+										<command english="query" chinese="查询监区分发单" />
+									</commands>
+								</module>
+								<module english="grff" chinese="个人分发单">
+									<commands>
+										<command english="query" chinese="查询个人分发单" />
+									</commands>
+								</module>
+								<module english="tkd" chinese="购物退款单">
+									<commands>
+										<command english="query" chinese="查询购物退款单" />
+									</commands>
+								</module>
+								<module english="jqhz" chinese="监区购物汇总">
+									<commands>
+										<command english="query" chinese="查询监区购物汇总" />
+									</commands>
+								</module>
+								<module english="invoice" chinese="购物发票清单">
+									<commands>
+										<command english="query" chinese="查询发票汇总" />
+									</commands>
+								</module>
+								<module english="grxf" chinese="购物资金汇总单">
+									<commands>
+										<command english="query" chinese="查询购物资金汇总单" />
+									</commands>
+								</module>
+								<module english="salesmoney" chinese="罪犯资金领用表">
+									<commands>
+										<command english="query" chinese="查询罪犯资金领用表" />
+									</commands>
+								</module>
+
+							</subModules>
+						</module>
+					</subModules>
+				</module>
+				<module english="interview" chinese="会见消费管理">
+					<subModules>
+						<module english="salesTab" chinese="会见销售台">
+							<commands>
+								<command english="create" chinese="进入售货台" />
+								<command english="detail" chinese="详细信息" />
+								<command english="search" chinese="高级搜索" />
+								<command english="query" chinese="显示全部" />
+								<command english="print" chinese="打印单据" />
+							</commands>
+						</module>
+						<module english="hjxf" chinese="会见消费汇总">
+							<commands>
+								<command english="query" chinese="查询会见消费" />
+							</commands>
+						</module>
+					</subModules>
+				</module>
+				<module english="superMarketMgtSts" chinese="销售报表">
+					<subModules>
+						<module english="fundsSts" chinese="货品销售汇总表">
+							<commands>
+								<command english="query" chinese="查询" />
+							</commands>
+						</module>
+						<module english="grxz" chinese="个人资金下账统计">
+							<commands>
+								<command english="query" chinese="查询" />
+							</commands>
+						</module>
+						<module english="grmx" chinese="个人消费明细">
+							<commands>
+								<command english="query" chinese="查询" />
+							</commands>
+						</module>
+					</subModules>
+				</module>
+			</subModules>
+		</module>
+		<module english="checkMgt" chinese="审核管理">
+			<subModules>
+				<module english="csOrder" chinese="超市订单">
+					<subModules>
+						<module english="csOrderCheck" chinese="订单审核">
+							<commands>
+								<command english="create" chinese="审核订单" />
+								<command english="detail" chinese="详细信息" />
+								<command english="search" chinese="高级搜索" />
+								<command english="query" chinese="显示全部" />
+							</commands>
+						</module>
+						<module english="csOrderCheckRecord" chinese="审核记录">
+							<commands>
+								<command english="detail" chinese="详细信息" />
+								<command english="search" chinese="高级搜索" />
+								<command english="query" chinese="显示全部" />
+								<command english="export" chinese="导出Excel" />
+							</commands>
+						</module>
+					</subModules>
+				</module>
+				<module english="rewardInOpt" chinese="报酬入账">
+					<subModules>
+						<module english="rewardInOptCheck" chinese="入账审核">
+							<commands>
+								<command english="create" chinese="审核账单" />
+								<command english="detail" chinese="详细信息" />
+								<command english="search" chinese="高级搜索" />
+								<command english="query" chinese="显示全部" />
+							</commands>
+						</module>
+						<module english="rewardInOptCheckRecord" chinese="审核记录">
+							<commands>
+								<command english="detail" chinese="详细信息" />
+								<command english="search" chinese="高级搜索" />
+								<command english="query" chinese="显示全部" />
+								<command english="export" chinese="导出Excel" />
+							</commands>
+						</module>
+					</subModules>
+				</module>
+				<module english="chargeOpt" chinese="充值审核">
+					<subModules>
+						<module english="chargeOptCheck" chinese="充值审核">
+							<commands>
+								<command english="create" chinese="审核记录" />
+								<command english="detail" chinese="详细信息" />
+								<command english="search" chinese="高级搜索" />
+								<command english="query" chinese="显示全部" />
+							</commands>
+						</module>
+						<module english="chargeOptCheckRecord" chinese="审核记录">
+							<commands>
+								<command english="detail" chinese="详细信息" />
+								<command english="search" chinese="高级搜索" />
+								<command english="query" chinese="显示全部" />
+								<command english="export" chinese="导出Excel" />
+							</commands>
+						</module>
+					</subModules>
+				</module>
+				<module english="salesOpt" chinese="消费审核">
+					<subModules>
+						<module english="salesOptCheck" chinese="消费审核">
+							<commands>
+								<command english="create" chinese="审核记录" />
+								<command english="detail" chinese="详细信息" />
+								<command english="search" chinese="高级搜索" />
+								<command english="query" chinese="显示全部" />
+							</commands>
+						</module>
+						<module english="salesOptCheckRecord" chinese="审核记录">
+							<commands>
+								<command english="detail" chinese="详细信息" />
+								<command english="search" chinese="高级搜索" />
+								<command english="query" chinese="显示全部" />
+								<command english="export" chinese="导出Excel" />
+							</commands>
+						</module>
+					</subModules>
+				</module>
+			</subModules>
+		</module>
+		<module english="systemCfg" chinese="系统配置">
+			<subModules>
+				<module english="prisonInfo" chinese="监区信息">
+					<commands>
+						<command english="create" chinese="添加监区信息" />
+						<command english="delete" chinese="删除监区信息" />
+						<command english="update" chinese="修改监区信息" />
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+				<module english="supermarketInfo" chinese="超市信息">
+					<commands>
+						<command english="create" chinese="添加超市信息" />
+						<command english="delete" chinese="删除超市信息" />
+						<command english="update" chinese="修改超市信息" />
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+				<module english="deviceInfo" chinese="设备信息">
+					<commands>
+						<command english="create" chinese="添加设备信息" />
+						<command english="delete" chinese="删除设备信息" />
+						<command english="update" chinese="修改设备信息" />
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+				<module english="quotaInfo" chinese="限额消费">
+					<commands>
+						<command english="create" chinese="添加限额消费" />
+						<command english="update" chinese="修改限额消费" />
+						<command english="detail" chinese="详细信息" />
+						<command english="search" chinese="高级搜索" />
+						<command english="query" chinese="显示全部" />
+						<command english="export" chinese="导出Excel" />
+					</commands>
+				</module>
+			</subModules>
+		</module>
+	</subModules>
+</module>

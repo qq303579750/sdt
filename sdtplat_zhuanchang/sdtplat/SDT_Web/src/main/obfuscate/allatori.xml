@@ -1,0 +1,17 @@
+<config>
+    <!--  Note: You can reference properties defined in the Ant build file from the Allatori configuration file using standard Ant syntax: ${PropertyName}.   -->
+    <jars>
+        <jar in="../../../target/SDT_Web-${sdt.version}/WEB-INF/lib/SDT_Core-${sdt.version}.jar" out="../../../target/SDT_Web-${sdt.version}/WEB-INF/lib/SDT_Core-${sdt.version}.jar"/>
+        <jar in="../../../target/SDT_Web-${sdt.version}/WEB-INF/lib/SDT_Module-${sdt.version}.jar" out="../../../target/SDT_Web-${sdt.version}/WEB-INF/lib/SDT_Module-${sdt.version}.jar"/>
+    </jars>
+
+    <keep-names>
+ 	<class access="protected+"/>
+ 	<field access="protected+"/> 
+ 	<method access="protected+"/>
+    </keep-names>
+
+    <property name="log-file" value="../../../target/obfuscate_log.xml"/>
+
+    <watermark key="303579750@qq.com" value="SDT开发平台（SDT）"/>
+</config>
