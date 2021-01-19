@@ -143,14 +143,14 @@
         <div id="north">
             <div id="app-header">
                  <div id="header-left">
-                        <!-- <img id ="logo" src="../images/<%=PropertyHolder.getProperty("logo.image")%>" height="50" style="max-width:300px;"/>
+                         <img id ="logo" src="../images/<%=PropertyHolder.getProperty("logo.image")%>" height="50" style="max-width:300px;"/>
                        
-                         -->
+                         
                 </div>
                 <div id="header-main">
                         <div id="topInfoPanel" style="float:left;padding-bottom: 4px">
-                                <!-- <div id="welcomeMsg">欢迎[ <%=realName%> | <%=orgName%> ]登录系统</div>
-                                 -->
+                                 <div id="welcomeMsg">欢迎[ <%=realName%> | <%=orgName%> ]登录系统</div>
+                                
                         </div>
                         <div class="clear"></div>
                         <ul id="header-topnav">

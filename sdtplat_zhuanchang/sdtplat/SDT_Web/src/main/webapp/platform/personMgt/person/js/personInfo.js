@@ -133,7 +133,14 @@ AdvancedSearchModel = function() {
                                                 fieldLabel: '籍贯',
                                                 allowBlank: false,
                                                 blankText : '籍贯不能为空'
-                                            }
+                                            },
+                                       {
+                                           cls : 'attr',
+
+                                           name: 'model.BZ',
+                                           fieldLabel: '备注'
+
+                                       }
                                           ]
                               },{
                                   columnWidth:.5,
@@ -283,13 +290,13 @@ AdvancedSearchModel = function() {
                                                 name: 'model.JSBH',
                                                 fieldLabel: '监舍编号'
                                             },
-                                            {
-                                                cls : 'attr',
-	
-                                                name: 'model.BZ',
-                                                fieldLabel: '备注'
+                                      {
+                                          cls : 'attr',
 
-                                            }
+                                          name: 'model.YHKH',
+                                          fieldLabel: '银行卡号'
+
+                                      }
                                           ]
                               }]
                           }    

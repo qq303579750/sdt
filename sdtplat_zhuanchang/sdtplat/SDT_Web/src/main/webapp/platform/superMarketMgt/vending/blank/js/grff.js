@@ -59,18 +59,17 @@ ReportOpt = function() {
          			                    }
          					        },
                                      {
-                                         xtype: 'combo',
                                          id : 'jqmc',
-                                         store:PrisonInfoStore,
-                                         emptyText:'请选择',
-                                         mode:'remote',
-                                         valueField:'text',
-                                         displayField:'text',
-                                         triggerAction:'all',
-                                         forceSelection: true,
-                                         editable:       false,
                                          fieldLabel: '所属监区',
-                                         allowBlank: true
+                                    readOnly: true,
+                                    listeners: {
+                                        "focus": function (c, r, i) {
+                                            var callback = function (ret) {
+                                                Ext.getCmp('jqmc').setValue(ret);
+                                            };
+                                            prisonDlg.show(callback);
+                                        }
+                                    }
                                      },
                                      {
                                          xtype: 'combo',
@@ -182,7 +181,13 @@ ReportOpt = function() {
     			return;
     		}
     		if (jqmc != undefined && jqmc != ''){
-    			condition = condition + ' and JQMC=\'' + jqmc + '\'';
+                var temp = jqmc.split(",");
+                condition = condition + ' and JQMC in(';
+                for (var i = 0; i < temp.length; i++) {
+                    condition = condition + "'" + temp[i] + "'";
+                    var d = (i == (temp.length - 1)) ? ")" : ",";
+                    condition = condition + d;
+                }
     		}else{
     			alert("请选择监区");
     			return;

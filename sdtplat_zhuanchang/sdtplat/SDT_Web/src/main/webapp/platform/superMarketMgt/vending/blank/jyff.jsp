@@ -11,6 +11,7 @@
     <title>监区分发</title>
     <%@include file="../../../include/common.jsp" %>
     <script type="text/javascript" src="js/purchaseOrderGrid.js"></script>
+    <script type="text/javascript" src="js/prisonGrid.js"></script>
 	<script type="text/javascript" src="js/jyff.js"></script>
 	<script type="text/javascript" src="../../../js/reportFunc.js"></script>
 </head>
