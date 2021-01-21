@@ -45,6 +45,12 @@ public class PersonInfo extends SimpleModel {
 	protected String RYBH;
 
 	@DisplayIgnore
+	@SearchableProperty
+	@ModelAttr("银行卡号")
+	@Column(length = 64)
+	protected String YHKH;
+
+	@DisplayIgnore
 	@ModelAttrNotNull
 	@SearchableProperty
 	@ModelAttr("人员籍贯")
@@ -356,6 +362,14 @@ public class PersonInfo extends SimpleModel {
 
 	public void setBZ(String BZ) {
 		this.BZ = BZ;
+	}
+	@XmlAttribute
+	public String getYHKH() {
+		return YHKH;
+	}
+
+	public void setYHKH(String YHKH) {
+		this.YHKH = YHKH;
 	}
 
 	@Override

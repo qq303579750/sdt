@@ -100,6 +100,15 @@ public class PersonInfoAction extends ExtJSSimpleAction<PersonInfo> {
 	protected String gridData;
 	protected String xflx;
 	protected String bz;
+	protected String yhkh;
+	public String getYhkh() {
+		return yhkh;
+	}
+
+	public void setYhkh(String yhkh) {
+		this.yhkh = yhkh;
+	}
+
 
 	public String getIcbh() {
 		return icbh;
@@ -602,7 +611,7 @@ public class PersonInfoAction extends ExtJSSimpleAction<PersonInfo> {
 		}
 		String sql = "select p.id,p.createTime,p.updateTime,p.version, p.BZ, CSRQ, CSXEDJ, DHXEDJ, FJQ,  "
 				+ " JSBH, RYBH, XB, XM, XYXEDJ, YE, ZHBH, ZHZT, ZJHM, ZJLX, ZP, p.ownerUser_id, SHJQ_id,"
-				+ "ryjg,DCXEDJ,c.ICBH,c.SFLSK from personinfo p left join cardinfo c on p.id = c.RYBH_id where 1=1 "
+				+ "ryjg,DCXEDJ,c.ICBH,c.SFLSK,p.YHKH from personinfo p left join cardinfo c on p.id = c.RYBH_id where 1=1 "
 				+ queryString + " order by id desc ";
 		LOG.info("search SQL:" + sql);
 		Query query = getService().getEntityManager().createNativeQuery(sql);
@@ -678,6 +687,7 @@ public class PersonInfoAction extends ExtJSSimpleAction<PersonInfo> {
 			} else {
 				record.put("SFKK", "未开卡");
 			}
+			record.put("YHKH", temp[26].toString());
 			// 对应卡信息
 			Integer P_ID = Integer.parseInt(temp[0] + "");
 			PropertyEditor propertyEditor = new PropertyEditor("RYBH.id", Operator.eq, PropertyType.Integer, P_ID);
