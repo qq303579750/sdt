@@ -619,8 +619,7 @@ ModifyModel = function () {
                                 cls: 'attr',
                                 value: model.YHKH,
                                 name: 'model.YHKH',
-                                fieldLabel: '银行卡号',
-                                allowBlank: false
+                                fieldLabel: '银行卡号'
                             }
                         ]
                     }]
