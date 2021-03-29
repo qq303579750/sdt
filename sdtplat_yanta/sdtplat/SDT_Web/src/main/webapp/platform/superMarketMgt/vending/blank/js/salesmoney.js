@@ -199,7 +199,7 @@ ReportOpt = function() {
 			var shjg = " and shjq_id in (select id from prisoninfo where jqmc='"+jqmc+"')";
 			var queryString = " select p.rybh,p.xm,'','',sum(zje),'' from personinfo p left join (select * from salesinfo "
 				+"where zdlx='点购台' and cgddid_id in("+orderid+") and jqmc in ('"+jqmc+"')) s "
-				+" ON p.RYBH=s.rybh where p.zhzt!='离监' and SHJQ_id in (select id from prisoninfo where jqmc='"+jqmc+"')  group by p.rybh ";
+				+" ON p.RYBH=s.rybh where SHJQ_id in (select id from prisoninfo where jqmc='"+jqmc+"')  group by p.rybh ";
 			parent.Ext.Ajax.request({
                 url : contextPath+'/superMarketMgt/sales-info!exportExcel.action?time='+new Date().toString(),
                 waitTitle: '请稍等',

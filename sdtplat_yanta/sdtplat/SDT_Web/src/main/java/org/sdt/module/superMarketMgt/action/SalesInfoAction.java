@@ -802,7 +802,8 @@ public class SalesInfoAction extends ExtJSSimpleAction<SalesInfo> {
 	}
 
 	public String exportExcel() {
-		String SqlCount = "select count(*) from personinfo p where 1=1 and zhzt!='离监' "
+		//String SqlCount = "select count(*) from personinfo p where 1=1 and zhzt!='离监' "
+		String SqlCount = "select count(*) from personinfo p where 1=1 "
 				+ shjg;
 		Query queryCount = getService().getEntityManager().createNativeQuery(
 				SqlCount);

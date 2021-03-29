@@ -275,7 +275,7 @@ dgrq = params["dgrq"];
 tjjzrq = params["tjjzrq"];
 this.queryText = this.queryText.replace("p.rybh=s.rybh","p.rybh=s.rybh where p.createTime<='"+tjjzrq+"'");
 this.queryText = this.queryText.replace("from salesinfo"," from salesinfo where shzt!='未通过' and zdlx='点购台' and cgddid_id in("+cgddid+") and jqmc in ('"+jqmc+"') group by rybh");
-this.queryText = this.queryText.replace("list","list where ((n_zhzt!='离监') or (n_utime>='"+dgrq+"')) and ((n_shjq="+params["shjqid"]+") or (n_jqmc in ('"+jqmc+"'))) group by n_rybh");]]></method>
+this.queryText = this.queryText.replace("list","list where ((n_utime<='"+dgrq+"')) and ((n_shjq="+params["shjqid"]+") or (n_jqmc in ('"+jqmc+"'))) group by n_rybh");]]></method>
             <method name="onFetch"><![CDATA[if(dataSetRow["n_zje"]!=null){
 vars["zje"]=vars["zje"]+dataSetRow["n_zje"];
 }

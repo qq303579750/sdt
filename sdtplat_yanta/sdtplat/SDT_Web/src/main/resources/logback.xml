@@ -21,7 +21,7 @@
     </layout>
   </appender>
   <!-- INFO WARN ERROR -->
-  <logger name="org.sdt" level="INFO"/>
+  <logger name="org.sdt" level="DEBUG"/>
   <logger name="org.sdt.platform.filter" level="INFO"/>
   <logger name="org.sdt.module.security.service.UserLoginListener" level="INFO"/>
   <root level="INFO">
