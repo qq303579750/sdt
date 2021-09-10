@@ -749,6 +749,12 @@ public class PersonInfoAction extends ExtJSSimpleAction<PersonInfo> {
         } else {
             LOG.info("isclose:" + 1);
             PersonInfo person = cards.get(0).getRYBH();
+            if ("停用".equals(person.getZHZT())) {
+                map.put("success", false);
+                map.put("message", "账户状态已停用！");
+                Struts2Utils.renderJson(map);
+                return null;
+            }
             if (!checkIcValid(person, icbh)) {
                 map.put("success", false);
                 map.put("message", "购物卡不能识别！");
