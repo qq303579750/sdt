@@ -796,6 +796,12 @@ public class PersonInfoAction extends ExtJSSimpleAction<PersonInfo> {
 				Struts2Utils.renderJson(map);
 				return null;
 			}
+			if ("停用".equals(person.getZHZT())) {
+				map.put("success", false);
+				map.put("message", "账户状态已停用！");
+				Struts2Utils.renderJson(map);
+				return null;
+			}
 			LOG.info("isclose:" + 2);
 			HttpSession session = ServletActionContext.getRequest().getSession();
 			session.setAttribute("icbh", icbh);

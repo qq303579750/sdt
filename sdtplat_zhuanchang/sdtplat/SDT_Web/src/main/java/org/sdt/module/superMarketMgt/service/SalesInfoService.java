@@ -492,15 +492,15 @@ public class SalesInfoService {
 	 */
 	private void checkPersonQuota(PersonInfo person, SalesInfo model, List<SalesInfoDetail> detail) {
 		// 检查个人消费限额
-		if (StringUtils.isEmpty(person.getXYXEDJ())) {
+		if (!StringUtils.isEmpty(person.getXYXEDJ())) {
 			QuotaInfo XYXEDJ = getQuotaInfo("香烟限额", person.getXYXEDJ());
 			checkPersonXYQuota(model, detail, XYXEDJ);
 		}
-		if (StringUtils.isEmpty(person.getXYXEDJ())) {
+		if (!StringUtils.isEmpty(person.getXYXEDJ())) {
 			QuotaInfo CSXEDJ = getQuotaInfo("商品限额", person.getCSXEDJ());
 			checkPersonCSQuota(model, detail, CSXEDJ);
 		}
-		if (StringUtils.isEmpty(person.getDCXEDJ())) {
+		if (!StringUtils.isEmpty(person.getDCXEDJ())) {
 			QuotaInfo SGXEDJ = getQuotaInfo("水果限额", person.getDCXEDJ());
 			checkPersonSGQuota(model, detail, SGXEDJ);
 		}
