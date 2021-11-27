@@ -189,15 +189,15 @@
 	          	$("#u_ye").html("账户余额："+dqye);
 	          	$("#u_sbmc").html(response.ZDMC)
 	          	
-	          	if(csxfxe>0){
-	          		$("#u_cs").html("本月购物额度：商品("+byxfsy+")");
-	          	}
-	          	if(xyxfxe>0){
-	          		$("#u_xy").html("香烟("+byxyxfsy+")");
-	          	}
-	          	if(sgxfxe>0){
-	          		$("#u_dc").html("水果("+bysgxfsy+")");
-	          	}	
+	          	// if(csxfxe>0){
+	          	// 	$("#u_cs").html("本月购物额度：商品("+byxfsy+")");
+	          	// }
+	          	// if(xyxfxe>0){
+	          	// 	$("#u_xy").html("香烟("+byxyxfsy+")");
+	          	// }
+	          	// if(sgxfxe>0){
+	          	// 	$("#u_dc").html("水果("+bysgxfsy+")");
+	          	// }
       	  	}
         }
 	});
@@ -225,33 +225,33 @@
 	    	return;
     	}
     	
-    	if(csxfxe>0){
-	    	if(byxfsy-bccshj<0){
-		    	d.set('content', "<div class=\"dialog_msg\" style=\"padding:20px 50px\">对不起，<br/>您本月可用额度"+csxfxe+"元，<br/>剩余额度"+byxfsy+"元。<br/>所选商品超额，不能完成购买，</div>");
-		    	d.show();
-                tjcs =0;
-                $('#jsuan').removeAttr("disabled"); 
-		    	return;
-	    	}
-    	}
-    	if(xyxfxe>0){
-	    	if(byxyxfsy-bcxyhj<0){
-		    	d.set('content', "<div class=\"dialog_msg\" style=\"padding:20px 50px\">对不起，<br/>您本月可用香烟额度"+xyxfxe+"元，<br/>剩余额度"+byxyxfsy+"元。<br/>本次消费超额，不能完成购买，</div>");
-		    	d.show();
-                tjcs =0;
-                $('#jsuan').removeAttr("disabled"); 
-		    	return;
-	    	}
-    	}
-    	if(sgxfxe>0){
-	    	if(bysgxfsy-bcsghj<0){
-		    	d.set('content', "<div class=\"dialog_msg\" style=\"padding:20px 50px\">对不起，<br/>您本月可用水果额度"+sgxfxe+"元，<br/>剩余额度"+bysgxfsy+"元。<br/>本次消费超额，不能完成购买，</div>");
-		    	d.show();
-                tjcs =0;
-                $('#jsuan').removeAttr("disabled"); 
-		    	return;
-	    	}
-    	}
+    	// if(csxfxe>0){
+	    // 	if(byxfsy-bccshj<0){
+		//     	d.set('content', "<div class=\"dialog_msg\" style=\"padding:20px 50px\">对不起，<br/>您本月可用额度"+csxfxe+"元，<br/>剩余额度"+byxfsy+"元。<br/>所选商品超额，不能完成购买，</div>");
+		//     	d.show();
+        //         tjcs =0;
+        //         $('#jsuan').removeAttr("disabled");
+		//     	return;
+	    // 	}
+    	// }
+    	// if(xyxfxe>0){
+	    // 	if(byxyxfsy-bcxyhj<0){
+		//     	d.set('content', "<div class=\"dialog_msg\" style=\"padding:20px 50px\">对不起，<br/>您本月可用香烟额度"+xyxfxe+"元，<br/>剩余额度"+byxyxfsy+"元。<br/>本次消费超额，不能完成购买，</div>");
+		//     	d.show();
+        //         tjcs =0;
+        //         $('#jsuan').removeAttr("disabled");
+		//     	return;
+	    // 	}
+    	// }
+    	// if(sgxfxe>0){
+	    // 	if(bysgxfsy-bcsghj<0){
+		//     	d.set('content', "<div class=\"dialog_msg\" style=\"padding:20px 50px\">对不起，<br/>您本月可用水果额度"+sgxfxe+"元，<br/>剩余额度"+bysgxfsy+"元。<br/>本次消费超额，不能完成购买，</div>");
+		//     	d.show();
+        //         tjcs =0;
+        //         $('#jsuan').removeAttr("disabled");
+		//     	return;
+	    // 	}
+    	// }
     	
     	
     	
@@ -267,18 +267,18 @@
             	if(response.success){
             		dqye = parseFloat(dqye-gwjehj+response.qxje).toFixed(2)
             		$("#u_ye").html("账户余额："+dqye);
-            		if(csxfxe>0){
-	            		byxfsy = parseFloat(byxfsy-bccshj).toFixed(2)
-	            		$("#u_cs").html("本月购物额度：商品("+byxfsy+")");
-            		}
-            		if(xyxfxe>0){
-            			byxyxfsy = parseFloat(byxyxfsy-bcxyhj+response.qxje).toFixed(2)
-	            		$("#u_xy").html("香烟("+byxyxfsy+")");
-            		}
-            		if(sgxfxe>0){
-            			bysgxfsy = parseFloat(bysgxfsy-bcsghj).toFixed(2)
-	            		$("#u_dc").html("水果("+bysgxfsy+")");
-            		}
+            		// if(csxfxe>0){
+	            	// 	byxfsy = parseFloat(byxfsy-bccshj).toFixed(2)
+	            	// 	$("#u_cs").html("本月购物额度：商品("+byxfsy+")");
+            		// }
+            		// if(xyxfxe>0){
+            		// 	byxyxfsy = parseFloat(byxyxfsy-bcxyhj+response.qxje).toFixed(2)
+	            	// 	$("#u_xy").html("香烟("+byxyxfsy+")");
+            		// }
+            		// if(sgxfxe>0){
+            		// 	bysgxfsy = parseFloat(bysgxfsy-bcsghj).toFixed(2)
+	            	// 	$("#u_dc").html("水果("+bysgxfsy+")");
+            		// }
 
             		if(response.qxje>0){
             			if(gwjehj-response.qxje==0){
