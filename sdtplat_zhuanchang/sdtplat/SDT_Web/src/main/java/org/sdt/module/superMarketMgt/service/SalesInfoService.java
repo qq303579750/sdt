@@ -484,8 +484,8 @@ public class SalesInfoService {
         zje = zje + bcJE + cigaretteMoney;
         double xeje = Double.parseDouble(quota.getJE()) + Double.parseDouble(XYXEDJ.getJE());
         if (zje.compareTo(xeje) > 0.0) {
-            throw new RuntimeException("【" + model.getXM() + "】本月消费已超出 月限额【月限额:" + xeje + "元,已消费:" + (yxf + cigaretteMoney)
-                    + "元,本次消费:" + bcJE + "元】，不能进行消费！");
+            throw new RuntimeException("【" + model.getXM() + "】本月消费已超出 月限额【月限额:" + xeje
+                    + "元,总消费已经超出】，不能进行消费！");
         }
     }
 
