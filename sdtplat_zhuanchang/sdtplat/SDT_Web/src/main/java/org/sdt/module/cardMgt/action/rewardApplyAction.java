@@ -82,7 +82,7 @@ public class rewardApplyAction extends ExtJSSimpleAction<rewardApply> {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected void renderJsonForRetrieve(Map json) {
 		Integer poid = model.getId();
-		String sql = "select id,rybh,jqmc,xm,xb,zhzt,ye,ssyf,czje from cardrechargerecord where czlx='劳动报酬' and tdbh=?";
+		String sql = "select id,rybh,jqmc,xm,xb,zhzt,ye,ssyf,czje,czbz from cardrechargerecord where czlx='劳动报酬' and tdbh=?";
 		Query query = getService().getEntityManager().createNativeQuery(sql);
 		query.setParameter(1, poid);
 		List<Object[]> result = query.getResultList();
@@ -99,6 +99,7 @@ public class rewardApplyAction extends ExtJSSimpleAction<rewardApply> {
 			temp.put("YE", obj[6]);
 			temp.put("SSYF", obj[7]);
 			temp.put("CZJE", obj[8]);
+			temp.put("CZBZ", obj[9]);
 			results.add(temp);
 		}
 		json.put("root", results);

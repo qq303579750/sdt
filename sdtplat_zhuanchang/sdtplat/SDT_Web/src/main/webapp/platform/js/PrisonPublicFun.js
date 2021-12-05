@@ -229,7 +229,7 @@ Prison_Search = function() {
 						Prison_Search.close();
 					}
 					else{
-		                
+
 						RewardInGridInfo.getColumns = function() {
 		                    var columns=[
 			                    {header: "所属监区", width: 40, dataIndex: 'SHJQ_id', sortable: true, renderer:function(value){return PubFunc.getPrisonInfo(value,'text');}},
@@ -256,7 +256,8 @@ Prison_Search = function() {
 			                    	jqmc:parent.Ext.getCmp('FFJQ').getValue(),
 			                    	tdrs:parent.Ext.getCmp('ZRS').getValue(),
 			                    	zjrs:parent.Ext.getCmp('ZJRS').getValue(),
-			                    	hjje:parent.Ext.getCmp('ZJE').getValue()
+			                    	hjje:parent.Ext.getCmp('ZJE').getValue(),
+									bz: parent.Ext.getCmp('BZ').getValue()
 			                    },
 			                    method : 'POST',
 			                    success : function(response,opts){
