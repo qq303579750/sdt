@@ -1,0 +1,386 @@
+
+delete From salesinfodetail where 1=1 and XSDJID_id in (
+55156,
+55161,
+55162,
+55163,
+55167,
+55175,
+55178,
+55179,
+55184,
+55185,
+55186,
+55187,
+55190,
+55193,
+55196,
+55197,
+55198,
+55200,
+55201,
+55203,
+55204,
+55205,
+55207,
+55208,
+55209,
+55210,
+55211,
+55212,
+55214,
+55215,
+55216,
+55217,
+55219,
+55220,
+55221,
+55223,
+55225,
+55229,
+55230,
+55231,
+55234,
+55235,
+55236,
+55237,
+55240,
+55241,
+55242,
+55243,
+55245,
+55247,
+55248,
+55249,
+55250,
+55251,
+55254,
+55255,
+55256,
+55257,
+55258,
+55259,
+55262,
+55263,
+55264,
+55266,
+55267,
+55268,
+55269,
+55271,
+55272,
+55273,
+55274,
+55275,
+55276,
+55278,
+55279,
+55280,
+55281,
+55282,
+55283,
+55285,
+55286,
+55287,
+55288,
+55290,
+55292,
+55293,
+55294,
+55295,
+55296,
+55297,
+55299,
+55300,
+55301,
+55302);
+
+
+delete from salesinfo where dqzt='未下单' and id in (
+55156,
+55161,
+55162,
+55163,
+55167,
+55175,
+55178,
+55179,
+55184,
+55185,
+55186,
+55187,
+55190,
+55193,
+55196,
+55197,
+55198,
+55200,
+55201,
+55203,
+55204,
+55205,
+55207,
+55208,
+55209,
+55210,
+55211,
+55212,
+55214,
+55215,
+55216,
+55217,
+55219,
+55220,
+55221,
+55223,
+55225,
+55229,
+55230,
+55231,
+55234,
+55235,
+55236,
+55237,
+55240,
+55241,
+55242,
+55243,
+55245,
+55247,
+55248,
+55249,
+55250,
+55251,
+55254,
+55255,
+55256,
+55257,
+55258,
+55259,
+55262,
+55263,
+55264,
+55266,
+55267,
+55268,
+55269,
+55271,
+55272,
+55273,
+55274,
+55275,
+55276,
+55278,
+55279,
+55280,
+55281,
+55282,
+55283,
+55285,
+55286,
+55287,
+55288,
+55290,
+55292,
+55293,
+55294,
+55295,
+55296,
+55297,
+55299,
+55300,
+55301,
+55302);
+
+
+delete from moneydetail where jylx='点购台订单'
+and id in (
+204069,
+204068,
+203994,
+203993,
+203992,
+203991,
+203990,
+203989,
+203988,
+203987,
+203986,
+203985,
+203984,
+203758,
+203757,
+203756,
+203755,
+203754,
+203753,
+203752,
+201934,
+201933,
+201932,
+201931,
+201930,
+201929,
+201928,
+201927,
+201926,
+201925,
+201924,
+201923,
+201922,
+201921,
+201920,
+201919,
+201918,
+201917,
+201916,
+201915,
+201914,
+201913,
+201912,
+201911,
+201910,
+201909,
+201908,
+201907,
+201906,
+201905,
+201904,
+201903,
+201902,
+201901,
+201900,
+201899,
+201898,
+201897,
+201896,
+201895,
+201894,
+201893,
+201892,
+201891,
+201890,
+201889,
+201888,
+201887,
+201886,
+201885,
+201884,
+201883,
+201882,
+201881,
+201880,
+201879,
+201878,
+201877,
+201876,
+201875,
+201874,
+201873,
+201872,
+201871,
+201870,
+201869,
+201868,
+201867,
+201866,
+201865,
+201864,
+201863,
+201862,
+201861);
+
+update personinfo set ye=ye+194.50 where rybh="605640";
+update personinfo set ye=ye+196.50 where rybh="606139";
+update personinfo set ye=ye+130.00 where rybh="603751";
+update personinfo set ye=ye+65.50 where rybh="604245";
+update personinfo set ye=ye+132.00 where rybh="604245";
+update personinfo set ye=ye+195.20 where rybh="605705";
+update personinfo set ye=ye+188.50 where rybh="605468";
+update personinfo set ye=ye+198.90 where rybh="600112";
+update personinfo set ye=ye+199.40 where rybh="605583";
+update personinfo set ye=ye+200.00 where rybh="606030";
+update personinfo set ye=ye+94.00 where rybh="603503";
+update personinfo set ye=ye+66.00 where rybh="603503";
+update personinfo set ye=ye+40.00 where rybh="603503";
+update personinfo set ye=ye+116.10 where rybh="603478";
+update personinfo set ye=ye+199.30 where rybh="604792";
+update personinfo set ye=ye+198.00 where rybh="603315";
+update personinfo set ye=ye+25.00 where rybh="603446";
+update personinfo set ye=ye+111.50 where rybh="603446";
+update personinfo set ye=ye+99.50 where rybh="606360";
+update personinfo set ye=ye+29.40 where rybh="604246";
+update personinfo set ye=ye+9.20 where rybh="604246";
+update personinfo set ye=ye+72.50 where rybh="604246";
+update personinfo set ye=ye+145.00 where rybh="603365";
+update personinfo set ye=ye+497.70 where rybh="603465";
+update personinfo set ye=ye+199.50 where rybh="603449";
+update personinfo set ye=ye+8.40 where rybh="604295";
+update personinfo set ye=ye+12.50 where rybh="604295";
+update personinfo set ye=ye+86.20 where rybh="604295";
+update personinfo set ye=ye+91.00 where rybh="604295";
+update personinfo set ye=ye+185.00 where rybh="603308";
+update personinfo set ye=ye+199.50 where rybh="604438";
+update personinfo set ye=ye+199.50 where rybh="606461";
+update personinfo set ye=ye+208.00 where rybh="600042";
+update personinfo set ye=ye+198.00 where rybh="605618";
+update personinfo set ye=ye+198.00 where rybh="603332";
+update personinfo set ye=ye+188.00 where rybh="605138";
+update personinfo set ye=ye+287.50 where rybh="603464";
+update personinfo set ye=ye+200.00 where rybh="603346";
+update personinfo set ye=ye+24.00 where rybh="604935";
+update personinfo set ye=ye+199.50 where rybh="603305";
+update personinfo set ye=ye+187.50 where rybh="604246";
+update personinfo set ye=ye+46.00 where rybh="604935";
+update personinfo set ye=ye+4.00 where rybh="604390";
+update personinfo set ye=ye+78.30 where rybh="603431";
+update personinfo set ye=ye+196.00 where rybh="604381";
+update personinfo set ye=ye+199.70 where rybh="605995";
+update personinfo set ye=ye+200.00 where rybh="603345";
+update personinfo set ye=ye+10.00 where rybh="603272";
+update personinfo set ye=ye+155.00 where rybh="603272";
+update personinfo set ye=ye+28.00 where rybh="603314";
+update personinfo set ye=ye+12.60 where rybh="603499";
+update personinfo set ye=ye+12.60 where rybh="603499";
+update personinfo set ye=ye+8.40 where rybh="603499";
+update personinfo set ye=ye+69.00 where rybh="603499";
+update personinfo set ye=ye+11.50 where rybh="603499";
+update personinfo set ye=ye+82.00 where rybh="603499";
+update personinfo set ye=ye+3.50 where rybh="605425";
+update personinfo set ye=ye+17.00 where rybh="605425";
+update personinfo set ye=ye+2.00 where rybh="603331";
+update personinfo set ye=ye+68.00 where rybh="603331";
+update personinfo set ye=ye+189.00 where rybh="604335";
+update personinfo set ye=ye+198.90 where rybh="606879";
+update personinfo set ye=ye+199.20 where rybh="605973";
+update personinfo set ye=ye+130.00 where rybh="603331";
+update personinfo set ye=ye+176.50 where rybh="605425";
+update personinfo set ye=ye+499.40 where rybh="603310";
+update personinfo set ye=ye+44.00 where rybh="603286";
+update personinfo set ye=ye+87.00 where rybh="603286";
+update personinfo set ye=ye+66.00 where rybh="603286";
+update personinfo set ye=ye+232.00 where rybh="603286";
+update personinfo set ye=ye+178.50 where rybh="603381";
+update personinfo set ye=ye+199.80 where rybh="606144";
+update personinfo set ye=ye+197.40 where rybh="604909";
+update personinfo set ye=ye+87.50 where rybh="603274";
+update personinfo set ye=ye+196.90 where rybh="606536";
+update personinfo set ye=ye+200.00 where rybh="603342";
+update personinfo set ye=ye+199.40 where rybh="606263";
+update personinfo set ye=ye+110.00 where rybh="603274";
+update personinfo set ye=ye+197.80 where rybh="605086";
+update personinfo set ye=ye+200.00 where rybh="604268";
+update personinfo set ye=ye+496.50 where rybh="600474";
+update personinfo set ye=ye+4.60 where rybh="606851";
+update personinfo set ye=ye+2.00 where rybh="603468";
+update personinfo set ye=ye+12.50 where rybh="606781";
+update personinfo set ye=ye+69.00 where rybh="606781";
+update personinfo set ye=ye+37.70 where rybh="606781";
+update personinfo set ye=ye+20.00 where rybh="603426";
+update personinfo set ye=ye+39.60 where rybh="603426";
+update personinfo set ye=ye+97.70 where rybh="603294";
+update personinfo set ye=ye+14.00 where rybh="606141";
+update personinfo set ye=ye+4.00 where rybh="603313";
+update personinfo set ye=ye+60.00 where rybh="603313";
+update personinfo set ye=ye+25.00 where rybh="603313";
+update personinfo set ye=ye+40.00 where rybh="603313";
