@@ -762,12 +762,12 @@ public class PersonInfoAction extends ExtJSSimpleAction<PersonInfo> {
 
 		map = new HashMap();
 
-//		if (!isclose) {
-//			map.put("success", false);
-//			map.put("message", "本月购物结束！");
-//			Struts2Utils.renderJson(map);
-//			return null;
-//		}
+		if (!isclose) {
+			map.put("success", false);
+			map.put("message", "本月购物结束！");
+			Struts2Utils.renderJson(map);
+			return null;
+		}
 
 		PropertyCriteria propertyCriteria = new PropertyCriteria();
 		propertyCriteria.addPropertyEditor(new PropertyEditor("ICBH", Operator.eq, PropertyType.String, icbh));

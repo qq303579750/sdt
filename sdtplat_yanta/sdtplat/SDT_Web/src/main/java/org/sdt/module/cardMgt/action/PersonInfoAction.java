@@ -268,21 +268,50 @@ public class PersonInfoAction extends ExtJSSimpleAction<PersonInfo> {
     @SuppressWarnings("unchecked")
     public String getMaxRybhBYJQ2(int jqid) {
         List<Map<String, String>> data = new ArrayList<>();
-        String sql = "select max(rybh) from personinfo where CSJQ_id=" + jqid;
+//        String sql = "select max(rybh) from personinfo where CSJQ_id=" + jqid;
+//        Query query = getService().getEntityManager().createNativeQuery(sql);
+//        List<Object> result = query.getResultList();
+        String sql = "select bz from prisoninfo where id=" + jqid;
         Query query = getService().getEntityManager().createNativeQuery(sql);
         List<Object> result = query.getResultList();
+        boolean exists = false;
+        // 备注不为空时候的编号方式 610+ bz  + 00001 递增
         if (result.size() > 0 && (!StringUtils.isEmpty(result.get(0)))) {
-            LOG.info("maxrybh:" + result.get(0).toString());
-            String maxnum = result.get(0).toString();
-            LOG.info("maxrybh:" + Long.parseLong(maxnum));
-            long num = Long.parseLong(maxnum);
-            num = num + 1;
+            LOG.info("获取到监区的备注信息：" + result.get(0));
+            String bz = result.get(0).toString();
+            String getMaxSql = "select rybh from personinfo where rybh like '610" + bz + "%' order by rybh";
+            Query getMaxQuery = getService().getEntityManager().createNativeQuery(getMaxSql);
+            List<Object> getMaxResult = getMaxQuery.getResultList();
+            String res = "610" + bz + "00001";
+            if (getMaxResult.size() > 0 && (!StringUtils.isEmpty(getMaxResult.get(0)))) {
+                res = getMaxResult.get(0).toString();
+            }
+            long num = Long.parseLong(res) + 1;
+            String checkExistsSql = "select rybh from personinfo where rybh=" + num;
+            Query checkExistsQuery = getService().getEntityManager().createNativeQuery(checkExistsSql);
+            List<Object> checkExistsResult = checkExistsQuery.getResultList();
+            if (checkExistsResult.size() > 0 && (!StringUtils.isEmpty(checkExistsResult.get(0)))) {
+                exists = true;
+            }
+            while (exists) {
+                num = num + 1;
+                String checkExistsSql1 = "select rybh from personinfo where rybh=" + num;
+                Query checkExistsQuery1 = getService().getEntityManager().createNativeQuery(checkExistsSql1);
+                List<Object> checkExistsResult1 = checkExistsQuery1.getResultList();
+                if (checkExistsResult.size() > 0 && (!StringUtils.isEmpty(checkExistsResult1.get(0)))) {
+                    exists = true;
+                } else {
+                    exists = false;
+                }
+            }
             return num + "";
         } else {
+            // 备注不为空的时候怎么办？
             String rybh = PropertyHolder.getProperty("person.bh");
             return rybh;
         }
     }
+
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     public String getPersonByJQ() {
