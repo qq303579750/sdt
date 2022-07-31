@@ -298,7 +298,7 @@ public class PersonInfoAction extends ExtJSSimpleAction<PersonInfo> {
                 String checkExistsSql1 = "select rybh from personinfo where rybh=" + num;
                 Query checkExistsQuery1 = getService().getEntityManager().createNativeQuery(checkExistsSql1);
                 List<Object> checkExistsResult1 = checkExistsQuery1.getResultList();
-                if (checkExistsResult.size() > 0 && (!StringUtils.isEmpty(checkExistsResult1.get(0)))) {
+                if (checkExistsResult1.size() > 0 && (!StringUtils.isEmpty(checkExistsResult1.get(0)))) {
                     exists = true;
                 } else {
                     exists = false;

@@ -1,10 +1,10 @@
 
     var namespace='cardMgt';
     var action='subsidy-apply';
-    
+
     var authorityNameSpace = 'checkMgt/subsidyInOpt';
     var authorityAction = 'subsidy-in-opt-check-record';
-    
+
     AdvancedSearchModel = function(){
     	return {
     		getItems : function(){
@@ -76,7 +76,7 @@
                                   },
 
                                   items: [
-											
+
 											{
                                             	id:'search_SHR',
                                                 xtype: 'combo',
@@ -106,11 +106,11 @@
 											}
                                           ]
                               }]
-                          }                
+                          }
                         ];
                 return items;
             },
-            callback : function(){               
+            callback : function(){
                 var data=[];
 
                 //审核状态
@@ -151,7 +151,7 @@
                 	search_SHR='SHR.id:eq:'+search_SHR;
                     data.push(search_SHR);
                 }
-                
+
                 //审核时间
                 var search_SHSJ_start=parent.Ext.getCmp('search_SHSJ_start').getValue();
                 var search_SCRQFormatValue_start=parent.Ext.getCmp('search_SHSJ_start').value;
@@ -159,7 +159,7 @@
             		data.push("SHSJ:ge:" + search_SCRQFormatValue_start);
                 }
 
-                
+
                 var search_SHSJ_end=parent.Ext.getCmp('search_SHSJ_end').getValue();
                 var search_SXRQFormatValue_end=PubFunc.getNextDate('search_SHSJ_end');
                 if(search_SHSJ_end!="" && search_SXRQFormatValue_end!=undefined){
@@ -167,7 +167,7 @@
                 }
                 AdvancedSearchBaseModel.search(data, "PersonInfo");
         },
-        
+
         show: function() {
             AdvancedSearchBaseModel.getLabelWidth=function(){
                 return 100;
@@ -273,7 +273,7 @@
                                   anchor:"100%"
                               },
                               items: DisplayBaseModel.grid
-                          } 
+                          }
                  ];
                 return items;
             },
@@ -288,7 +288,8 @@
     	 	         {name: 'ZHZT'},
     	 	         {name: 'YE'},
     	 	         {name: 'SSYF'},
-    	 	         {name: 'CZJE'}
+    	 	         {name: 'CZJE'},
+                    {name: 'CZBZ'}
     	         ];
         		this.store=new Ext.data.JsonStore({
    	                fields: this.fields,
@@ -321,7 +322,7 @@
         				{header: "当前余额", width: 30, dataIndex: 'YE',   sortable: true,renderer:function(value){return PubFunc.MoneyFormat(value);}},
         				{header: "所属月份", width: 30, dataIndex: 'SSYF', sortable: true},
         				{header: "充值金额", width: 30, dataIndex: 'CZJE', sortable: true,renderer:function(value){return PubFunc.MoneyFormat(value);}}
-
+                        ,{header: "充值备注", width: 30, dataIndex: 'CZBZ', sortable: true}
         			]
         		});
         		return this.grid;
@@ -331,7 +332,7 @@
                 DisplayBaseModel.show('生活补贴提单详细信息', 'salesInfo', 800, 500, this.getItems(model));
             }
         };
-    } ();  
+    } ();
 
 
     //表格
@@ -353,7 +354,7 @@
  				{name: 'SHYY'},
  				{name: 'SHZT'}
 			];
-               return fields;     
+               return fields;
             },
             getColumns: function(){
                 var columns=[
@@ -382,7 +383,7 @@
   				{header: "审核时间", width: 30, dataIndex: 'SHSJ', sortable: true},
   				{header: "审核原因", width: 30, dataIndex: 'SHYY', sortable: true,hidden:true}
                              ];
-                 return columns;           
+                 return columns;
              },
             show: function(){
             	GridBaseModel.onRowDblClick = function(namespace,action){GridBaseModel.detail();};
@@ -402,7 +403,7 @@
                 var commands=["retrieve","search","query","export"];
                 var tips=['详细(D)','高级搜索(S)','显示全部(A)','导出(E)'];
                 var callbacks=[GridBaseModel.detail,GridBaseModel.advancedsearch,GridBaseModel.showall,GridBaseModel.exportData];
-            
+
                 GridBaseModel.show(contextPath, namespace, action, pageSize, this.getFields(), this.getColumns(), commands, tips, callbacks);
             }
         }

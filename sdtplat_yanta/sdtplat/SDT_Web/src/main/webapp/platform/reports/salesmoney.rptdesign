@@ -132,7 +132,7 @@
                 <structure>
                     <property name="name">n_bt</property>
                     <property name="textAlign">center</property>
-                    <expression name="expression">"10元/月"</expression>
+                    <expression name="expression">"15元/月"</expression>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>

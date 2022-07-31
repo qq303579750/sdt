@@ -79,6 +79,7 @@ public class rewardApplyAction extends ExtJSSimpleAction<rewardApply> {
     /**
      * 2021-1-4 Kevin
      * 导入劳动奖金
+     *
      * @return
      */
     public String importLdjj() {
@@ -102,7 +103,7 @@ public class rewardApplyAction extends ExtJSSimpleAction<rewardApply> {
     @SuppressWarnings({"unchecked", "rawtypes"})
     protected void renderJsonForRetrieve(Map json) {
         Integer poid = model.getId();
-        String sql = "select id,rybh,jqmc,xm,xb,zhzt,ye,ssyf,czje from cardrechargerecord where czlx='劳动报酬' and tdbh=?";
+        String sql = "select id,rybh,jqmc,xm,xb,zhzt,ye,ssyf,czje,czbz from cardrechargerecord where czlx='劳动报酬' and tdbh=?";
         Query query = getService().getEntityManager().createNativeQuery(sql);
         query.setParameter(1, poid);
         List<Object[]> result = query.getResultList();
@@ -119,6 +120,7 @@ public class rewardApplyAction extends ExtJSSimpleAction<rewardApply> {
             temp.put("YE", obj[6]);
             temp.put("SSYF", obj[7]);
             temp.put("CZJE", obj[8]);
+            temp.put("CZBZ", obj[9]);
             results.add(temp);
         }
         json.put("root", results);
@@ -161,7 +163,7 @@ public class rewardApplyAction extends ExtJSSimpleAction<rewardApply> {
     public void beforePartUpdateModel(rewardApply t) {
         try {
             //List<HashMap<String, String>> objList = jsonToHashMap(gridStr);
-            cardRechargeService.updateCardRechargeRecord(t.getSHZT(), t.getJQMC(), t.getSSYF(), t.getCZLX(), t.getId());
+            cardRechargeService.updateCardRechargeRecord(t.getSHZT(), t.getJQMC(), t.getSSYF(), t.getCZLX(), t.getId(), t.getSHYY());
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("操作失败！" + e.getMessage());
@@ -340,6 +342,7 @@ public class rewardApplyAction extends ExtJSSimpleAction<rewardApply> {
 
     /**
      * 劳动奖金发放
+     *
      * @return
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -548,6 +551,8 @@ public class rewardApplyAction extends ExtJSSimpleAction<rewardApply> {
                     HSSFCell cell_four = hssfRow.getCell(4);
                     HSSFCell cell_five = hssfRow.getCell(5);
                     HSSFCell cell_six = hssfRow.getCell(1);
+                    // 充值备注
+                    HSSFCell cell_seven = hssfRow.getCell(6);
                     //LOG.info("cell_one:"+cell_one);
                     //LOG.info("cell_two:"+cell_two);
                     //LOG.info("cell_three:"+cell_three);
@@ -567,6 +572,7 @@ public class rewardApplyAction extends ExtJSSimpleAction<rewardApply> {
                     cell_three.setCellType(cell_three.CELL_TYPE_STRING);
                     cell_four.setCellType(cell_four.CELL_TYPE_STRING);
                     cell_five.setCellType(cell_five.CELL_TYPE_NUMERIC);
+                    cell_seven.setCellType(cell_five.CELL_TYPE_STRING);
 
                     String testjqmc = getValue(cell_two).replaceAll("[　*| *| *|//s*]*", "");
 
@@ -582,6 +588,8 @@ public class rewardApplyAction extends ExtJSSimpleAction<rewardApply> {
                         LOG.info("ffsj:" + ffsj);
                         continue;
                     }
+
+                    String czbz = getValue(cell_seven) ;
 
                     String sql = "SELECT zhzt,XM,JQMC,pe.Id,RYBH,SHJQ_id,YE from (SELECT * from personinfo where RYBH='" + getValue(cell_one).trim() + "' OR JSBH='" + getValue(cell_one).trim() + "') pe LEFT JOIN prisoninfo pr on pe.SHJQ_id=pr.id";
                     Query query = getService().getEntityManager().createNativeQuery(sql);
@@ -636,7 +644,7 @@ public class rewardApplyAction extends ExtJSSimpleAction<rewardApply> {
                     record.put("YE", ye);
                     record.put("FFSJ", ffsj);
                     record.put("CZJE", Double.parseDouble(getValue(cell_five)));
-
+                    record.put("CZBZ", czbz);
                     errdata.put("RYBH", getValue(cell_one).trim());
                     errdata.put("XM", xm);
                     errdata.put("Msg", msg);
@@ -662,8 +670,7 @@ public class rewardApplyAction extends ExtJSSimpleAction<rewardApply> {
     /**
      * 得到Excel表中的值
      *
-     * @param hssfCell
-     *            Excel中的每一个格子
+     * @param hssfCell Excel中的每一个格子
      * @return Excel中每一个格子中的值
      */
     @SuppressWarnings("static-access")

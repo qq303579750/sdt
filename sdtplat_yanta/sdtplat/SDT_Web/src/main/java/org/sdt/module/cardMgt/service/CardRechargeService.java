@@ -564,7 +564,7 @@ public class CardRechargeService {
                 LOG.info("czje:" + record.getCZJE().toString() + "/" + record.getCZJE().toString().equals(""));
                 if (!record.getCZJE().toString().equals("")) {
                     if (list.size() > 0) {
-                        String sql = "SELECT * from cardrechargerecord WHERE SSYF='" + ssyf + "' and CZLX='劳动报酬' and JQMC='" + jqmc + "' and RYBH='" + record.getRYBH() + "'";
+                        String sql = "SELECT * from cardrechargerecord WHERE SSYF='" + ssyf + "' and CZLX='劳动奖金' and JQMC='" + jqmc + "' and RYBH='" + record.getRYBH() + "'";
                         //LOG.info("search SQL:" + sql);
                         Query query = serviceFacade.getEntityManager().createNativeQuery(sql);
                         List<Object[]> result = query.getResultList();
@@ -742,7 +742,7 @@ public class CardRechargeService {
             bonusA = CreateBonusApply(user, date, ssyf, jqmc, tdrs, hjje);
         }
 
-        String sql = "delete from cardrechargerecord where TDBH=" + applyid + " and CZLX='生活补贴'";
+        String sql = "delete from cardrechargerecord where TDBH=" + applyid + " and CZLX='劳动奖金'";
         Query query = serviceFacade.getEntityManager().createNativeQuery(sql);
         query.executeUpdate();
 
@@ -1189,18 +1189,18 @@ public class CardRechargeService {
      * 修改劳动报酬提单明细
      */
     @Transactional
-    public void updateCardRechargeRecord(String shzt, String jqmc, String ssyf, String czlx, Integer id) {
+    public void updateCardRechargeRecord(String shzt, String jqmc, String ssyf, String czlx, Integer id, String shyy) {
         String ErrInfo = "<br>";
 
         if (shzt.equals("未通过")) {
-            String sql = "UPDATE CardRechargeRecord set SHZT='未通过' WHERE  JQMC='" + jqmc + "' and SSYF='" + ssyf + "' and CZLX='" + czlx + "' and TDBH = '" + id + "'";
+            String sql = "UPDATE CardRechargeRecord set SHZT='未通过',czbz='" + shyy + "' WHERE  JQMC='" + jqmc + "' and SSYF='" + ssyf + "' and CZLX='" + czlx + "' and TDBH = '" + id + "'";
             //LOG.info("search SQL:" + sql);
             Query query = serviceFacade.getEntityManager().createNativeQuery(sql);
             query.executeUpdate();
             //List<Object[]> result = query.getResultList();
 
         } else if (shzt.equals("已通过")) {
-            String sql = "UPDATE CardRechargeRecord set SHZT='已通过' WHERE SHZT !='未通过' and JQMC='" + jqmc + "' and SSYF='" + ssyf + "' and CZLX='" + czlx + "'";
+            String sql = "UPDATE CardRechargeRecord set SHZT='已通过',czbz='" + shyy + "' WHERE SHZT in ('未通过','已取消','待审核') and JQMC='" + jqmc + "' and SSYF='" + ssyf + "' and CZLX='" + czlx + "'";
             //LOG.info("search SQL:" + sql);
             Query query = serviceFacade.getEntityManager().createNativeQuery(sql);
             query.executeUpdate();

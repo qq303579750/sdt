@@ -590,6 +590,7 @@ showExcel = function () {
                                 parent.Ext.Ajax.request({
                                     url: URL + '?time=' + new Date().toString(),
                                     waitTitle: '请稍等',
+                                    timeout: 600*1000,
                                     waitMsg: '正在发送充值申请……',
                                     params: {
                                         gridData: GridRecordModelInForm.getGridData(CreateBaseModel.grid),

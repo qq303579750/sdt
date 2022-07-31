@@ -319,7 +319,7 @@ public class CardRechargeService {
         propertyCriteria.addPropertyEditor(new PropertyEditor("SSYF",
                 Operator.eq, ssyf));
         List<subsidyApply> list = serviceFacade.query(
-                        subsidyApply.class, null, propertyCriteria)
+                subsidyApply.class, null, propertyCriteria)
                 .getModels();
         if (list.size() > 0) {
             subsidyA = list.get(0);
@@ -394,7 +394,7 @@ public class CardRechargeService {
         propertyCriteria.addPropertyEditor(new PropertyEditor("SSYF",
                 Operator.eq, ssyf));
         List<bonusApply> list = serviceFacade.query(
-                        bonusApply.class, null, propertyCriteria)
+                bonusApply.class, null, propertyCriteria)
                 .getModels();
         if (list.size() > 0) {
             bounsA = list.get(0);
@@ -471,7 +471,7 @@ public class CardRechargeService {
         propertyCriteria.addPropertyEditor(new PropertyEditor("SSYF",
                 Operator.eq, ssyf));
         List<rewardApply> list = serviceFacade.query(
-                        rewardApply.class, null, propertyCriteria)
+                rewardApply.class, null, propertyCriteria)
                 .getModels();
         if (list.size() > 0) {
             recordA = list.get(0);
@@ -486,10 +486,10 @@ public class CardRechargeService {
         for (int i = 0; i < records.size(); i++) {
             CardRechargeRecord record = records.get(i);
             try {
-                LOG.info("czje:" + record.getCZJE().toString() + "/" + record.getCZJE().toString().equals(""));
+                //LOG.info("czje:" + record.getCZJE().toString() + "/" + record.getCZJE().toString().equals(""));
                 if (!record.getCZJE().toString().equals("")) {
                     if (list.size() > 0) {
-                        String sql = "SELECT * from cardrechargerecord WHERE SSYF='" + ssyf + "' and CZLX='劳动报酬' and JQMC='" + jqmc + "' and RYBH='" + record.getRYBH() + "'";
+                        String sql = "SELECT * from cardrechargerecord WHERE   RYBH='" + record.getRYBH() + "' and SSYF='" + ssyf + "' and CZLX='劳动报酬' and JQMC='" + jqmc + "'";
                         //LOG.info("search SQL:" + sql);
                         Query query = serviceFacade.getEntityManager().createNativeQuery(sql);
                         List<Object[]> result = query.getResultList();
@@ -543,7 +543,7 @@ public class CardRechargeService {
         propertyCriteria.addPropertyEditor(new PropertyEditor("id",
                 Operator.eq, PropertyType.Integer, applyid));
         List<rewardApply> list = serviceFacade.query(
-                        rewardApply.class, null, propertyCriteria)
+                rewardApply.class, null, propertyCriteria)
                 .getModels();
         if (list.size() > 0) {
             recordA = list.get(0);
@@ -599,7 +599,7 @@ public class CardRechargeService {
         propertyCriteria.addPropertyEditor(new PropertyEditor("id",
                 Operator.eq, PropertyType.Integer, applyid));
         List<subsidyApply> list = serviceFacade.query(
-                        subsidyApply.class, null, propertyCriteria)
+                subsidyApply.class, null, propertyCriteria)
                 .getModels();
         if (list.size() > 0) {
             subsidyA = list.get(0);
@@ -655,7 +655,7 @@ public class CardRechargeService {
         propertyCriteria.addPropertyEditor(new PropertyEditor("id",
                 Operator.eq, PropertyType.Integer, applyid));
         List<bonusApply> list = serviceFacade.query(
-                        bonusApply.class, null, propertyCriteria)
+                bonusApply.class, null, propertyCriteria)
                 .getModels();
         if (list.size() > 0) {
             bonusA = list.get(0);

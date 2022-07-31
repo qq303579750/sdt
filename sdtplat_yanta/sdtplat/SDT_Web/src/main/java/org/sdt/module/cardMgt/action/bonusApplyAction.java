@@ -66,7 +66,7 @@ public class bonusApplyAction extends ExtJSSimpleAction<bonusApply> {
     @SuppressWarnings({"unchecked", "rawtypes"})
     protected void renderJsonForRetrieve(Map json) {
         Integer poid = model.getId();
-        String sql = "select id,rybh,jqmc,xm,xb,zhzt,ye,ssyf,czje from cardrechargerecord where czlx='劳动奖金' and tdbh=?";
+        String sql = "select id,rybh,jqmc,xm,xb,zhzt,ye,ssyf,czje,czbz from cardrechargerecord where czlx='劳动奖金' and tdbh=?";
         Query query = getService().getEntityManager().createNativeQuery(sql);
         query.setParameter(1, poid);
         List<Object[]> result = query.getResultList();
@@ -83,6 +83,7 @@ public class bonusApplyAction extends ExtJSSimpleAction<bonusApply> {
             temp.put("YE", obj[6]);
             temp.put("SSYF", obj[7]);
             temp.put("CZJE", obj[8]);
+            temp.put("CZBZ", obj[9]);
             results.add(temp);
         }
         json.put("root", results);
@@ -125,7 +126,7 @@ public class bonusApplyAction extends ExtJSSimpleAction<bonusApply> {
     public void beforePartUpdateModel(bonusApply t) {
         try {
             //List<HashMap<String, String>> objList = jsonToHashMap(gridStr);
-            cardRechargeService.updateCardRechargeRecord(t.getSHZT(), t.getJQMC(), t.getSSYF(), t.getCZLX(), t.getId());
+            cardRechargeService.updateCardRechargeRecord(t.getSHZT(), t.getJQMC(), t.getSSYF(), t.getCZLX(), t.getId(), t.getSHYY());
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("操作失败！" + e.getMessage());

@@ -421,7 +421,7 @@ SubsidySetPrisonModel = function(){
                                             fieldLabel: '发放监区'
                                         },{
                    					     id:'search_CZJE',
-                   					     value:10,
+                   					     value:15,
                 					     fieldLabel: '发放金额'
                 						},{
 											id:'search_SSN',
