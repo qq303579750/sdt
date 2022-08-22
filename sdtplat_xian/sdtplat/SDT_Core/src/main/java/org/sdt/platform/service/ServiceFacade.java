@@ -137,11 +137,4 @@ public class ServiceFacade {
 				orderCriteria);
 		return page;
 	}
-
-	@Transactional
-	public <T extends Model> Page<T> search(String queryString,
-			PageCriteria pageCriteria, Class<T> modelClass) {
-		Page<T> page = dao.search(queryString, pageCriteria, modelClass);
-		return page;
-	}
 }
