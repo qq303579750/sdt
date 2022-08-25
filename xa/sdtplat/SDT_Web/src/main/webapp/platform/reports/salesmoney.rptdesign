@@ -1,0 +1,1521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
+    <list-property name="userProperties">
+        <structure>
+            <property name="name">Data Cube.salseDetail.x</property>
+            <property name="type">integer</property>
+            <property name="isVisible">false</property>
+        </structure>
+        <structure>
+            <property name="name">Data Cube.salseDetail.y</property>
+            <property name="type">integer</property>
+            <property name="isVisible">false</property>
+        </structure>
+        <structure>
+            <property name="name">Data Cube.salesDetail.x</property>
+            <property name="type">integer</property>
+            <property name="isVisible">false</property>
+        </structure>
+        <structure>
+            <property name="name">Data Cube.salesDetail.y</property>
+            <property name="type">integer</property>
+            <property name="isVisible">false</property>
+        </structure>
+    </list-property>
+    <property name="Data Cube.salseDetail.x">135</property>
+    <property name="Data Cube.salseDetail.y">80</property>
+    <property name="Data Cube.salesDetail.x">135</property>
+    <property name="Data Cube.salesDetail.y">80</property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">common.rptlibrary</property>
+            <property name="namespace">common</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="title" id="1026" extends="common.title"/>
+        <scalar-parameter name="infoLeft" id="1027" extends="common.infoLeft"/>
+        <scalar-parameter name="infoRight" id="1028" extends="common.infoRight"/>
+        <scalar-parameter name="condition" id="1029" extends="common.condition"/>
+        <scalar-parameter name="cgddid" id="2201">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="shjqid" id="2203">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="jqmc" id="2204">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="dgrq" id="4123">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="tjjzrq" id="4124">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="sdtplatdb" id="1023">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://localhost:3306/sdtplat_db</property>
+            <property name="odaUser">root</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">cm9vdA==</encrypted-property>
+            <property name="odaJndiName">java:comp/env/jdbc/sdtplat_db</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="salesDetail" id="1439">
+            <property name="eventHandlerClass">org.sdt.platform.report.MyDataSetAdapter</property>
+            <property name="nullsOrdering">nulls lowest</property>
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">n_bt</property>
+                    <expression name="expression">"6元/月"</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">n_qz</property>
+                    <expression name="expression">""</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">n_rybh</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">n_rybh</text-property>
+                    <text-property name="heading">n_rybh</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">n_xm</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">n_xm</text-property>
+                    <text-property name="heading">n_xm</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">n_utime</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">n_utime</text-property>
+                    <text-property name="heading">n_utime</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">n_ye</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">n_ye</text-property>
+                    <text-property name="heading">n_ye</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">n_shjq</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">n_shjq</text-property>
+                    <text-property name="heading">n_shjq</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">n_zhzt</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">n_zhzt</text-property>
+                    <text-property name="heading">n_zhzt</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">n_zje</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">n_zje</text-property>
+                    <text-property name="heading">n_zje</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">n_cgddid</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">n_cgddid</text-property>
+                    <text-property name="heading">n_cgddid</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">n_jqmc</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">n_jqmc</text-property>
+                    <text-property name="heading">n_jqmc</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">n_dgrq</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">n_dgrq</text-property>
+                    <text-property name="heading">n_dgrq</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">n_rybh</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">n_xm</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">n_utime</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">n_ye</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">n_shjq</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">n_zhzt</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">n_zje</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">n_cgddid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">n_jqmc</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">n_dgrq</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">n_bt</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">n_qz</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[shjqid = params["shjqid"];
+cgddid = params["cgddid"];
+jqmc = params["jqmc"];
+dgrq = params["dgrq"];
+tjjzrq = params["tjjzrq"];
+this.queryText = this.queryText.replace("p.rybh=s.rybh","p.rybh=s.rybh where p.createTime<='"+tjjzrq+"'");
+this.queryText = this.queryText.replace("from salesinfo"," from salesinfo where shzt!='未通过' and zdlx='点购台' and cgddid_id in("+cgddid+") and jqmc in ('"+jqmc+"') group by rybh");
+this.queryText = this.queryText.replace("list","list where ((n_zhzt!='离监') or (n_utime>='"+dgrq+"')) and ((n_shjq="+params["shjqid"]+") or (n_jqmc in ('"+jqmc+"'))) group by n_rybh");]]></method>
+            <method name="onFetch"><![CDATA[if(dataSetRow["n_zje"]!=null){
+vars["zje"]=vars["zje"]+dataSetRow["n_zje"];
+}
+var isrq = 0;
+var starttime = new Date(2000, 1, 1);
+
+if(isrq==0 &amp;&amp; vars["rq"]==""){
+	if(dataSetRow["n_dgrq"]>starttime){
+
+	vars["rq"]=dataSetRow["n_dgrq"].getFullYear() + "年" + (dataSetRow["n_dgrq"].getMonth()+1) + "月" + dataSetRow["n_dgrq"].getDate() + "日";
+	isrq = 1;
+	}
+}]]></method>
+            <property name="dataSource">sdtplatdb</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">n_rybh</property>
+                    <property name="nativeName">n_rybh</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">n_xm</property>
+                    <property name="nativeName">n_xm</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">n_utime</property>
+                    <property name="nativeName">n_utime</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">n_ye</property>
+                    <property name="nativeName">n_ye</property>
+                    <property name="dataType">float</property>
+                    <property name="nativeDataType">8</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">n_shjq</property>
+                    <property name="nativeName">n_shjq</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">n_zhzt</property>
+                    <property name="nativeName">n_zhzt</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">n_zje</property>
+                    <property name="nativeName">n_zje</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">3</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">n_cgddid</property>
+                    <property name="nativeName">n_cgddid</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">n_jqmc</property>
+                    <property name="nativeName">n_jqmc</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">n_dgrq</property>
+                    <property name="nativeName">n_dgrq</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select * from(select t.l_rybh as n_rybh,t.l_xm as n_xm,t.l_utime as n_utime,t.l_ye as n_ye,t.l_shjq as n_shjq,t.l_zhzt as n_zhzt,t.l_zje as n_zje,t.l_cgddid as n_cgddid,t.l_jqmc as n_jqmc,pu.dgrq as n_dgrq from (select p.rybh as l_rybh,p.xm as l_xm,p.ye as l_ye,p.shjq_id as l_shjq,p.zhzt as l_zhzt,p.updateTime as l_utime,s.zje as l_zje,s.CGDDID_id as l_cgddid,s.jqmc as l_jqmc from personinfo p left join (select rybh,jqmc,CGDDID_id,sum(zje) as zje from salesinfo) s ON p.rybh=s.rybh) t left join purchaseorder pu on t.l_cgddid =pu.id) list
+
+]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>HPFL_id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>HPFL_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>HPFL_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>HPFL</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>64</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>HPFL</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>HPFL</design:label>
+            <design:formattingHints>
+              <design:displaySize>64</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>ID</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>ID</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>ID</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>HPBM</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>HPBM</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>HPBM</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>HPMC</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>HPMC</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>HPMC</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>GGXH</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>GGXH</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>GGXH</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DW</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>16</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DW</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DW</design:label>
+            <design:formattingHints>
+              <design:displaySize>16</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>XRL</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>64</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>XRL</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>XRL</design:label>
+            <design:formattingHints>
+              <design:displaySize>64</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>id</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>SL</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>SL</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>SL</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>JE</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>JE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>JE</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>XSDJID_id</design:name>
+              <design:position>12</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>XSDJID_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>XSDJID_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <cubes>
+        <tabular-cube name="Data Cube" id="2171">
+            <property name="dimensions">
+                <tabular-dimension name="人员编号" id="2214">
+                    <property name="defaultHierarchy">NewTabularHierarchy</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy" id="2215">
+                            <property name="levels">
+                                <tabular-level name="n_rybh" id="2216">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">n_rybh</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="姓名" id="2217">
+                    <property name="defaultHierarchy">NewTabularHierarchy1</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy1" id="2218">
+                            <property name="levels">
+                                <tabular-level name="n_xm" id="2219">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">n_xm</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="补贴" id="2220">
+                    <property name="defaultHierarchy">NewTabularHierarchy2</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy2" id="2221">
+                            <property name="levels">
+                                <tabular-level name="n_bt" id="2222">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">n_bt</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="余额" id="2223">
+                    <property name="defaultHierarchy">NewTabularHierarchy3</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy3" id="2224">
+                            <property name="levels">
+                                <tabular-level name="n_ye" id="2225">
+                                    <property name="dataType">float</property>
+                                    <property name="columnName">n_ye</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="领取金额" id="2226">
+                    <property name="defaultHierarchy">NewTabularHierarchy4</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy4" id="2227">
+                            <property name="levels">
+                                <tabular-level name="n_zje" id="2228">
+                                    <property name="dataType">float</property>
+                                    <property name="columnName">n_zje</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="签字" id="2229">
+                    <property name="defaultHierarchy">NewTabularHierarchy5</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy5" id="2230">
+                            <property name="levels">
+                                <tabular-level name="n_qz" id="2231">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">n_qz</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="Group" id="4120">
+                    <property name="isTimeType">false</property>
+                    <property name="defaultHierarchy">NewTabularHierarchy7</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy7" id="4121">
+                            <property name="levels">
+                                <tabular-level name="n_dgrq" id="4122">
+                                    <property name="dataType">date-time</property>
+                                    <property name="columnName">n_dgrq</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+            </property>
+            <property name="dataSet">salesDetail</property>
+        </tabular-cube>
+    </cubes>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="NewStyle" id="2345">
+            <property name="backgroundColor">#BFCBCE</property>
+            <property name="fontFamily">"宋体"</property>
+            <property name="fontSize">14px</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#000000</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="paddingTop">1px</property>
+            <property name="paddingLeft">1px</property>
+            <property name="paddingBottom">1px</property>
+            <property name="paddingRight">1px</property>
+            <property name="textAlign">center</property>
+            <property name="lineHeight">28px</property>
+            <property name="verticalAlign">middle</property>
+            <property name="wordSpacing">normal</property>
+        </style>
+        <style name="listStyle" id="2346">
+            <property name="fontFamily">"@宋体"</property>
+            <property name="fontSize">12px</property>
+            <property name="fontWeight">100</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="marginLeft">0pt</property>
+            <property name="marginRight">0pt</property>
+            <property name="paddingLeft">8px</property>
+            <property name="paddingRight">8px</property>
+            <property name="lineHeight">24px</property>
+            <property name="verticalAlign">middle</property>
+        </style>
+        <style name="footStyle" id="2366">
+            <property name="backgroundColor">#D9D9D9</property>
+            <property name="borderBottomStyle">groove</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftStyle">groove</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightStyle">groove</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopStyle">groove</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="paddingLeft">5pt</property>
+            <property name="paddingRight">5pt</property>
+            <property name="lineHeight">24px</property>
+        </style>
+        <style name="FontStyle" id="3636"/>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="leftMargin">0.5416666666666666in</property>
+            <property name="rightMargin">0.6145833333333334in</property>
+            <page-footer>
+                <text id="3"/>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="2321">
+            <property name="marginLeft">0pt</property>
+            <property name="marginRight">0pt</property>
+            <property name="paddingLeft">20px</property>
+            <property name="paddingRight">20px</property>
+            <property name="height">6.375in</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">Column Binding</property>
+                    <expression name="expression" type="javascript">params["title"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">title</property>
+                    <expression name="expression" type="javascript">params["title"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">infoRight</property>
+                    <expression name="expression" type="javascript">params["infoRight"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Column Binding_1</property>
+                    <text-property name="displayName">jzrq</text-property>
+                    <expression name="expression" type="javascript">"此账单截至 "+vars["zje"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Column Binding_2</property>
+                    <text-property name="displayName">xzrq</text-property>
+                    <expression name="expression" type="javascript">"下账日期 "+vars["rq"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">jzrq</property>
+                    <expression name="expression" type="javascript">"此账单截至 "+vars["rq"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <column id="2322"/>
+            <row id="2323">
+                <property name="height">0.4166666666666667in</property>
+                <cell id="2324">
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingLeft">0pt</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="paddingRight">0pt</property>
+                    <data id="2338">
+                        <property name="fontSize">18pt</property>
+                        <property name="fontWeight">bold</property>
+                        <property name="marginTop">0pt</property>
+                        <property name="marginBottom">0pt</property>
+                        <property name="textAlign">center</property>
+                        <property name="lineHeight">58px</property>
+                        <property name="verticalAlign">middle</property>
+                        <property name="resultSetColumn">title</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="2325">
+                <cell id="2326">
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingLeft">0pt</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="paddingRight">0pt</property>
+                    <label id="2419">
+                        <property name="textAlign">right</property>
+                        <property name="lineHeight">22px</property>
+                        <text-property name="text">数据来源：独角兽监狱消费数字管理系统</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="2327">
+                <property name="height">5.09375in</property>
+                <cell id="2328">
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingLeft">1px</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="paddingRight">1px</property>
+                    <extended-item extensionName="Crosstab" extensionVersion="3.7.0" id="3924">
+                        <property name="cube">Data Cube</property>
+                        <property name="rows">
+                            <extended-item extensionName="CrosstabView" id="3926">
+                                <property name="views">
+                                    <extended-item extensionName="DimensionView" id="3927">
+                                        <property name="dimension">人员编号</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View" id="3928">
+                                                <property name="level">人员编号/n_rybh</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="3929">
+                                                        <property name="content">
+                                                            <data name="n_rybh" id="3930">
+                                                                <property name="resultSetColumn">n_rybh</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="borderTopColor">#000000</property>
+                                                        <property name="borderLeftColor">#000000</property>
+                                                        <property name="borderBottomColor">#000000</property>
+                                                        <property name="borderRightColor">#000000</property>
+                                                        <property name="width">80px</property>
+                                                        <property name="style">listStyle</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="3931">
+                                        <property name="dimension">姓名</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View1" id="3932">
+                                                <property name="level">姓名/n_xm</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="3933">
+                                                        <property name="content">
+                                                            <data name="n_xm" id="3935">
+                                                                <property name="resultSetColumn">n_xm</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="borderTopColor">#000000</property>
+                                                        <property name="borderLeftColor">#000000</property>
+                                                        <property name="borderBottomColor">#000000</property>
+                                                        <property name="borderRightColor">#000000</property>
+                                                        <property name="width">80px</property>
+                                                        <property name="style">listStyle</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="3936">
+                                        <property name="dimension">补贴</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View2" id="3937">
+                                                <property name="level">补贴/n_bt</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="3938">
+                                                        <property name="content">
+                                                            <data name="n_bt" id="3940">
+                                                                <property name="textAlign">right</property>
+                                                                <property name="resultSetColumn">n_bt</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="borderTopColor">#000000</property>
+                                                        <property name="borderLeftColor">#000000</property>
+                                                        <property name="borderBottomColor">#000000</property>
+                                                        <property name="borderRightColor">#000000</property>
+                                                        <property name="width">80px</property>
+                                                        <property name="style">listStyle</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="3941">
+                                        <property name="dimension">余额</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View3" id="3942">
+                                                <property name="level">余额/n_ye</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="3943">
+                                                        <property name="content">
+                                                            <data name="n_ye" id="3945">
+                                                                <structure name="numberFormat">
+                                                                    <property name="category">Fixed</property>
+                                                                    <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                                                                </structure>
+                                                                <property name="textAlign">right</property>
+                                                                <property name="resultSetColumn">n_ye</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="borderTopColor">#000000</property>
+                                                        <property name="borderLeftColor">#000000</property>
+                                                        <property name="borderBottomColor">#000000</property>
+                                                        <property name="borderRightColor">#000000</property>
+                                                        <property name="width">80px</property>
+                                                        <property name="style">listStyle</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="3946">
+                                        <property name="dimension">领取金额</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View4" id="3947">
+                                                <property name="level">领取金额/n_zje</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="3948">
+                                                        <property name="content">
+                                                            <data name="n_zje" id="3950">
+                                                                <structure name="numberFormat">
+                                                                    <property name="category">Fixed</property>
+                                                                    <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                                                                </structure>
+                                                                <property name="textAlign">right</property>
+                                                                <property name="resultSetColumn">n_zje</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="borderTopColor">#000000</property>
+                                                        <property name="borderLeftColor">#000000</property>
+                                                        <property name="borderBottomColor">#000000</property>
+                                                        <property name="borderRightColor">#000000</property>
+                                                        <property name="width">80px</property>
+                                                        <property name="style">listStyle</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="3951">
+                                        <property name="dimension">签字</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View5" id="3952">
+                                                <property name="level">签字/n_qz</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="3953">
+                                                        <property name="content">
+                                                            <data name="n_qz" id="3955">
+                                                                <property name="resultSetColumn">n_qz</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="borderTopColor">#000000</property>
+                                                        <property name="borderLeftColor">#000000</property>
+                                                        <property name="borderBottomColor">#000000</property>
+                                                        <property name="borderRightColor">#000000</property>
+                                                        <property name="height">30px</property>
+                                                        <property name="style">listStyle</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                </property>
+                            </extended-item>
+                        </property>
+                        <property name="header">
+                            <extended-item extensionName="CrosstabCell" id="3925">
+                                <property name="content">
+                                    <label id="3956">
+                                        <text-property name="text">卡号</text-property>
+                                    </label>
+                                </property>
+                                <property name="borderTopColor">#000000</property>
+                                <property name="borderLeftColor">#000000</property>
+                                <property name="borderBottomColor">#000000</property>
+                                <property name="borderRightColor">#000000</property>
+                                <property name="height">34px</property>
+                                <property name="style">NewStyle</property>
+                            </extended-item>
+                            <extended-item extensionName="CrosstabCell" id="3934">
+                                <property name="content">
+                                    <label id="3957">
+                                        <text-property name="text">姓名</text-property>
+                                    </label>
+                                </property>
+                                <property name="borderTopColor">#000000</property>
+                                <property name="borderLeftColor">#000000</property>
+                                <property name="borderBottomColor">#000000</property>
+                                <property name="borderRightColor">#000000</property>
+                                <property name="style">NewStyle</property>
+                            </extended-item>
+                            <extended-item extensionName="CrosstabCell" id="3939">
+                                <property name="content">
+                                    <label id="3958">
+                                        <text-property name="text">日用品补助</text-property>
+                                    </label>
+                                </property>
+                                <property name="borderTopColor">#000000</property>
+                                <property name="borderLeftColor">#000000</property>
+                                <property name="borderBottomColor">#000000</property>
+                                <property name="borderRightColor">#000000</property>
+                                <property name="style">NewStyle</property>
+                            </extended-item>
+                            <extended-item extensionName="CrosstabCell" id="3944">
+                                <property name="content">
+                                    <label id="3959">
+                                        <text-property name="text">资金余额</text-property>
+                                    </label>
+                                </property>
+                                <property name="borderTopColor">#000000</property>
+                                <property name="borderLeftColor">#000000</property>
+                                <property name="borderBottomColor">#000000</property>
+                                <property name="borderRightColor">#000000</property>
+                                <property name="style">NewStyle</property>
+                            </extended-item>
+                            <extended-item extensionName="CrosstabCell" id="3949">
+                                <property name="content">
+                                    <label id="3960">
+                                        <text-property name="text">领取金额</text-property>
+                                    </label>
+                                </property>
+                                <property name="borderTopColor">#000000</property>
+                                <property name="borderLeftColor">#000000</property>
+                                <property name="borderBottomColor">#000000</property>
+                                <property name="borderRightColor">#000000</property>
+                                <property name="style">NewStyle</property>
+                            </extended-item>
+                            <extended-item extensionName="CrosstabCell" id="3954">
+                                <property name="content">
+                                    <label id="3961">
+                                        <text-property name="text">罪犯亲笔签字确认（手印）</text-property>
+                                    </label>
+                                </property>
+                                <property name="borderTopColor">#000000</property>
+                                <property name="borderLeftColor">#000000</property>
+                                <property name="borderBottomColor">#000000</property>
+                                <property name="borderRightColor">#000000</property>
+                                <property name="style">NewStyle</property>
+                            </extended-item>
+                        </property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderLeftColor">#000000</property>
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderRightColor">#000000</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">n_rybh</property>
+                                <expression name="expression">dimension["人员编号"]["n_rybh"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">n_xm</property>
+                                <expression name="expression">dimension["姓名"]["n_xm"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">n_bt</property>
+                                <expression name="expression">dimension["补贴"]["n_bt"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">n_ye</property>
+                                <expression name="expression">dimension["余额"]["n_ye"]</expression>
+                                <property name="dataType">float</property>
+                            </structure>
+                            <structure>
+                                <property name="name">n_zje</property>
+                                <expression name="expression">dimension["领取金额"]["n_zje"]</expression>
+                                <property name="dataType">float</property>
+                            </structure>
+                            <structure>
+                                <property name="name">n_qz</property>
+                                <expression name="expression">dimension["签字"]["n_qz"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                    </extended-item>
+                    <grid id="3962">
+                        <property name="borderBottomStyle">groove</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">groove</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">groove</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">groove</property>
+                        <property name="borderTopWidth">1px</property>
+                        <property name="height">0.78125in</property>
+                        <column id="3963">
+                            <property name="width">274px</property>
+                        </column>
+                        <column id="3964"/>
+                        <row id="3965">
+                            <property name="height">0.3958333333333333in</property>
+                            <cell id="3966">
+                                <property name="style">listStyle</property>
+                                <data id="4095">
+                                    <property name="fontSize">14px</property>
+                                    <structure name="numberFormat">
+                                        <property name="category">Unformatted</property>
+                                    </structure>
+                                    <property name="textAlign">left</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">sumzje</property>
+                                            <expression name="expression" type="javascript">"此账单截至 "+vars["rq"]</expression>
+                                            <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">sumzje</property>
+                                </data>
+                            </cell>
+                            <cell id="3967">
+                                <property name="style">listStyle</property>
+                                <data id="4119">
+                                    <property name="fontSize">14px</property>
+                                    <structure name="numberFormat">
+                                        <property name="category">Unformatted</property>
+                                    </structure>
+                                    <property name="textAlign">left</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">sumzje</property>
+                                            <expression name="expression" type="javascript">"下账日期 "+vars["rq"]</expression>
+                                            <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">sumzje</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3968">
+                            <property name="height">0.4166666666666667in</property>
+                            <cell id="3969">
+                                <property name="style">listStyle</property>
+                                <label id="3973">
+                                    <property name="fontSize">14px</property>
+                                    <text-property name="text">申领现金理由</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3970">
+                                <property name="style">listStyle</property>
+                            </cell>
+                        </row>
+                    </grid>
+                    <grid id="3974">
+                        <property name="height">0.6979166666666666in</property>
+                        <column id="3975">
+                            <property name="width">169px</property>
+                        </column>
+                        <column id="3976">
+                            <property name="width">88px</property>
+                        </column>
+                        <column id="3977"/>
+                        <row id="3978">
+                            <property name="height">0.34375in</property>
+                            <cell id="3979">
+                                <property name="style">listStyle</property>
+                                <label id="4004">
+                                    <property name="fontSize">14px</property>
+                                    <text-property name="text">实际领取</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3980">
+                                <property name="style">listStyle</property>
+                                <label id="4005">
+                                    <property name="fontSize">14px</property>
+                                    <text-property name="text">小写</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3981">
+                                <property name="style">listStyle</property>
+                                <data id="4083">
+                                    <property name="fontSize">14px</property>
+                                    <structure name="numberFormat">
+                                        <property name="category">Unformatted</property>
+                                    </structure>
+                                    <property name="textAlign">left</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">sumzje</property>
+                                            <expression name="expression" type="javascript">"￥"+vars["zje"].toFixed(2)</expression>
+                                            <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">sumzje</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="3982">
+                            <property name="height">0.3541666666666667in</property>
+                            <cell id="3983">
+                                <property name="style">listStyle</property>
+                                <label id="4006">
+                                    <property name="fontSize">14px</property>
+                                    <text-property name="text">合计金额</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3984">
+                                <property name="style">listStyle</property>
+                                <label id="4007">
+                                    <property name="fontSize">14px</property>
+                                    <text-property name="text">大写</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3985">
+                                <property name="style">listStyle</property>
+                                <data id="4084">
+                                    <property name="fontSize">14px</property>
+                                    <property name="textAlign">left</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">sumzje</property>
+                                            <expression name="expression" type="javascript">formatMoney(vars["zje"])&#13;
+&#13;
+function  formatMoney(mnum) &#13;
+{ &#13;
+var mnum = parseFloat(mnum); &#13;
+var strOutput="",strTemp="",strInTemp=''; &#13;
+var unitArray = new Array("圆万亿","仟佰拾","零壹贰叁肆伍陆柒捌玖"); &#13;
+var mnumArray = mnum.toString().split('.'); &#13;
+var integralnum = mnumArray[0]; &#13;
+var integrallen = integralnum.length; &#13;
+var decimalnum = (mnum.toString().indexOf('.')>=0) ? mnumArray[1].substr(0, 2) : '0'; &#13;
+var decimallen = decimalnum.length; &#13;
+var ints = parseInt(integrallen/4); &#13;
+var inty = integrallen%4; &#13;
+if (ints>3 || (ints==3 &amp;&amp; inty>0)) return "超出范围"; &#13;
+if (inty>0) &#13;
+{ &#13;
+ints++; &#13;
+integralnum = "0000".substr(inty)+integralnum; &#13;
+integrallen = integralnum.length; &#13;
+} &#13;
+var i = 0; &#13;
+while (i&lt;integrallen) &#13;
+{ &#13;
+var strOutTemp = ""; &#13;
+strTemp = integralnum.substr(i, 4); &#13;
+i += 4; &#13;
+for (var j=0; j&lt;4; j++) &#13;
+{ &#13;
+strInTemp = parseInt(strTemp.substr(j, 1)); &#13;
+strOutTemp += unitArray[2].substr(strInTemp, 1); &#13;
+if (strInTemp>0 &amp;&amp; j&lt;3) strOutTemp += unitArray[1].substr(j, 1); &#13;
+} &#13;
+strOutTemp = strOutTemp.replace(/零+$/, ""); &#13;
+ints--; &#13;
+if (strOutTemp!="") strOutTemp += unitArray[0].substr(ints, 1); &#13;
+if (strTemp.substr(3,1)=='0') strOutTemp += "零"; &#13;
+strOutput += strOutTemp; &#13;
+} &#13;
+strOutput = strOutput.replace(/零+/g, "零").replace(/^零/, "").replace(/零$/, ""); &#13;
+if (strOutput=="圆") strOutput = ""; &#13;
+if (decimallen==2) &#13;
+{ &#13;
+strOutput += (decimalnum.charAt(0)!='0') ? unitArray[2].substr(parseInt(decimalnum.charAt(0)), 1)+"角" : "零"; &#13;
+if (strOutput=="零") strOutput = ""; &#13;
+strOutput += unitArray[2].substr(parseInt(decimalnum.charAt(1)), 1)+"分"; &#13;
+} &#13;
+else &#13;
+{ &#13;
+if (decimalnum!='0') strOutput += unitArray[2].substr(parseInt(decimalnum), 1)+"角"; &#13;
+if (strOutput!="") strOutput += "整"; &#13;
+} &#13;
+if (strOutput=="") strOutput = "金额为零"; &#13;
+return strOutput; &#13;
+}</expression>
+                                            <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">sumzje</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                    <grid id="3986">
+                        <property name="height">2.59375in</property>
+                        <column id="3987">
+                            <property name="width">274px</property>
+                        </column>
+                        <column id="3988"/>
+                        <row id="3989">
+                            <property name="height">0.4583333333333333in</property>
+                            <cell id="3990">
+                                <property name="style">listStyle</property>
+                                <label id="4008">
+                                    <property name="fontSize">14px</property>
+                                    <text-property name="text">监区经办人</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3991">
+                                <property name="style">listStyle</property>
+                                <label id="4087">
+                                    <property name="fontSize">14px</property>
+                                    <property name="textAlign">left</property>
+                                    <text-property name="text"></text-property>
+                                </label>
+                                <label id="4012">
+                                    <property name="fontSize">14px</property>
+                                    <property name="textAlign">right</property>
+                                    <text-property name="text">年       月      日</text-property>
+                                </label>
+                            </cell>
+                        </row>
+                        <row id="3992">
+                            <property name="height">0.4895833333333333in</property>
+                            <cell id="3993">
+                                <property name="style">listStyle</property>
+                                <label id="4009">
+                                    <property name="fontSize">14px</property>
+                                    <text-property name="text">监区负责人</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3994">
+                                <property name="style">listStyle</property>
+                                <label id="4019">
+                                    <property name="fontSize">14px</property>
+                                    <property name="textAlign">left</property>
+                                    <text-property name="text">监区长：</text-property>
+                                </label>
+                                <label id="4085">
+                                    <property name="fontSize">14px</property>
+                                    <property name="textAlign">right</property>
+                                    <text-property name="text">年       月      日</text-property>
+                                </label>
+                            </cell>
+                        </row>
+                        <row id="3995">
+                            <property name="height">0.5104166666666666in</property>
+                            <cell id="3996">
+                                <property name="style">listStyle</property>
+                            </cell>
+                            <cell id="3997">
+                                <property name="style">listStyle</property>
+                                <label id="4086">
+                                    <property name="fontSize">14px</property>
+                                    <property name="textAlign">left</property>
+                                    <text-property name="text">教导员：</text-property>
+                                </label>
+                                <label id="4020">
+                                    <property name="fontSize">14px</property>
+                                    <property name="textAlign">right</property>
+                                    <text-property name="text">年       月      日</text-property>
+                                </label>
+                            </cell>
+                        </row>
+                        <row id="3998">
+                            <property name="height">0.53125in</property>
+                            <cell id="3999">
+                                <property name="style">listStyle</property>
+                                <label id="4010">
+                                    <property name="fontSize">14px</property>
+                                    <text-property name="text">业务科室经办人</text-property>
+                                </label>
+                            </cell>
+                            <cell id="4000">
+                                <property name="style">listStyle</property>
+                                <label id="4089">
+                                    <property name="fontSize">14px</property>
+                                    <property name="textAlign">left</property>
+                                    <text-property name="text"></text-property>
+                                </label>
+                                <label id="4022">
+                                    <property name="fontSize">14px</property>
+                                    <property name="textAlign">right</property>
+                                    <text-property name="text">年       月      日</text-property>
+                                </label>
+                            </cell>
+                        </row>
+                        <row id="4001">
+                            <property name="height">0.6041666666666666in</property>
+                            <cell id="4002">
+                                <property name="style">listStyle</property>
+                                <label id="4011">
+                                    <property name="fontSize">14px</property>
+                                    <text-property name="text">业务科室负责人</text-property>
+                                </label>
+                            </cell>
+                            <cell id="4003">
+                                <property name="style">listStyle</property>
+                                <label id="4090">
+                                    <property name="fontSize">14px</property>
+                                    <property name="textAlign">left</property>
+                                    <text-property name="text"></text-property>
+                                </label>
+                                <label id="4023">
+                                    <property name="fontSize">14px</property>
+                                    <property name="textAlign">right</property>
+                                    <text-property name="text">年       月      日</text-property>
+                                </label>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+        </grid>
+    </body>
+    <property name="pageVariables">
+        <variable-element name="zje">
+            <expression name="value" type="javascript">0</expression>
+            <property name="type">report</property>
+        </variable-element>
+        <variable-element name="rq">
+            <expression name="value" type="javascript">""</expression>
+            <property name="type">report</property>
+        </variable-element>
+    </property>
+</report>

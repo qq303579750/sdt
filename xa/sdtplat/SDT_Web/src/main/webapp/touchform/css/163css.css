@@ -1,0 +1,71 @@
+#wrapper{position:absolute; background:#eaf0f6;overflow: hidden; min-width:692px; width:692px;}
+
+#scroller{-webkit-tap-highlight-color:rgba(0,0,0,0);width:100%;}
+
+#scroller ul{width:100%;text-align:left;}
+
+
+
+#scroller li{padding:2px 1%;border-bottom:1px solid #ccc;border-top:1px solid #fff;background-color:#eef3f7; width:98%; float:left;}
+
+#scroller li span{ float:left; padding:6px 0 0 6px;}
+#scroller li .p_name{width:480px; line-height:48px;font-size:16px; font-weight:bold; color:#f65d00;}
+#scroller li .p_gg{width:60px; line-height:48px;font-size:16px;text-align:right;}
+#scroller li .p_jg{width:100px; line-height:48px;font-size:24px;font-family:@Arial Unicode MS; text-align:right;}
+
+#scroller ul .active{background-color:#d2e7f9;}
+
+
+#wrapper2{position:absolute; background:#eaf0f6;overflow: hidden; height:100%; width:892px;}
+
+#scroller2{-webkit-tap-highlight-color:rgba(0,0,0,0);width:100%;}
+
+#scroller2 ul{width:100%;text-align:left;}
+
+#scroller2 li{padding:5px 1%;border-bottom:1px solid #ccc;border-top:1px solid #fff;background-color:#eef3f7;font-size:14px; width:98%; float:left;}
+
+#scroller2 li img{ float:left; width:111px; height:83px;}
+
+#scroller2 li span{ float:left; padding:6px 0 0 6px;}
+#scroller2 li .o_name{width:260px; line-height:48px;font-size:16px; font-weight:bold; color:#f65d00;}
+#scroller2 li .o_pp{width:100px; line-height:48px;font-size:16px;text-align:right;}
+#scroller2 li .o_guige{width:100px; line-height:48px;font-size:16px;text-align:right;}
+#scroller2 li .o_dw{width:80px; line-height:48px;font-size:16px;text-align:right;}
+#scroller2 li .o_dj{width:100px; line-height:48px;font-size:16px;text-align:right;}
+#scroller2 li .o_count{width:60px; line-height:48px;font-size:16px;text-align:right;}
+#scroller2 li .o_zje{width:100px; line-height:48px;font-size:16px;text-align:right;}
+#scroller2 li .o_czuo{width:180px; line-height:48px;font-size:16px;text-align:right;}
+#scroller2 li .o_czuo a{widht:50px; height:50px; mangin:5px 15px; padding:10px 15px; line-height:24px; background-color:#084795; font-size:22px; color:#fff; }
+
+
+#wrapper3{position:absolute; background:#eaf0f6;overflow: hidden; min-width:800px; width:800px;}
+
+#scroller3{-webkit-tap-highlight-color:rgba(0,0,0,0);width:100%;}
+
+#scroller3 ul{width:100%;text-align:left;}
+
+#scroller3 li{padding:2px 1%;border-bottom:1px solid #ccc;border-top:1px solid #fff;background-color:#eef3f7; width:98%; float:left;}
+#scroller3 li span{float:left; padding:6px 0 0 6px;}
+#scroller3 li .fuhao{width:30px;font-size:14px;line-height:48px;}
+#scroller3 li .jysj{width:180px;font-size:14px;line-height:48px;}
+#scroller3 li .jylx{width:200px;font-size:14px;font-weight:bold;line-height:48px;}
+#scroller3 li .jyje{width:150px;font-size:16px;text-align:right;line-height:18px;}
+#scroller3 li .syje{width:100px;font-size:16px;font-weight:bold;color:#f65d00; text-align:right;line-height:48px;}
+
+#wrapper4{position:absolute; background:#eaf0f6;overflow: hidden; min-width:1280px; width:1280px;}
+
+#scroller4{-webkit-tap-highlight-color:rgba(0,0,0,0);width:100%;}
+
+#scroller4 ul{width:100%;text-align:left;}
+
+#scroller4 li{padding:0px 1%;border-bottom:1px solid #ccc;border-top:1px solid #fff;background-color:#eef3f7; width:98%; float:left;}
+#scroller4 li span{float:left; padding:6px 6px 0 6px;}
+#scroller4 li .p_name{width:640px;font-size:14px;line-height:28px;}
+#scroller4 li .p_gg{width:100px;font-size:14px;line-height:28px; border-left:1px solid #ccc;}
+#scroller4 li .p_dw{width:80px;font-size:14px;line-height:28px;border-left:1px solid #ccc;}
+#scroller4 li .p_xrl{width:100px;font-size:14px;line-height:28px;border-left:1px solid #ccc;}
+#scroller4 li .p_sl{width:100px;font-size:14px;line-height:28px;border-left:1px solid #ccc; text-align:right;}
+#scroller4 li .p_zsl{width:180px;font-size:14px;line-height:28px;border-left:1px solid #ccc;}
+#scroller4 li .p_bsl{width:80px;font-size:14px;font-weight:bold;line-height:28px;border-left:1px solid #ccc; color:#f00;}
+#scroller4 li .jyje{width:150px;font-size:16px;text-align:right;line-height:18px;}
+#scroller4 li .syje{width:100px;font-size:16px;font-weight:bold;color:#f65d00; text-align:right;line-height:48px;}

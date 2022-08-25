@@ -5,8 +5,7 @@
         <param-value>classpath:spring.xml</param-value>
     </context-param>
     <listener>
-        <description>经过定制的spring监听器</description>
-        <listener-class>org.sdt.platform.spring.SDTContextLoaderListener</listener-class>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     <listener>
         <description>用户登录注销监听</description>

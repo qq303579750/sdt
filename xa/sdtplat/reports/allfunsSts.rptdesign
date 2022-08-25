@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.3.1.v201309091055 Build &lt;4.3.1.v20130917-1035></property>
+    <list-property name="scriptLibs">
+        <structure>
+            <property name="name">SDT_Core-2.5.jar</property>
+        </structure>
+    </list-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/crosstab.gif</property>
+    <property name="cheatSheet">org.eclipse.birt.report.designer.ui.cheatsheet.crosstab</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">common.rptlibrary</property>
+            <property name="namespace">common</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="title" id="1026" extends="common.title"/>
+        <scalar-parameter name="infoLeft" id="1027" extends="common.infoLeft"/>
+        <scalar-parameter name="infoRight" id="1028" extends="common.infoRight"/>
+        <scalar-parameter name="condition" id="1029" extends="common.condition"/>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="sdtplatdb" id="1023"
+ extends="common.sdtplatdb"/>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="v_money_all" id="1365"
+ extends="common.v_money_all"/>
+    </data-sets>
+    <cubes>
+        <tabular-cube name="v_money_all_cube" id="1372" extends="common.v_money_all_cube">
+            <overridden-values>
+                <ref-entry baseId="548" name="资金上账" id="548">
+                    <property name="defaultHierarchy">NewTabularHierarchy66</property>
+                </ref-entry>
+                <ref-entry baseId="549" name="NewTabularHierarchy66" id="549"/>
+                <ref-entry baseId="550" name="ZJSZ" id="550"/>
+                <ref-entry baseId="551" name="超市消费" id="551">
+                    <property name="defaultHierarchy">NewTabularHierarchy69</property>
+                </ref-entry>
+                <ref-entry baseId="552" name="NewTabularHierarchy69" id="552"/>
+                <ref-entry baseId="553" name="CSXF" id="553"/>
+                <ref-entry baseId="554" name="电话消费" id="554">
+                    <property name="defaultHierarchy">NewTabularHierarchy70</property>
+                </ref-entry>
+                <ref-entry baseId="555" name="NewTabularHierarchy70" id="555"/>
+                <ref-entry baseId="556" name="DHXF" id="556"/>
+                <ref-entry baseId="557" name="医疗消费" id="557">
+                    <property name="defaultHierarchy">NewTabularHierarchy71</property>
+                </ref-entry>
+                <ref-entry baseId="558" name="NewTabularHierarchy71" id="558"/>
+                <ref-entry baseId="559" name="YLXF" id="559"/>
+                <ref-entry baseId="560" name="余额" id="560">
+                    <property name="defaultHierarchy">NewTabularHierarchy72</property>
+                </ref-entry>
+                <ref-entry baseId="561" name="NewTabularHierarchy72" id="561"/>
+                <ref-entry baseId="562" name="YE" id="562"/>
+            </overridden-values>
+        </tabular-cube>
+    </cubes>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="rightMargin">0in</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <data id="821">
+            <property name="fontSize">16pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="paddingTop">10pt</property>
+            <property name="paddingBottom">10pt</property>
+            <structure name="numberFormat">
+                <property name="category">Custom</property>
+            </structure>
+            <property name="textAlign">center</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">title</property>
+                    <expression name="expression" type="javascript">params["title"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="resultSetColumn">title</property>
+        </data>
+        <grid id="832">
+            <column id="833"/>
+            <column id="834"/>
+            <row id="835">
+                <cell id="836">
+                    <data id="839">
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">infoLeft</property>
+                                <expression name="expression" type="javascript">params["infoLeft"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">infoLeft</property>
+                    </data>
+                </cell>
+                <cell id="837">
+                    <data id="841">
+                        <property name="textAlign">right</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">infoRight</property>
+                                <expression name="expression" type="javascript">params["infoRight"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">infoRight</property>
+                    </data>
+                </cell>
+            </row>
+        </grid>
+        <extended-item extensionName="Crosstab" extensionVersion="3.7.0" id="1366">
+            <property name="cube">v_money_all_cube</property>
+            <property name="rows">
+                <extended-item extensionName="CrosstabView" id="1373">
+                    <property name="views">
+                        <extended-item extensionName="DimensionView" id="1374">
+                            <property name="dimension">资金上账</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View" id="1375">
+                                    <property name="level">资金上账/ZJSZ</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1376">
+                                            <property name="content">
+                                                <data name="ZJSZ" id="1377">
+                                                    <structure name="numberFormat">
+                                                        <property name="category">Custom</property>
+                                                        <property name="pattern">¤###,##0.00</property>
+                                                    </structure>
+                                                    <property name="resultSetColumn">ZJSZ</property>
+                                                </data>
+                                            </property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">1px</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">1px</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">1px</property>
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">1px</property>
+                                            <property name="borderRightColor">#000000</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1379">
+                            <property name="dimension">超市消费</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View1" id="1380">
+                                    <property name="level">超市消费/CSXF</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1381">
+                                            <property name="content">
+                                                <data name="CSXF" id="1383">
+                                                    <structure name="numberFormat">
+                                                        <property name="category">Custom</property>
+                                                        <property name="pattern">¤###,##0.00</property>
+                                                    </structure>
+                                                    <property name="resultSetColumn">CSXF</property>
+                                                </data>
+                                            </property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">1px</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">1px</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">1px</property>
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">1px</property>
+                                            <property name="borderRightColor">#000000</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1385">
+                            <property name="dimension">电话消费</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View2" id="1386">
+                                    <property name="level">电话消费/DHXF</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1387">
+                                            <property name="content">
+                                                <data name="DHXF" id="1389">
+                                                    <structure name="numberFormat">
+                                                        <property name="category">Custom</property>
+                                                        <property name="pattern">¤###,##0.00</property>
+                                                    </structure>
+                                                    <property name="resultSetColumn">DHXF</property>
+                                                </data>
+                                            </property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">1px</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">1px</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">1px</property>
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">1px</property>
+                                            <property name="borderRightColor">#000000</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1391">
+                            <property name="dimension">医疗消费</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View3" id="1392">
+                                    <property name="level">医疗消费/YLXF</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1393">
+                                            <property name="content">
+                                                <data name="YLXF" id="1395">
+                                                    <structure name="numberFormat">
+                                                        <property name="category">Custom</property>
+                                                        <property name="pattern">¤###,##0.00</property>
+                                                    </structure>
+                                                    <property name="resultSetColumn">YLXF</property>
+                                                </data>
+                                            </property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">1px</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">1px</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">1px</property>
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">1px</property>
+                                            <property name="borderRightColor">#000000</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1397">
+                            <property name="dimension">余额</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View4" id="1398">
+                                    <property name="level">余额/YE</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1399">
+                                            <property name="content">
+                                                <data name="YE" id="1401">
+                                                    <structure name="numberFormat">
+                                                        <property name="category">Custom</property>
+                                                        <property name="pattern">¤###,##0.00</property>
+                                                    </structure>
+                                                    <property name="resultSetColumn">YE</property>
+                                                </data>
+                                            </property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                            <property name="borderTopStyle">solid</property>
+                                            <property name="borderTopWidth">1px</property>
+                                            <property name="borderTopColor">#000000</property>
+                                            <property name="borderLeftStyle">solid</property>
+                                            <property name="borderLeftWidth">1px</property>
+                                            <property name="borderLeftColor">#000000</property>
+                                            <property name="borderBottomStyle">solid</property>
+                                            <property name="borderBottomWidth">1px</property>
+                                            <property name="borderBottomColor">#000000</property>
+                                            <property name="borderRightStyle">solid</property>
+                                            <property name="borderRightWidth">1px</property>
+                                            <property name="borderRightColor">#000000</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+            </property>
+            <property name="header">
+                <extended-item extensionName="CrosstabCell" id="1367">
+                    <property name="content">
+                        <label id="1378">
+                            <text-property name="text">上账总额</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">bold</property>
+                    <property name="backgroundColor">orange</property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">1px</property>
+                    <property name="borderTopColor">#000000</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">1px</property>
+                    <property name="borderLeftColor">#000000</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">1px</property>
+                    <property name="borderBottomColor">#000000</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">1px</property>
+                    <property name="borderRightColor">#000000</property>
+                    <property name="paddingTop">4pt</property>
+                    <property name="paddingBottom">4pt</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1382">
+                    <property name="content">
+                        <label id="1384">
+                            <text-property name="text">超市消费额</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">bold</property>
+                    <property name="backgroundColor">orange</property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">1px</property>
+                    <property name="borderTopColor">#000000</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">1px</property>
+                    <property name="borderLeftColor">#000000</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">1px</property>
+                    <property name="borderBottomColor">#000000</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">1px</property>
+                    <property name="borderRightColor">#000000</property>
+                    <property name="paddingTop">4pt</property>
+                    <property name="paddingBottom">4pt</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1388">
+                    <property name="content">
+                        <label id="1390">
+                            <text-property name="text">电话消费额</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">bold</property>
+                    <property name="backgroundColor">orange</property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">1px</property>
+                    <property name="borderTopColor">#000000</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">1px</property>
+                    <property name="borderLeftColor">#000000</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">1px</property>
+                    <property name="borderBottomColor">#000000</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">1px</property>
+                    <property name="borderRightColor">#000000</property>
+                    <property name="paddingTop">4pt</property>
+                    <property name="paddingBottom">4pt</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1394">
+                    <property name="content">
+                        <label id="1396">
+                            <text-property name="text">医疗消费额</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">bold</property>
+                    <property name="backgroundColor">orange</property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">1px</property>
+                    <property name="borderTopColor">#000000</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">1px</property>
+                    <property name="borderLeftColor">#000000</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">1px</property>
+                    <property name="borderBottomColor">#000000</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">1px</property>
+                    <property name="borderRightColor">#000000</property>
+                    <property name="paddingTop">4pt</property>
+                    <property name="paddingBottom">4pt</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1400">
+                    <property name="content">
+                        <label id="1402">
+                            <text-property name="text">余额</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">bold</property>
+                    <property name="backgroundColor">orange</property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">1px</property>
+                    <property name="borderTopColor">#000000</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">1px</property>
+                    <property name="borderLeftColor">#000000</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">1px</property>
+                    <property name="borderBottomColor">#000000</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">1px</property>
+                    <property name="borderRightColor">#000000</property>
+                    <property name="paddingTop">4pt</property>
+                    <property name="paddingBottom">4pt</property>
+                </extended-item>
+            </property>
+            <property name="borderTopStyle">double</property>
+            <property name="borderTopWidth">medium</property>
+            <property name="borderTopColor">#000000</property>
+            <property name="borderLeftStyle">double</property>
+            <property name="borderLeftWidth">medium</property>
+            <property name="borderLeftColor">#000000</property>
+            <property name="borderBottomStyle">double</property>
+            <property name="borderBottomWidth">medium</property>
+            <property name="borderBottomColor">#000000</property>
+            <property name="borderRightStyle">double</property>
+            <property name="borderRightWidth">medium</property>
+            <property name="borderRightColor">#000000</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">ZJSZ</property>
+                    <expression name="expression">dimension["资金上账"]["ZJSZ"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">CSXF</property>
+                    <expression name="expression">dimension["超市消费"]["CSXF"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">DHXF</property>
+                    <expression name="expression">dimension["电话消费"]["DHXF"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">YLXF</property>
+                    <expression name="expression">dimension["医疗消费"]["YLXF"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">YE</property>
+                    <expression name="expression">dimension["余额"]["YE"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+            </list-property>
+        </extended-item>
+    </body>
+</report>
