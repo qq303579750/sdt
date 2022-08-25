@@ -144,6 +144,11 @@ public class PersonInfo extends SimpleModel {
 	protected Double YE;
 
 	@DisplayIgnore
+	@ModelAttr("劳动报酬余额")
+	@Column(length = 64)
+	protected Double BCJE;
+
+	@DisplayIgnore
 	@ModelAttrNotNull
 	@SearchableProperty
 	@ModelAttr("账户状态")
@@ -383,6 +388,14 @@ public class PersonInfo extends SimpleModel {
 
 	public void setRYBH_MD5(String rYBH_MD5) {
 		RYBH_MD5 = rYBH_MD5;
+	}
+	@XmlAttribute
+	public Double getBCJE() {
+		return BCJE;
+	}
+
+	public void setBCJE(Double BCJE) {
+		this.BCJE = BCJE;
 	}
 
 	public static void main(String[] args) {

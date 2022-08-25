@@ -16,6 +16,19 @@
         <url>http://www.gnu.org/licenses/gpl.txt</url>
       </license>
     </licenses>
+    <mailingLists>
+        <mailingList>
+            <name>独角兽科技网络有限公司</name>
+            <post>303579750@qq.com</post>
+        </mailingList>
+    </mailingLists>
+    <developers>
+        <developer>
+            <id>kevin</id>
+            <name>独角兽网络科技有限公司</name>
+            <email>303579750@qq.com</email>
+        </developer>
+    </developers>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
