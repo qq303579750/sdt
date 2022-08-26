@@ -77,7 +77,7 @@ public class SystemListener{
         if(localBasePackage!=null && !"".equals(localBasePackage.trim())){
             basePackage=basePackage+","+localBasePackage;
         }
-        System.setProperty("basePackage", basePackage);        
+        System.setProperty("basePackage", basePackage);
     }
     public static void contextInitialized(ServletContextEvent sce) {
         contextPath=sce.getServletContext().getContextPath();

@@ -4,12 +4,9 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring.xml</param-value>
     </context-param>
-<!--    <listener>-->
-<!--        <description>经过定制的spring监听器</description>-->
-<!--        <listener-class>org.sdt.platform.spring.SDTContextLoaderListener</listener-class>-->
-<!--    </listener>-->
     <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        <description>经过定制的spring监听器</description>
+        <listener-class>org.sdt.platform.spring.SDTContextLoaderListener</listener-class>
     </listener>
     <listener>
         <description>用户登录注销监听</description>
@@ -31,7 +28,7 @@
         <filter-name>PerformanceFilter</filter-name>
         <url-pattern>*.action</url-pattern>
     </filter-mapping>
-    <!--
+
     <filter>
         <filter-name>ResponseHeaderFilter</filter-name>
         <filter-class>org.sdt.platform.filter.ResponseHeaderFilter</filter-class>
@@ -68,8 +65,7 @@
       <filter-name>ResponseHeaderFilter</filter-name>
       <url-pattern>*.css</url-pattern>
     </filter-mapping>
-    -->
-    
+
     <!-- 对于每一个数据库，都需要一个OpenEntityManagerInViewFilter  -->
     <!-- 默认数据库 -->
     <filter>
