@@ -6,7 +6,7 @@
        maxActive="20" maxIdle="-1" maxWait="10000" 
        username="root" password="root" 
            driverClassName="com.mysql.jdbc.Driver" 
-       url="jdbc:mysql://10.130.16.111:3306/sdtplat_db"
+       url="jdbc:mysql://localhost:3306/sdtplat_db"
        description="MySQL Sfdata DB"/> 
 </Context>
 

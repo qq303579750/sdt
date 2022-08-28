@@ -1398,6 +1398,7 @@ return strOutput; &#13;
                                 <property name="style">listStyle</property>
                                 <label id="4008">
                                     <property name="fontSize">14px</property>
+                                    <property name="textAlign">center</property>
                                     <text-property name="text">监区经办人</text-property>
                                 </label>
                             </cell>

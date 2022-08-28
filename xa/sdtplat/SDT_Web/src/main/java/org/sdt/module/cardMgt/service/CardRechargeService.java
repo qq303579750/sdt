@@ -1128,6 +1128,7 @@ public class CardRechargeService {
                 md.setJYSJ(new Date());
                 md.setBZ("");
                 serviceFacade.create(md);
+                person.setLaborPayment(czje);
                 person.setYE(ye + czje);
                 serviceFacade.update(person);
             }

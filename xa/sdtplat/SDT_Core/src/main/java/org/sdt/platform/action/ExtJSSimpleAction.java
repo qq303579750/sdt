@@ -89,31 +89,6 @@ public abstract class ExtJSSimpleAction<T extends Model> extends
 		return null;
 	}
 
-	public String chart() {
-		if (StringUtils.isNotBlank(getQueryString())) {
-			// 搜索出所有数据
-			beforeSearch();
-			page = getService().search(getQueryString(), null, modelClass);
-			List<T> models = processSearchResult(page.getModels());
-			page.setModels(models);
-		} else {
-			beforeQuery();
-			this.setPage(getService().query(modelClass));
-		}
-		// 生成报表XML数据
-		String data = generateReportData(page.getModels());
-		if (StringUtils.isBlank(data)) {
-			LOG.info("生成的报表数据为空");
-			return null;
-		}
-		Struts2Utils.renderXml(data);
-		// 业务处理完毕后删除页面数据引用，加速垃圾回收
-		this.getPage().getModels().clear();
-		this.setPage(null);
-
-		return null;
-	}
-
 	protected String generateReportData(List<T> models) {
 		return null;
 	}

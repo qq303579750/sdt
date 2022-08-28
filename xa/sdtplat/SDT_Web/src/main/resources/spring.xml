@@ -9,8 +9,8 @@
     http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.2.xsd">
     <import resource="classpath:/org/sdt/spring.xml" />
     <import resource="classpath:/org/sdt/security.xml" />
-    <import resource="classpath:/org/sdt/compass.xml" />
-    <import resource="classpath:/org/sdt/ws.xml" />
+<!--    <import resource="classpath:/org/sdt/compass.xml" />-->
+<!--    <import resource="classpath:/org/sdt/ws.xml" />-->
     <beans>
     	<bean id="firstJob" class="org.sdt.module.funsStsMgt.service.JobService"></bean>
     	

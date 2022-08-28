@@ -1272,6 +1272,7 @@ if(isrq==0 &amp;&amp; vars["rq"]==""){
                             <cell id="3979">
                                 <property name="style">listStyle</property>
                                 <label id="4004">
+                                    <property name="textAlign">center</property>
                                     <property name="fontSize">14px</property>
                                     <text-property name="text">金额合计</text-property>
                                 </label>
@@ -1309,6 +1310,7 @@ if(isrq==0 &amp;&amp; vars["rq"]==""){
                                 <property name="style">listStyle</property>
                                 <label id="4006">
                                     <property name="fontSize">14px</property>
+                                    <property name="textAlign">center</property>
                                     <text-property name="text">金额合计</text-property>
                                 </label>
                             </cell>
@@ -1425,6 +1427,8 @@ return strOutput; &#13;
                             <cell id="3993">
                                 <property name="style">listStyle</property>
                                 <label id="4009">
+
+                                    <property name="textAlign">center</property>
                                     <property name="fontSize">14px</property>
                                     <text-property name="text">监区领导</text-property>
                                 </label>
@@ -1449,6 +1453,7 @@ return strOutput; &#13;
                                 <property name="style">listStyle</property>
                                 <label id="7009">
                                     <property name="fontSize">14px</property>
+                                    <property name="textAlign">center</property>
                                     <text-property name="text">生卫科经办人</text-property>
                                 </label>
                             </cell>
@@ -1472,6 +1477,7 @@ return strOutput; &#13;
                                 <property name="style">listStyle</property>
                                 <label id="8009">
                                     <property name="fontSize">14px</property>
+                                    <property name="textAlign">center</property>
                                     <text-property name="text">生卫科科长</text-property>
                                 </label>
                             </cell>
@@ -1495,6 +1501,7 @@ return strOutput; &#13;
                                 <property name="style">listStyle</property>
                                 <label id="4010">
                                     <property name="fontSize">14px</property>
+                                    <property name="textAlign">center</property>
                                     <text-property name="text">财务科审核</text-property>
                                 </label>
                             </cell>
@@ -1518,6 +1525,7 @@ return strOutput; &#13;
                                 <property name="style">listStyle</property>
                                 <label id="4011">
                                     <property name="fontSize">14px</property>
+                                    <property name="textAlign">center</property>
                                     <text-property name="text">财务科科长</text-property>
                                 </label>
                             </cell>
@@ -1541,6 +1549,7 @@ return strOutput; &#13;
                                 <property name="style">listStyle</property>
                                 <label id="5011">
                                     <property name="fontSize">14px</property>
+                                    <property name="textAlign">center</property>
                                     <text-property name="text">监狱领导</text-property>
                                 </label>
                             </cell>

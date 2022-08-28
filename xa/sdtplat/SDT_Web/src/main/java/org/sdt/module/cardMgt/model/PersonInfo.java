@@ -183,6 +183,13 @@ public class PersonInfo extends SimpleModel {
 	@Column(length = 512)
 	protected String BZ;
 
+	@DisplayIgnore
+	@ModelAttrNotNull
+	@SearchableProperty
+	@ModelAttr("劳动报酬余额")
+	@Column(length = 64)
+	protected Double laborPayment;
+
 	public String getRYJG() {
 		return RYJG;
 	}
@@ -383,6 +390,14 @@ public class PersonInfo extends SimpleModel {
 
 	public void setRYBH_MD5(String rYBH_MD5) {
 		RYBH_MD5 = rYBH_MD5;
+	}
+	@XmlAttribute
+	public Double getLaborPayment() {
+		return laborPayment;
+	}
+
+	public void setLaborPayment(Double laborPayment) {
+		this.laborPayment = laborPayment;
 	}
 
 	public static void main(String[] args) {

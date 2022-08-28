@@ -13,7 +13,6 @@ import java.util.Locale;
 import javax.annotation.Resource;
 
 import org.compass.core.CompassSession;
-import org.compass.core.CompassTemplate;
 import org.sdt.module.system.service.PropertyHolder;
 import org.sdt.platform.log.SDTLogger;
 import org.sdt.platform.log.SDTLoggerFactory;
@@ -29,9 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class IndexManager {
     private static final SDTLogger LOG = SDTLoggerFactory.getSDTLogger(IndexManager.class);
-    
-    @Resource(name = "compassTemplate")
-    private CompassTemplate compassTemplate;
+
     @Resource(name = "indexRebuilder")
     private IndexRebuilder indexRebuilder;
     private volatile boolean buiding=false;
@@ -70,10 +67,6 @@ public class IndexManager {
         LOG.info("获取索引文件目录："+file.getAbsolutePath());
         LOG.info("Get index file path:", Locale.ENGLISH);
         return file;
-    }
-    private CompassSession getCompassSession() {
-        return compassTemplate.getCompass().openSession();
-
     }
     private void closeCompassSession(CompassSession session) {
         session.close();

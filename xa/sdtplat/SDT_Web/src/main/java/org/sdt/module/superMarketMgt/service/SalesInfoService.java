@@ -170,7 +170,8 @@ public class SalesInfoService {
                 serviceFacade.update(cardInfo);
             }
             // 检查个人消费限额
-            checkPersonQuota(person, model, list);
+            // 返回本次消费余额中的劳动报酬金额
+            double costInLabor = checkPersonQuota(person, model, list);
 
             // 先将本次所有消费写到数据库中，这样利于后面的【超市和点购台的消费配额检测】，因为可以直接用视图进行检查，检查失败，再进行数据库回退
             for (SalesInfoDetail t : list) {
@@ -222,6 +223,7 @@ public class SalesInfoService {
                 // 对于已审核的消费订单，需要将消费金额从账户扣除
                 if (model.getSHZT().equals("已通过")) {
                     Double ye = person.getYE();
+                    Double laborPayment = person.getLaborPayment();
                     MoneyDetail md = new MoneyDetail();
                     md.setXM(person.getXM());
                     md.setSHJQ(model.getJQMC());
@@ -235,6 +237,7 @@ public class SalesInfoService {
                     md.setBZ(model.getId().toString());
                     serviceFacade.create(md);
                     ye = ye - model.getZJE();
+                    person.setLaborPayment(laborPayment - costInLabor);
                     person.setYE(ye);
                     serviceFacade.update(person);
                 }
@@ -449,9 +452,9 @@ public class SalesInfoService {
      * @param XYXEDJ
      */
     @SuppressWarnings("unchecked")
-    private void checkPersonCSQuota(SalesInfo model, List<SalesInfoDetail> detail, QuotaInfo quota, double cigaretteMoney, QuotaInfo XYXEDJ) {
+    private double checkPersonCSQuota(SalesInfo model, List<SalesInfoDetail> detail, QuotaInfo quota, double cigaretteMoney, QuotaInfo XYXEDJ, PersonInfo personInfo) {
         if (quota == null) {
-            return;
+            return 0;
         }
 
         // 本次金额
@@ -473,6 +476,7 @@ public class SalesInfoService {
         List<Object> result = serviceFacade.getEntityManager().createNativeQuery(sql.toString()).getResultList();
         Double zje = new Double(0.0);
         Double yxf = new Double(0.0);
+        Double laborPayment = personInfo.getLaborPayment();
         if (result == null || result.size() == 0) {
             zje = 0.0;
             yxf = 0.0;
@@ -481,12 +485,28 @@ public class SalesInfoService {
             yxf = zje;
         }
 
-        zje = zje + bcJE + cigaretteMoney;
-        double xeje = Double.parseDouble(quota.getJE()) + Double.parseDouble(XYXEDJ.getJE());
-        if (zje.compareTo(xeje) > 0.0) {
-            throw new RuntimeException("【" + model.getXM() + "】本月消费已超出 月限额【月限额:" + xeje
-                    + "元,总消费已经超出】，不能进行消费！");
+        Double compareZje = zje + bcJE + cigaretteMoney;
+        Double je1 = zje + cigaretteMoney;
+        double costInLabor = 0;
+        double xeje = Double.parseDouble(quota.getJE()) + Double.parseDouble(XYXEDJ.getJE()) + laborPayment;
+        LOG.info("xeje=" + xeje + laborPayment);
+        LOG.info("zje=" + zje);
+        if (je1.compareTo(Double.parseDouble(quota.getJE()) + Double.parseDouble(XYXEDJ.getJE())) > 0.0) {
+            if (laborPayment < bcJE) {
+                throw new RuntimeException("【" + model.getXM() + "】本月消费已超出 月限额【月限额:" + (Double.parseDouble(quota.getJE()) + Double.parseDouble(XYXEDJ.getJE()))
+                        + "元, 报酬余额：" + laborPayment + "，总消费已经超出】，不能进行消费！");
+            }
         }
+        if ((zje + cigaretteMoney) > (Double.parseDouble(quota.getJE()) + Double.parseDouble(XYXEDJ.getJE()))) {
+            costInLabor = bcJE;
+        } else if ((zje + cigaretteMoney) < (Double.parseDouble(quota.getJE()) + Double.parseDouble(XYXEDJ.getJE()))) {
+            if (compareZje > (Double.parseDouble(quota.getJE()) + Double.parseDouble(XYXEDJ.getJE()))) {
+                costInLabor = compareZje - (Double.parseDouble(quota.getJE()) + Double.parseDouble(XYXEDJ.getJE()));
+            } else {
+                costInLabor = 0;
+            }
+        }
+        return costInLabor;
     }
 
     /**
@@ -495,7 +515,8 @@ public class SalesInfoService {
      * @param model
      * @param detail
      */
-    private void checkPersonQuota(PersonInfo person, SalesInfo model, List<SalesInfoDetail> detail) {
+    private double checkPersonQuota(PersonInfo person, SalesInfo model, List<SalesInfoDetail> detail) {
+        double laborPayment = 0;
         // 检查个人消费限额
         double cigaretteMoney = 0;
         QuotaInfo XYXEDJ = null;
@@ -505,14 +526,14 @@ public class SalesInfoService {
         }
         if (!StringUtils.isEmpty(person.getXYXEDJ())) {
             QuotaInfo CSXEDJ = getQuotaInfo("商品限额", person.getCSXEDJ());
-            checkPersonCSQuota(model, detail, CSXEDJ, cigaretteMoney, XYXEDJ);
+            laborPayment = checkPersonCSQuota(model, detail, CSXEDJ, cigaretteMoney, XYXEDJ, person);
         }
         if (!StringUtils.isEmpty(person.getDCXEDJ())) {
             QuotaInfo SGXEDJ = getQuotaInfo("水果限额", person.getDCXEDJ());
             checkPersonSGQuota(model, detail, SGXEDJ);
         }
 
-        return;
+        return laborPayment;
     }
 
     /**

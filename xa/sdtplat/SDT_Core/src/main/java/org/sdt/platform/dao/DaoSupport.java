@@ -18,7 +18,6 @@ import org.compass.core.Compass;
 import org.compass.core.CompassHighlighter;
 import org.compass.core.CompassHits;
 import org.compass.core.CompassSession;
-import org.compass.core.CompassTemplate;
 import org.sdt.platform.common.DataPrivilegeControl;
 import org.sdt.platform.criteria.Order;
 import org.sdt.platform.criteria.OrderCriteria;
@@ -49,9 +48,7 @@ public abstract class DaoSupport extends DataPrivilegeControl{
     public DaoSupport(MultiDatabase multiDatabase){
         super(multiDatabase);
     }
-    
-    @Resource(name="compassTemplate")
-    protected CompassTemplate compassTemplate;
+
 
     protected <T extends Model> Page<T> queryData(Class<T> modelClass, PageCriteria pageCriteria, PropertyCriteria propertyCriteria, OrderCriteria sortCriteria) {
 
@@ -269,57 +266,7 @@ public abstract class DaoSupport extends DataPrivilegeControl{
         return (Long) query.getSingleResult();
     }
 
-    public <T extends Model> Page<T> search(String queryString,PageCriteria pageCriteria,Class<T> modelClass){
-        List<T> result =  new ArrayList<>();
-        Compass compass = compassTemplate.getCompass();
-        CompassSession session=compass.openSession();
-        CompassHits hits=  session.find(queryString);
-        LOG.info("命中:"+hits.getLength());
-        LOG.info("查询字符串:"+queryString);
-        if(pageCriteria!=null){
-            int start = (pageCriteria.getPage()-1) * pageCriteria.getSize();
-            int end = (pageCriteria.getPage()-1) * pageCriteria.getSize() + pageCriteria.getSize();
-            if (end > hits.getLength()) {
-                end = hits.getLength();
-            }
-            for(int i=start;i<end;i++){
-                if(hits.data(i).getClass()==modelClass){
-                    //T t=(T)hits.data(i);
-                    try{
-                        T t=hightlight(modelClass,hits,i);
-                        result.add(t);
-                    }catch(Exception e){
-                        result.add((T)hits.data(i));
-                    }
-                }
-            }
-        }else{
-            for(int i=0;i<hits.getLength();i++){
-                if(hits.data(i).getClass()==modelClass){
-                    //T t=(T)hits.data(i);
-                    try{
-                        T t=hightlight(modelClass,hits,i);
-                        result.add(t);
-                    }catch(Exception e){
-                        result.add((T)hits.data(i));
-                    }
-                }
-            }
-        }
-        session.close();
 
-        //对搜索结果按主键递减的顺序排序,最新的数据在最前面
-        //Comparator comparter=new BeanComparator("id");
-        //Collections.sort(result, comparter);
-        //Collections.reverse(result);
-
-        //建立页面对象
-        Page<T> page= new  Page<>();
-        page.setModels(result);
-        page.setTotalRecords(hits.getLength());
-
-        return page;
-    }
     
     private <T extends Model> T hightlight(Class<T> modelClass, CompassHits hits, int i) {
         T model = (T) hits.data(i);

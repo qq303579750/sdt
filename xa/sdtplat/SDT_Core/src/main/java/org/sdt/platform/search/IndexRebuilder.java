@@ -11,7 +11,6 @@ import java.io.File;
 
 import javax.annotation.Resource;
 
-import org.compass.gps.CompassGps;
 import org.sdt.platform.log.SDTLogger;
 import org.sdt.platform.log.SDTLoggerFactory;
 import org.springframework.stereotype.Service;
@@ -23,9 +22,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class IndexRebuilder {
     private static final SDTLogger LOG = SDTLoggerFactory.getSDTLogger(IndexRebuilder.class);
-    
-    @Resource(name = "compassGps")
-    private CompassGps compassGps;
 
     /**
      * 同步重建索引
