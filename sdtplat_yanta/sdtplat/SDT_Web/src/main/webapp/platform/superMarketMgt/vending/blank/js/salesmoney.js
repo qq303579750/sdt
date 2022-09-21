@@ -162,8 +162,7 @@ ReportOpt = function() {
     		tjjzrq = ddgrq.getFullYear()+"-"+(ddgrq.getMonth()+1)+"-24";
     		dgrq = ddgrq.getFullYear()+"-"+(ddgrq.getMonth()+1)+"-"+ ddgrq.getDate();
     		
-    		//title = jqmc+"("+yjqmc+")罪犯资金领用表";
-    		title = jqmc+"罪犯资金申领表";
+    		title = jqmc+"("+yjqmc+")罪犯资金领用表";
     		infoLeft  = "      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单据号："+orderid;
     		infoRight = '制单时间：'+new Date().format('Y-m-d H:i') +'   制单人：'+parent.realName;
     		var url = "<iframe src='" + parent.getURL() + "/frameset?__report=salesmoney.rptdesign"+
@@ -199,7 +198,7 @@ ReportOpt = function() {
 			var shjg = " and shjq_id in (select id from prisoninfo where jqmc='"+jqmc+"')";
 			var queryString = " select p.rybh,p.xm,'','',sum(zje),'' from personinfo p left join (select * from salesinfo "
 				+"where zdlx='点购台' and cgddid_id in("+orderid+") and jqmc in ('"+jqmc+"')) s "
-				+" ON p.RYBH=s.rybh where SHJQ_id in (select id from prisoninfo where jqmc='"+jqmc+"')  group by p.rybh ";
+				+" ON p.RYBH=s.rybh where p.zhzt!='离监' and SHJQ_id in (select id from prisoninfo where jqmc='"+jqmc+"')  group by p.rybh ";
 			parent.Ext.Ajax.request({
                 url : contextPath+'/superMarketMgt/sales-info!exportExcel.action?time='+new Date().toString(),
                 waitTitle: '请稍等',

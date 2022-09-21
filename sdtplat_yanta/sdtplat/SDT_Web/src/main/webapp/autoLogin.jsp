@@ -46,7 +46,7 @@
      
         function login(){
         	var _userName = 'admin';
-        	var _pwd = 'sdt201408';
+        	var _pwd = 'P@ssw0rd';
         	var url = 'j_spring_security_check?vmautoLogin=true';
             var j_password=hex_sha512(_pwd+'{用户信息}');
             

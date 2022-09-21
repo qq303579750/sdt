@@ -229,7 +229,7 @@ Prison_Search = function() {
 						Prison_Search.close();
 					}
 					else{
-		                
+
 						RewardInGridInfo.getColumns = function() {
 		                    var columns=[
 			                    {header: "所属监区", width: 40, dataIndex: 'SHJQ_id', sortable: true, renderer:function(value){return PubFunc.getPrisonInfo(value,'text');}},
@@ -249,15 +249,16 @@ Prison_Search = function() {
 			       			parent.Ext.Ajax.request({
 			                    url : URL+'?time='+new Date().toString(),
 			                    waitTitle: '请稍等',
-								timeout: 900000,
-								waitMsg: '正在发送充值申请……',
+								timeout: 600*1000,
+			                    waitMsg: '正在发送充值申请……',
 			                    params : {
 			                    	gridData:GridRecordModelInForm.getGridData(CreateBaseModel.grid),
 			                    	ssyf:parent.Ext.getCmp('FFSJ').getValue(),
 			                    	jqmc:parent.Ext.getCmp('FFJQ').getValue(),
 			                    	tdrs:parent.Ext.getCmp('ZRS').getValue(),
 			                    	zjrs:parent.Ext.getCmp('ZJRS').getValue(),
-			                    	hjje:parent.Ext.getCmp('ZJE').getValue()
+			                    	hjje:parent.Ext.getCmp('ZJE').getValue(),
+									bz: parent.Ext.getCmp('BZ').getValue()
 			                    },
 			                    method : 'POST',
 			                    success : function(response,opts){

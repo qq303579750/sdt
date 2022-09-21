@@ -170,7 +170,7 @@ public class SalesInfoService {
                 serviceFacade.update(cardInfo);
             }
             // 检查个人消费限额
-            checkPersonQuota(person, model, list);
+            double bcje = checkPersonQuota(person, model, list);
 
             // 先将本次所有消费写到数据库中，这样利于后面的【超市和点购台的消费配额检测】，因为可以直接用视图进行检查，检查失败，再进行数据库回退
             for (SalesInfoDetail t : list) {
@@ -222,6 +222,7 @@ public class SalesInfoService {
                 // 对于已审核的消费订单，需要将消费金额从账户扣除
                 if (model.getSHZT().equals("已通过")) {
                     Double ye = person.getYE();
+                    Double bcye = person.getBCJE();
                     MoneyDetail md = new MoneyDetail();
                     md.setXM(person.getXM());
                     md.setSHJQ(model.getJQMC());
@@ -235,6 +236,7 @@ public class SalesInfoService {
                     md.setBZ(model.getId().toString());
                     serviceFacade.create(md);
                     ye = ye - model.getZJE();
+                    person.setBCJE(bcye - bcje);
                     person.setYE(ye);
                     serviceFacade.update(person);
                 }
@@ -390,8 +392,6 @@ public class SalesInfoService {
             yxf = zje;
         }
         zje = zje + bcJE;
-        LOG.info("水果限额为：" + Double.parseDouble(quota.getJE()));
-        LOG.info("总金额为：" + zje);
         if (zje.compareTo(Double.parseDouble(quota.getJE())) > 0.0) {
             throw new RuntimeException("【" + model.getXM() + "】本月【水果消费】已超出个人月限额【月限额:" + quota.getJE() + "元,已消费:" + yxf
                     + "元,本次消费:" + bcJE + "元】，不能进行消费！");
@@ -406,9 +406,9 @@ public class SalesInfoService {
      * @param quota
      */
     @SuppressWarnings("unchecked")
-    private void checkPersonXYQuota(SalesInfo model, List<SalesInfoDetail> detail, QuotaInfo quota) {
+    private double checkPersonXYQuota(SalesInfo model, List<SalesInfoDetail> detail, QuotaInfo quota) {
         if (quota == null) {
-            return;
+            return 0;
         }
         Double bcJE = new Double(0);
         for (SalesInfoDetail t : detail) {
@@ -435,12 +435,11 @@ public class SalesInfoService {
             yxf = zje;
         }
         zje = zje + bcJE;
-        LOG.info("香烟限额为：" + Double.parseDouble(quota.getJE()));
-        LOG.info("总金额为：" + zje);
         if (zje.compareTo(Double.parseDouble(quota.getJE())) > 0.0) {
             throw new RuntimeException("【" + model.getXM() + "】本月【香烟消费】已超出个人月限额【月限额:" + quota.getJE() + "元,已消费:" + yxf
                     + "元,本次消费:" + bcJE + "元】，不能进行消费！");
         }
+        return zje;
     }
 
     /**
@@ -448,11 +447,13 @@ public class SalesInfoService {
      *
      * @param model
      * @param detail
+     * @param cigaretteMoney
+     * @param XYXEDJ
      */
     @SuppressWarnings("unchecked")
-    private void checkPersonCSQuota(SalesInfo model, List<SalesInfoDetail> detail, QuotaInfo quota) {
+    private Double checkPersonCSQuota(SalesInfo model, List<SalesInfoDetail> detail, QuotaInfo quota, double cigaretteMoney, QuotaInfo XYXEDJ, PersonInfo personInfo) {
         if (quota == null) {
-            return;
+            return null;
         }
 
         // 本次金额
@@ -474,6 +475,8 @@ public class SalesInfoService {
         List<Object> result = serviceFacade.getEntityManager().createNativeQuery(sql.toString()).getResultList();
         Double zje = new Double(0.0);
         Double yxf = new Double(0.0);
+        // 查询本月上账金额
+        Double labor = personInfo.getBCJE();
         if (result == null || result.size() == 0) {
             zje = 0.0;
             yxf = 0.0;
@@ -481,13 +484,16 @@ public class SalesInfoService {
             zje = Double.parseDouble(result.get(0).toString());
             yxf = zje;
         }
-        zje = zje + bcJE;
-        LOG.info("商品限额为：" + Double.parseDouble(quota.getJE()));
-        LOG.info("总金额为：" + zje);
-        if (zje.compareTo(Double.parseDouble(quota.getJE())) > 0.0) {
-            throw new RuntimeException("【" + model.getXM() + "】本月消费已超出 个人商品月限额【月限额:" + quota.getJE() + "元,已消费:" + yxf
-                    + "元,本次消费:" + bcJE + "元】，不能进行消费！");
+
+        zje = zje + bcJE + cigaretteMoney;
+        double xeje = Double.parseDouble(quota.getJE()) + Double.parseDouble(XYXEDJ.getJE());
+        LOG.info("xeje="+ xeje + labor);
+        LOG.info("zje="+ zje);
+        if (zje.compareTo(xeje + labor) > 0.0) {
+            throw new RuntimeException("【" + model.getXM() + "】本月消费已超出 月限额【月限额:" + xeje
+                    + "元,总消费已经超出】，不能进行消费！");
         }
+        return labor - (zje - xeje);
     }
 
     /**
@@ -496,29 +502,32 @@ public class SalesInfoService {
      * @param model
      * @param detail
      */
-    private void checkPersonQuota(PersonInfo person, SalesInfo model, List<SalesInfoDetail> detail) {
+    private Double checkPersonQuota(PersonInfo person, SalesInfo model, List<SalesInfoDetail> detail) {
         // 检查个人消费限额
+        double bcje = 0;
+        double cigaretteMoney = 0;
+        QuotaInfo XYXEDJ = null;
         if (!StringUtils.isEmpty(person.getXYXEDJ())) {
-            QuotaInfo XYXEDJ = getQuotaInfo("香烟限额", person.getXYXEDJ());
-            checkPersonXYQuota(model, detail, XYXEDJ);
+            XYXEDJ = getQuotaInfo("香烟限额", person.getXYXEDJ());
+            cigaretteMoney = checkPersonXYQuota(model, detail, XYXEDJ);
         }
-        if (!StringUtils.isEmpty(person.getCSXEDJ())) {
+        if (!StringUtils.isEmpty(person.getXYXEDJ())) {
             QuotaInfo CSXEDJ = getQuotaInfo("商品限额", person.getCSXEDJ());
-            checkPersonCSQuota(model, detail, CSXEDJ);
+            // 返回已经消费的报酬金额
+            bcje = checkPersonCSQuota(model, detail, CSXEDJ, cigaretteMoney, XYXEDJ, person);
         }
         if (!StringUtils.isEmpty(person.getDCXEDJ())) {
             QuotaInfo SGXEDJ = getQuotaInfo("水果限额", person.getDCXEDJ());
             checkPersonSGQuota(model, detail, SGXEDJ);
         }
 
-        return;
+        return bcje;
     }
 
     /**
      * 检查本月消费是否超过配额
      *
      * @param model
-     * @param detail
      */
     @SuppressWarnings("unchecked")
     public void checkQuota(SalesInfo model) {

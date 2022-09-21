@@ -456,7 +456,7 @@ public class CardRechargeService {
      * 生成充值记录
      */
     @Transactional
-    public String createRewardApply(List<CardRechargeRecord> records, String ssyf, String jqmc, String tdrs, String hjje) {
+    public String createRewardApply(List<CardRechargeRecord> records, String ssyf, String jqmc, String tdrs, String hjje, String bz) {
         if (records.size() == 0) {
             throw new RuntimeException("详情列表为空");
         }
@@ -486,98 +486,23 @@ public class CardRechargeService {
         for (int i = 0; i < records.size(); i++) {
             CardRechargeRecord record = records.get(i);
             try {
-                LOG.info("czje:" + record.getCZJE().toString() + "/" + record.getCZJE().toString().equals(""));
+                //LOG.info("czje:" + record.getCZJE().toString() + "/" + record.getCZJE().toString().equals(""));
                 if (!record.getCZJE().toString().equals("")) {
                     if (list.size() > 0) {
-                        String sql = "SELECT * from cardrechargerecord WHERE SSYF='" + ssyf + "' and CZLX='劳动报酬' and JQMC='" + jqmc + "' and RYBH='" + record.getRYBH() + "'";
+                        String sql = "SELECT * from cardrechargerecord WHERE   RYBH='" + record.getRYBH() + "' and SSYF='" + ssyf + "' and CZLX='劳动报酬' and JQMC='" + jqmc + "'";
                         //LOG.info("search SQL:" + sql);
                         Query query = serviceFacade.getEntityManager().createNativeQuery(sql);
                         List<Object[]> result = query.getResultList();
 
                         if (result.size() == 0) {
                             grantInService(user, date, "劳动报酬", record.getId().toString(),
-                                    record.getCZJE().toString(), record.getCZBZ(), ssyf, recordA.getId());
+                                    bz, record.getCZBZ(), ssyf, recordA.getId());
                             xzrs = xzrs + 1;
                             xzje = xzje + record.getCZJE();
                         }
                     } else {
                         grantInService(user, date, "劳动报酬", record.getId().toString(),
-                                record.getCZJE().toString(), record.getCZBZ(), ssyf, recordA.getId());
-                        xzrs = xzrs + 1;
-                        xzje = xzje + record.getCZJE();
-                    }
-                }
-            } catch (RuntimeException e) {
-                String info = "";
-                if (e.getMessage() != null) {
-                    info = e.getMessage();
-                    LOG.error(info);
-                    msg = msg + info + "<br>";
-                }
-            }
-        }
-
-        recordA.setHJJE(xzje);
-        recordA.setTDRS(xzrs + "");
-        //subsidyA.setSHZT("已通过");
-        serviceFacade.update(recordA);
-
-        String info = "";
-        return info;
-    }
-
-
-    /**
-     * 生成劳动奖金充值记录
-     */
-    @Transactional
-    public String createLdjj(List<CardRechargeRecord> records, String ssyf, String jqmc, String tdrs, String hjje) {
-        if (records.size() == 0) {
-            throw new RuntimeException("详情列表为空");
-        }
-        User user = UserHolder.getCurrentLoginUser();
-        Date date = new Date();
-        // 如果提单类型是劳动报酬，创建提单记录
-        bonusApply recordA = null;
-
-        PropertyCriteria propertyCriteria = new PropertyCriteria();
-        propertyCriteria.addPropertyEditor(new PropertyEditor("JQMC",
-                Operator.eq, PropertyType.String, jqmc));
-        propertyCriteria.addPropertyEditor(new PropertyEditor("SSYF",
-                Operator.eq, ssyf));
-        List<bonusApply> list = serviceFacade.query(
-                bonusApply.class, null, propertyCriteria)
-                .getModels();
-        if (list.size() > 0) {
-            recordA = list.get(0);
-        } else {
-            recordA = CreateLdjjApply(user, date, ssyf, jqmc, tdrs, hjje);
-        }
-
-        String msg = "<br>";
-        int xzrs = Integer.parseInt(recordA.getTDRS());
-        Double xzje = recordA.getHJJE();
-
-        for (int i = 0; i < records.size(); i++) {
-            CardRechargeRecord record = records.get(i);
-            try {
-                LOG.info("czje:" + record.getCZJE().toString() + "/" + record.getCZJE().toString().equals(""));
-                if (!record.getCZJE().toString().equals("")) {
-                    if (list.size() > 0) {
-                        String sql = "SELECT * from cardrechargerecord WHERE SSYF='" + ssyf + "' and CZLX='劳动奖金' and JQMC='" + jqmc + "' and RYBH='" + record.getRYBH() + "'";
-                        //LOG.info("search SQL:" + sql);
-                        Query query = serviceFacade.getEntityManager().createNativeQuery(sql);
-                        List<Object[]> result = query.getResultList();
-
-                        if (result.size() == 0) {
-                            grantInService(user, date, "劳动奖金", record.getId().toString(),
-                                    record.getCZJE().toString(), record.getCZBZ(), ssyf, recordA.getId());
-                            xzrs = xzrs + 1;
-                            xzje = xzje + record.getCZJE();
-                        }
-                    } else {
-                        grantInService(user, date, "劳动奖金", record.getId().toString(),
-                                record.getCZJE().toString(), record.getCZBZ(), ssyf, recordA.getId());
+                                record.getCZJE().toString(), bz, ssyf, recordA.getId());
                         xzrs = xzrs + 1;
                         xzje = xzje + record.getCZJE();
                     }
@@ -605,7 +530,7 @@ public class CardRechargeService {
      * 生成充值记录
      */
     @Transactional
-    public String updateRewardApply(List<CardRechargeRecord> records, int applyid, String ssyf, String jqmc, String tdrs, String hjje) {
+    public String updateRewardApply(List<CardRechargeRecord> records, int applyid, String ssyf, String jqmc, String tdrs, String hjje, String bz) {
         if (records.size() == 0) {
             throw new RuntimeException("详情列表为空");
         }
@@ -634,7 +559,7 @@ public class CardRechargeService {
         Query query = serviceFacade.getEntityManager().createNativeQuery(sql);
         query.executeUpdate();
 
-
+        String info = "";
         String msg = "<br>";
         for (int i = 0; i < records.size(); i++) {
             CardRechargeRecord record = records.get(i);
@@ -642,10 +567,10 @@ public class CardRechargeService {
                 LOG.info("czje:" + record.getCZJE().toString() + "/" + record.getCZJE().toString().equals(""));
                 if (!record.getCZJE().toString().equals("")) {
                     grantInService(user, date, "劳动报酬", record.getId().toString(),
-                            record.getCZJE().toString(), record.getCZBZ(), ssyf, recordA.getId());
+                            record.getCZJE().toString(), bz, ssyf, recordA.getId());
                 }
             } catch (RuntimeException e) {
-                String info = "";
+
                 if (e.getMessage() != null) {
                     info = e.getMessage();
                     LOG.error(info);
@@ -653,7 +578,7 @@ public class CardRechargeService {
                 }
             }
         }
-        String info = "";
+
         return info;
     }
 
@@ -742,7 +667,7 @@ public class CardRechargeService {
             bonusA = CreateBonusApply(user, date, ssyf, jqmc, tdrs, hjje);
         }
 
-        String sql = "delete from cardrechargerecord where TDBH=" + applyid + " and CZLX='劳动奖金'";
+        String sql = "delete from cardrechargerecord where TDBH=" + applyid + " and CZLX='生活补贴'";
         Query query = serviceFacade.getEntityManager().createNativeQuery(sql);
         query.executeUpdate();
 
@@ -1097,7 +1022,7 @@ public class CardRechargeService {
             serviceFacade.create(record);
             return record;
         } catch (Exception e) {
-            LOG.error("【劳动奖金提单记录生成】失败!" + e.getMessage());
+            LOG.error("【生活补贴提单记录生成】失败!" + e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -1143,64 +1068,22 @@ public class CardRechargeService {
         }
     }
 
-
-    /**
-     * 劳动奖金提单记录生成
-     *
-     * @param user
-     * @param date
-     * @param ssyf
-     * @param jqmc
-     * @param tdrs
-     * @param hjje
-     */
-    @SuppressWarnings("unchecked")
-    @Transactional
-    public bonusApply CreateLdjjApply(User user, Date date, String ssyf,
-                                      String jqmc, String tdrs, String hjje) {
-        String SqlCount = "select count(*) as count from personinfoview "
-                + " where zhzt!='离监' and JQMC=" + "'" + jqmc + "'";
-        Query queryCount = serviceFacade.getEntityManager().createNativeQuery(
-                SqlCount);
-        List<Object> CountResult = queryCount.getResultList();
-        Object obj = CountResult.get(0);
-        String jqrs = obj.toString();
-        try {
-            // 创建劳动奖金提单记录
-            bonusApply record = new bonusApply();
-            record.setCZYBH(user);
-            record.setTDSJ(date);
-            record.setSSYF(ssyf);
-            record.setCZLX("劳动奖金");
-            record.setJQMC(jqmc);
-            record.setJQRS(jqrs);
-            record.setTDRS("0");
-            record.setHJJE(0.0);
-            record.setSHZT("待审核");
-            serviceFacade.create(record);
-            return record;
-        } catch (Exception e) {
-            LOG.error("【劳动奖金提单记录生成】失败!" + e.getMessage());
-            throw new RuntimeException(e);
-        }
-    }
-
     /**
      * 修改劳动报酬提单明细
      */
     @Transactional
-    public void updateCardRechargeRecord(String shzt, String jqmc, String ssyf, String czlx, Integer id, String shyy) {
+    public void updateCardRechargeRecord(String shzt, String jqmc, String ssyf, String czlx) {
         String ErrInfo = "<br>";
 
         if (shzt.equals("未通过")) {
-            String sql = "UPDATE CardRechargeRecord set SHZT='未通过',czbz='" + shyy + "' WHERE  JQMC='" + jqmc + "' and SSYF='" + ssyf + "' and CZLX='" + czlx + "' and TDBH = '" + id + "'";
+            String sql = "UPDATE CardRechargeRecord set SHZT='未通过' WHERE  JQMC='" + jqmc + "' and SSYF='" + ssyf + "' and CZLX='" + czlx + "'";
             //LOG.info("search SQL:" + sql);
             Query query = serviceFacade.getEntityManager().createNativeQuery(sql);
             query.executeUpdate();
             //List<Object[]> result = query.getResultList();
 
         } else if (shzt.equals("已通过")) {
-            String sql = "UPDATE CardRechargeRecord set SHZT='已通过',czbz='" + shyy + "' WHERE SHZT in ('未通过','已取消','待审核') and JQMC='" + jqmc + "' and SSYF='" + ssyf + "' and CZLX='" + czlx + "'";
+            String sql = "UPDATE CardRechargeRecord set SHZT='已通过' WHERE  JQMC='" + jqmc + "' and SSYF='" + ssyf + "' and CZLX='" + czlx + "'";
             //LOG.info("search SQL:" + sql);
             Query query = serviceFacade.getEntityManager().createNativeQuery(sql);
             query.executeUpdate();
@@ -1245,6 +1128,7 @@ public class CardRechargeService {
                 md.setJYSJ(new Date());
                 md.setBZ("");
                 serviceFacade.create(md);
+                person.setBCJE(czje);
                 person.setYE(ye + czje);
                 serviceFacade.update(person);
             }

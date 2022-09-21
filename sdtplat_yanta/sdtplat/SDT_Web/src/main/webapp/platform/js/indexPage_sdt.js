@@ -17,6 +17,7 @@ var tools= [{
         }
     }];
 var srcFile = contextPath + '/platform/status.jsp'
+
 var indexPage={
         title:"我的桌面",
         closable : false,

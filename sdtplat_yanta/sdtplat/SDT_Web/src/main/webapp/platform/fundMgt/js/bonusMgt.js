@@ -272,7 +272,6 @@ CreateInfo = function() {
                           },
                           items: CreateBaseModel.grid
                       }
-                     
                 ];
             return items;
         },
@@ -403,8 +402,7 @@ DisplayModel = function() {
 	 	         {name: 'ZHZT'},
 	 	         {name: 'YE'},
 	 	         {name: 'SSYF'},
-	 	         {name: 'CZJE'},
-                {name: 'CZBZ'}
+	 	         {name: 'CZJE'}
 	         ];
     		this.store=new Ext.data.JsonStore({
                 fields: this.fields,
@@ -436,11 +434,9 @@ DisplayModel = function() {
     				{header: "账户状态", width: 30, dataIndex: 'ZHZT', sortable: true},
     				{header: "当前余额", width: 30, dataIndex: 'YE',   sortable: true,renderer:function(value){return PubFunc.MoneyFormat(value);}},
     				{header: "所属月份", width: 30, dataIndex: 'SSYF', sortable: true},
-                    {header: "充值金额", width: 30, dataIndex: 'CZJE', sortable: true,renderer:function(value){return PubFunc.MoneyFormat(value);}},
-                    {header: "充值备注", width: 30, dataIndex: 'CZBZ', sortable: true}
+    				{header: "充值金额", width: 30, dataIndex: 'CZJE', sortable: true,renderer:function(value){return PubFunc.MoneyFormat(value);}}
 
-
-                ]
+    			]
     		});
     		return this.grid;
     	},
@@ -458,333 +454,7 @@ GrantModel=function(){
         }
     };	
 }();
-importExcel = function(){
-	return{
-		close : function(){
-			 if(this.window!=undefined){
-	             this.window.close();
-	         }
-		},
-		getPanel : function() {
-			//定义数据集对象
-			this.Panel = new parent.Ext.form.FormPanel({
-				labelAlign: 'left',
-	            buttonAlign: 'center',
-	            bodyStyle: 'padding:5px',
-	            frame: true,//圆角和浅蓝色背景
-	            autoScroll:false,
-				labelWidth : 60,
-				fileUpload : true,
-				width: '40%',
-				buttons: [
-			                {
-			                    text: '导入',
-			                    iconCls:'save',
-			                    scope: this,
-			                    handler: function() {
-			                        var search_SHJQ=parent.Ext.getCmp('search_SHJQ').getValue();
-			                        var search_CZJE="";
-			                        var search_JQMC=parent.Ext.getCmp('search_SHJQ').getRawValue();            
-			                        var search_SSN=parent.Ext.getCmp('search_SSN').getValue();
-			                        var search_SSY=parent.Ext.getCmp('search_SSY').getValue();
-			                        
-			                        if(search_JQMC==""){
-			                    		parent.Ext.MessageBox.alert('提示', "请选择发放单位！");
-			                    		return;
-			                    	}
-			                        if(search_SSN==""){
-			                    		parent.Ext.MessageBox.alert('提示', "请选择所属年份！");
-			                    		return;
-			                    	}
-			                        if(search_SSY==""){
-			                    		parent.Ext.MessageBox.alert('提示', "请选择所属月份！");
-			                    		return;
-			                    	}
-			                        
-									var file = parent.Ext.getCmp('select_excel').getValue();
-									if (file == undefined || file == "") {
-										parent.Ext.MessageBox.alert('操作提示：','请选择导入的文件！');
-										return;
-									}
-									
-									var ssyf=search_SSN+"年"+search_SSY+"月";
-									var jqmc = search_JQMC;
-									
-									importExcel.Panel.form.submit({
-										waitTitle : '请稍等',
-										waitMsg : '正在导入......',
-										timeout: 900000,  //15min
-										params:{   
-											ssyf:ssyf,
-											jqmc:jqmc
-								        }, 
-										url : contextPath+ '/cardMgt/reward-apply!importLdjj.action',
-										success : function(form, action) {
-											var data=action.response.responseText;
-											var model=eval('(' + data + ')');
-											
-											//var data=action.response.responseText;
-											if(model.success){
-												showExcel.sendRequest(model.fileName,ssyf,jqmc);
-											}
-											
-					                    },
-					                    failure : function(form, action) {
-					                    	var data=action.response.responseText;
-					                        //返回的数据是对象，在外层加个括号才能正确执行eval
-					                        var model=eval('(' + data + ')');
-					                    	parent.Ext.ux.Toast.msg('操作提示：',model.message);
-					                    	importExcel.close();
-					                    	GridBaseModel.refresh();
-					                    }
-										
-									});
-								}
-			                }
-			            ],
-				items : [
-				         {
-                            xtype: 'combo',
-                            id: 'search_SHJQ',
-                            store:PrisonInfoStore,
-                            emptyText:'请选择',
-                            mode:'remote',
-                            valueField:'value',
-                            displayField:'text',
-                            triggerAction:'all',
-                            forceSelection: true,
-                            editable:       false,
-                            fieldLabel: '发放单位'
-                        },{
-							id:'search_SSN',
-                            xtype: 'combo',
-                            store:yearStore,
-                            triggerAction:'all',
-                            displayField:'text',
-                            valueField:'text',
-                            emptyText:'请选择',
-                            mode:'local',
-                            forceSelection: true,
-                            editable:       false,
-                            value :new Date().getYear(),
-                            fieldLabel: '所属年份'
-						},{
-							id:'search_SSY',
-                            xtype: 'combo',
-                            store:monthStore,
-                            triggerAction:'all',
-                            displayField:'text',
-                            valueField:'text',
-                            emptyText:'请选择',
-                            mode:'local',
-                            forceSelection: true,
-                            editable:       false,
-                            fieldLabel: '所属月份'
-						},
-						{
-							id : 'select_excel',
-							xtype : 'textfield',
-							fieldLabel : '文件',
-							name : 'photo',
-							inputType : 'file',						
-							anchor : '100%'									
-						}
-					]
-			});
-			return this.Panel;
-		},
-	    show : function(){
-			var panel=this.getPanel();
-			this.window = new parent.Ext.Window({
-				title : '导入数据',
-	            maximizable:true,
-	            iconCls:'onlineUser',
-				width :  300,
-				height : 200,
-				layout:'fit',
-				items : [panel],
-				modal:true
-			});
-			this.window.show();
-	    }
-	};
-}();
 
-showExcel = function(){
-	return{
-		sendRequest: function(fileName,ssyf,jqmc){
-   			parent.Ext.Ajax.request({
-				waitTitle : '请稍等',
-				waitMsg : '正在导入......',
-				url : contextPath+ '/cardMgt/reward-apply!getXLSData1.action',
-				method : 'POST',
-				params:{   
-					loadfilename:fileName ,
-					ssyf:ssyf,
-					jqmc:jqmc
-		        }, 
-				success : function(form, action) {
-					var data=form.responseJSON;
-					
-					if(data.root==null){
-						parent.Ext.MessageBox.alert('操作提示：',data.message);
-						importExcel.close();
-						return;
-					}
-					
-					
-					if(data.root.length==0){
-						parent.Ext.MessageBox.alert('操作提示：',"没有有效数据");
-						importExcel.close();
-					}
-					else{
-						
-						if(!data.success){
-							RewardInGridInfo.getColumns = function() {
-	                            var columns=[
-		                            {header: "人员编号",  dataIndex: 'RYBH', sortable: true},
-		                    		{header: "姓名",  dataIndex: 'XM', sortable: true},
-		                    		{header: "错误信息",  dataIndex: 'Msg', sortable: true}
-	                     		]
-	                            return columns;
-	                        } ;
-	                        
-	                        CreateBaseModel.getButtons = function() {
-	                        	var buttons=[
-                	                {
-                	                    text: '关闭',
-                	                    iconCls:'cancel',
-                	                    scope: this,
-                	                    handler: function() {
-                	                        this.close();
-                	                    }
-                	                }
-                	            ];
-                	            return buttons;
-	                        } ;
-	                        
-							CreateBaseModel.grid = GridRewardInModelInForm.getGrid(true);
-							
-							;
-
-			                CreateBaseModel.show('批量发放', 'purchaseOrder', 800, 500, CreateOrder.getItems(),data);
-			    			var jsonStore = new Ext.data.JsonStore({
-			                	data:data.root,
-			                	fields:[{name:"RYBH"},{name:"XM"},{name:"Msg"}]
-			                });
-			    			//alert(jsonStore)
-			        		var records = jsonStore.getRange();
-			        		CreateBaseModel.grid.store.removeAll();
-			        		CreateBaseModel.grid.store.add(records);
-			        		CreateBaseModel.grid.view.refresh();
-	                    	importExcel.close();
-						}else{
-							RewardInGridInfo.getColumns= function(){
-					            var columns=[
-   				                    {header: "所属单位", width: 40, dataIndex: 'SHJQ_id', sortable: true, renderer:function(value){return PubFunc.getPrisonInfo(value,'text');}},
-   				                    {header: "本次发放月份", width: 10, dataIndex: 'FFSJ', sortable: true},
-   									{header: "人员编号", width: 8, dataIndex: 'RYBH', sortable: true},
-   									{header: "监舍编号", width: 8, dataIndex: 'JSBH', sortable: true},
-   									{header: "姓名", width: 8, dataIndex: 'XM', sortable: true},
-   									{id:"czje", header: "本次发放金额", width: 8, dataIndex: 'CZJE',sortable: true,css:PubCSS.noBlankField(3),editor:PubFunc.getNumberField(true, 2, false, 0),renderer:function(value){return PubFunc.MoneyFormat(value);}},
-   									{header: "当前余额", width: 8, dataIndex: 'YE', sortable: true,renderer:function(value){return PubFunc.MoneyFormat(value);}}
-						 		]
-					            return columns;           
-					        };
-							CreateBaseModel.getButtons = RewardInGridInfo.getButtons;
-							CreateBaseModel.grid = GridRewardInModelInForm.getGrid(false);
-							CreateBaseModel.shouldSubmit=function(){
-								
-				       		    var URL=contextPath+'/cardMgt/card-recharge-record!createReward1.action';
-				       			parent.Ext.Ajax.request({
-				                    url : URL+'?time='+new Date().toString(),
-				                    waitTitle: '请稍等',
-				                    timeout: 900000,  //15min
-				                    waitMsg: '正在发送充值申请……',
-				                    params : {
-				                    	gridData:GridRecordModelInForm.getGridData(CreateBaseModel.grid),
-				                    	ssyf:parent.Ext.getCmp('FFSJ').getValue(),
-				                    	jqmc:parent.Ext.getCmp('FFJQ').getValue(),
-				                    	tdrs:parent.Ext.getCmp('ZRS').getValue(),
-				                    	zjrs:parent.Ext.getCmp('ZJRS').getValue(),
-				                    	hjje:parent.Ext.getCmp('ZJE').getValue()
-				                    },
-				                    method : 'POST',
-				                    success : function(response,opts){
-				                        var data=response.responseText;
-				                        var json = eval('(' + data + ')');
-										parent.Ext.ux.Toast.msg('操作提示：',json.message);
-										CreateBaseModel.close();
-										GridBaseModel.refresh();
-				                    }
-				                });
-			                };
-			                CreateBaseModel.show('劳动奖金导入', 'purchaseOrder', 1000, 550, CreateInfo.getItems(),data);
-			                GridRewardInModelInForm.setGriddata(CreateBaseModel.grid,data);
-	                    	importExcel.close();
-	                    	
-	                    	var hjzje = 0;
-	                    	for(var i=0;i<data.root.length;i++){
-	                    		hjzje = hjzje+data.root[i].CZJE;
-	                    	}
-	                    	
-   			                parent.Ext.getCmp("HJ").setValue(hjzje+"元");
-   			                parent.Ext.getCmp("RS").setValue(data.root.length+"人");
-   			                parent.Ext.getCmp("ZRS").setValue(data.root.length);
-   			                parent.Ext.getCmp("ZJE").setValue(hjzje);
-   			                parent.Ext.getCmp('T_FFJQ').setValue(jqmc);
-   			                parent.Ext.getCmp('FFJQ').setValue(jqmc);
-   			                parent.Ext.getCmp('T_FFSJ').setValue(ssyf);
-   			                parent.Ext.getCmp('FFSJ').setValue(ssyf);
-   			                parent.Ext.getCmp('ZJRS').setValue(69);
-						}
-					}
-                },
-                failure : function(form, action) {
-                	var data=action.responseJSON;
-                	parent.Ext.ux.Toast.msg('操作提示：',data.message);
-                	importExcel.close();
-                }
-            });
-        }
-	};
-}();
-
-
-//表格
-CreateOrder = function() {
-    return {
-        getItems: function() {
-             var items = [
-                      {
-                      	  cls:'title',
-                    	  items:[{xtype:'label',html:'劳动奖金批量导入'}]
-					  },
-					  {
-                    	  xtype: 'panel',
-                          layout: 'fit',
-                          autoScroll:true,
-                          bodyStyle: 'background:RGB(200,250,180); border-color:RGB(196,214,242); border-width:1px; border-style:solid;',
-                          defaults: {
-                              anchor:"100%"
-                          },
-                          items: CreateBaseModel.grid
-                      },
-                      {  
-                    	  xtype: 'textfield',
-                          hidden : true,
-                          id:'gridStr',
-                          name: 'gridStr'
-                      }
-                ];
-            return items;
-        },
-        
-        show: function() {
-        	//orderCheck.sendRequest();
-        }
-    };
-} ();
 
 //表格
 GridModel = function() {
@@ -840,9 +510,6 @@ GridModel = function() {
                          ];
              return columns;           
          },
-         importData: function(){
-          	importExcel.show();
-          },
         show: function(){
         	GridBaseModel.onRowDblClick = function(namespace,action){
             	if(parent.isGranted(namespace,action,"retrieve")){     
@@ -860,9 +527,9 @@ GridModel = function() {
             GridBaseModel.setAuthorityNameSpace(authorityNameSpace);
             GridBaseModel.setAuthorityAction(authorityAction);
             var pageSize=17;
-            var commands=["grant","grant","grant","detail","search","query","export"];
-            var tips=['奖金发放','批量导入','重新提单','详细(D)','高级搜索(S)','显示全部(A)','导出(E)'];
-            var callbacks=[GrantModel.show,GridModel.importData,BonusModify.show,GridBaseModel.detail,GridBaseModel.advancedsearch,GridBaseModel.showall,GridBaseModel.exportData];
+            var commands=["grant","grant","detail","search","query","export"];
+            var tips=['奖金发放','重新提单','详细(D)','高级搜索(S)','显示全部(A)','导出(E)'];
+            var callbacks=[GrantModel.show,BonusModify.show,GridBaseModel.detail,GridBaseModel.advancedsearch,GridBaseModel.showall,GridBaseModel.exportData];
         
             GridBaseModel.show(contextPath, namespace, action, pageSize, this.getFields(), this.getColumns(), commands, tips, callbacks);
         }

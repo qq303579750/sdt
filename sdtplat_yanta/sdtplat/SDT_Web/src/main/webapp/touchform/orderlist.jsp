@@ -144,7 +144,7 @@
 
 	        	}else{
 	        		
-	        		$("#thelist").append("<li class='plistnav' >没有信息</li>")
+	        		$("#thelist").append("<li class='plistnav' ><span class='p_name'>没有信息</span></li>")
 	        	}
 
 	    		t1.resize();

@@ -103,7 +103,7 @@ AdvancedSearchModel = function() {
                                 triggerAction:'all',
                                 forceSelection: true,
                                 editable:       false,
-                                fieldLabel: '所属单位'
+											    fieldLabel: '所属监区'    		
                             },
                             {
                                 id:'search_JSBH',
@@ -112,7 +112,7 @@ AdvancedSearchModel = function() {
                             {
                                 id:'search_FJQ',
                                 hidden:true,
-                                fieldLabel: '分单位'
+											    fieldLabel: '分监区'
                             },
                             {
                                 id:'search_DQZT',
@@ -334,12 +334,12 @@ DisplayModel = function() {
                             },
                             {
                                 value: PubFunc.getPrisonInfo(record.SHJQ_id,'text'),
-                                fieldLabel: '所属单位'
+                                                 fieldLabel: '所属监区'
                             },
                             {
                                 value: record.FJQ,
                                 hidden:true,
-                                fieldLabel: '分单位'
+                                                 fieldLabel: '分监区'
                             },
                             {
                                 value: record.JSBH,
@@ -469,7 +469,7 @@ GridModel = function() {
                 {header: "籍贯", width: 20, dataIndex: 'RYJG', sortable: true},
                 {header: "性别",     width: 10, dataIndex: 'XB',     sortable: true,hidden:true},
                 {header: "出生日期", width: 25, dataIndex: 'CSRQ',    sortable: true},
-                {header: "所属单位", width: 20, dataIndex: 'SHJQ_id', sortable: true, renderer:function(value){return PubFunc.getPrisonInfo(value,'text');}},
+ 				{header: "所属监区", width: 20, dataIndex: 'SHJQ_id', sortable: true, renderer:function(value){return PubFunc.getPrisonInfo(value,'text');}},
                 //{header: "分单位",   width: 15, dataIndex: 'FJQ',   sortable: true},
                 {header: "监舍编号", width: 20, dataIndex: 'JSBH', sortable: true},
                 //{header: "账户编号", width: 20, dataIndex: 'ZHBH', sortable: true},
@@ -496,7 +496,7 @@ GridModel = function() {
                 return -1;
             }
             var ret = WebCardCtrl._I_IsNewCard();
-            alert(ret)
+            	//alert(ret)
             if ( ret < 0){
                 return OPT_ERROR; //操作失败
             }else if (ret == 0){

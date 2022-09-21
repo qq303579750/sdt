@@ -45,6 +45,12 @@ public class PersonInfo extends SimpleModel {
 	protected String RYBH;
 
 	@DisplayIgnore
+	@SearchableProperty
+	@ModelAttr("银行卡号")
+	@Column(length = 64)
+	protected String YHKH;
+
+	@DisplayIgnore
 	@ModelAttrNotNull
 	@SearchableProperty
 	@ModelAttr("人员籍贯")
@@ -136,6 +142,11 @@ public class PersonInfo extends SimpleModel {
 	@ModelAttr("余额")
 	@Column(length = 64)
 	protected Double YE;
+
+	@DisplayIgnore
+	@ModelAttr("劳动报酬余额")
+	@Column(length = 64)
+	protected Double BCJE;
 
 	@DisplayIgnore
 	@ModelAttrNotNull
@@ -357,6 +368,14 @@ public class PersonInfo extends SimpleModel {
 	public void setBZ(String BZ) {
 		this.BZ = BZ;
 	}
+	@XmlAttribute
+	public String getYHKH() {
+		return YHKH;
+	}
+
+	public void setYHKH(String YHKH) {
+		this.YHKH = YHKH;
+	}
 
 	@Override
 	public String getMetaData() {
@@ -369,6 +388,14 @@ public class PersonInfo extends SimpleModel {
 
 	public void setRYBH_MD5(String rYBH_MD5) {
 		RYBH_MD5 = rYBH_MD5;
+	}
+	@XmlAttribute
+	public Double getBCJE() {
+		return BCJE;
+	}
+
+	public void setBCJE(Double BCJE) {
+		this.BCJE = BCJE;
 	}
 
 	public static void main(String[] args) {

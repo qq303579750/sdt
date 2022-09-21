@@ -10522,8 +10522,7 @@ GridRewardInModelInForm = function() {
          				{name: 'ZHBH'},
          				{name: 'YE'},
          				{name: 'FFSJ'},
-         				{name: 'CZJE'},
-                    {name: 'CZBZ'}
+         				{name: 'CZJE'}
         			]
             });
     		var records = jsonStore.getRange();
@@ -10671,7 +10670,7 @@ GridRewardInModelInForm = function() {
     				{header: "当前余额", width: 30, dataIndex: 'YE',   sortable: true,renderer:function(value){return PubFunc.MoneyFormat(value);}},
     				{header: "所属月份", width: 30, dataIndex: 'SSYF', sortable: true},
     				{header: "充值金额", width: 30, dataIndex: 'CZJE', sortable: true,renderer:function(value){return PubFunc.MoneyFormat(value);}}
-                    ,{header: "充值备注", width: 30, dataIndex: 'CZBZ', sortable: true}
+
     			]
     		});
             

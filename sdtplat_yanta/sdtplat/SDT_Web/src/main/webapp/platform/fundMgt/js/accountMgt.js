@@ -49,7 +49,7 @@
                                                 triggerAction:'all',
                                                 forceSelection: true,
                                                 editable:       false,
-	                                            fieldLabel: '所属单位'
+	                                            fieldLabel: '所属监区'
                                             }
                                           ]
                               },{
@@ -269,7 +269,7 @@
                                                 readOnly : true,
                                                 id: 'ssjq',
                                                 name:'model.JQMC',
-                                                fieldLabel: '所属单位'
+                                                fieldLabel: '所属监区'
                                             },
                                             
                                             {
@@ -422,7 +422,7 @@
                                             },
                                             {
                                                 value: model.JQMC,
-                                                fieldLabel: '所属单位'
+                                                fieldLabel: '所属监区'
                                             },
                                             {
                                                 value: model.XFSJ,
@@ -533,7 +533,7 @@
 						                {header: "人员编号",  dataIndex: 'RYBH', sortable: true},
 						        		{header: "监舍编号",  dataIndex: 'JSBH', sortable: true},
 						        		{header: "姓名",  dataIndex: 'XM', sortable: true},
-						        		{header: "单位",  dataIndex: 'JQMC', sortable: true},
+						        		{header: "监区",  dataIndex: 'JQMC', sortable: true},
 						        		{header: "当前余额",  dataIndex: 'YE', sortable: true},
 						        		{header: "消费类型",  dataIndex: 'XFLX', sortable: true},
 						        		{header: "消费金额",  dataIndex: 'XFJE', sortable: true},
@@ -803,7 +803,7 @@
                 {header: "姓名", width: 20, dataIndex: 'XM', sortable: true},
                 {header: "籍贯", width: 20, dataIndex: 'RYJG', sortable: true},
                 {header: "监舍编号", width: 20, dataIndex: 'JSBH', sortable: true},
-                {header: "所属单位", width: 20, dataIndex: 'JQMC', sortable: true},
+                {header: "所属监区", width: 20, dataIndex: 'JQMC', sortable: true},
  				{header: "消费时间", width: 20, dataIndex: 'XFSJ', sortable: true},
  				{header: "消费金额", width: 20, dataIndex: 'XFJE', sortable: true},
  				{header: "消费类型", width: 20, dataIndex: 'XFLX', sortable: true},
@@ -876,7 +876,7 @@
                 GridBaseModel.setAuthorityAction(authorityAction);
                 GridBaseModel.getSearchModel=function(){return true;};
                 var commands=["create","batch","batch","detail","search","query","print"];
-                var tips=['单人下账','单位下账',"批量下账",'详细','高级搜索','显示全部',"补打"];
+                var tips=['单人下账','监区下账',"批量下账",'详细','高级搜索','显示全部',"补打"];
                 var callbacks=[GridBaseModel.create,GrantModel.show,GridModel.importData,GridBaseModel.detail,GridBaseModel.advancedsearch,GridBaseModel.showall,GridModel.print];
                 GridBaseModel.show(contextPath, namespace, action, pageSize, this.getFields(), this.getColumns(), commands, tips, callbacks);
             }

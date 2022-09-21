@@ -52,7 +52,7 @@ AdvancedSearchModel = function() {
 										    triggerAction:'all',
 										    forceSelection: true,
 										    editable:       false,
-										    fieldLabel: '所属单位'
+										    fieldLabel: '所属监区'
 										}
                                       ]
                           },{
@@ -232,7 +232,7 @@ DisplayModel = function() {
                                         },
                                         {
                                             value: record.data['JQMC'],
-                                            fieldLabel: '所属单位'
+                                            fieldLabel: '所属监区'
                                         },
                                         {
                                             value: record.data['DQJE'],
@@ -316,11 +316,11 @@ changePrison = function(id,old_jqid,xm,rybh,jqmc){
 			                    handler: function() {
 									var jqid = parent.Ext.getCmp('shjq').getValue();
 									if (jqid == undefined || jqid == "") {
-										parent.Ext.ux.Toast.msg('操作提示：','请选单位！');
+										parent.Ext.ux.Toast.msg('操作提示：','请选监区！');
 										return;
 									}
 									if(jqid == old_jqid){
-										parent.Ext.ux.Toast.msg('操作提示：','选择单位和旧单位相同');
+										parent.Ext.ux.Toast.msg('操作提示：','选择监区和旧监区相同');
 										return;
 									}
 									changePrison.ChagePanel.form.submit({
@@ -374,7 +374,7 @@ changePrison = function(id,old_jqid,xm,rybh,jqmc){
 					    editable:       false,
 					    fieldLabel: '转至',
 					    allowBlank: false,
-					    blankText : '所属单位不能为空'
+					    blankText : '所属监区不能为空'
 					}
 					]
 			});
@@ -484,7 +484,7 @@ ModifyModel = function() {
 												xtype : 'container',
 												layout : 'column',
 												border : false,
-												fieldLabel : '所属单位',
+												fieldLabel : '所属监区',
 												items : [{
 															columnWidth : .99,
 															xtype : 'textfield',
@@ -714,7 +714,7 @@ CashRecharge = function(){
 						    triggerAction:'all',
 						    forceSelection: true,
 						    editable:       false,
-						    fieldLabel: '所属单位'
+						    fieldLabel: '所属监区'
 						}
 	                ]
 				});
@@ -822,7 +822,7 @@ RemitRecharge = function(){
 						    triggerAction:'all',
 						    forceSelection: true,
 						    editable:       false,
-						    fieldLabel: '所属单位'
+						    fieldLabel: '所属监区'
 						}
 	                ]
 				});
@@ -1073,7 +1073,7 @@ BatchRechargeGird = function(){
 					                {header: "人员编号",  dataIndex: 'RYBH', sortable: true},
 					        		{header: "监舍编号",  dataIndex: 'JSBH', sortable: true},
 					        		{header: "姓名",  dataIndex: 'XM', sortable: true},
-					        		{header: "单位",  dataIndex: 'JQMC', sortable: true},
+					        		{header: "监区",  dataIndex: 'JQMC', sortable: true},
 					        		{header: "当前余额",  dataIndex: 'YE', sortable: true},
 					        		{header: "充值类型",  dataIndex: 'CZLX', sortable: true},
 					        		{header: "充值金额",  dataIndex: 'CZJE', sortable: true},
@@ -1193,7 +1193,7 @@ GridModel = function() {
 			{header: "人员编号", width: 8, dataIndex: 'RYBH', sortable: true},
 			{header: "监舍编号", width: 8, dataIndex: 'JSBH', sortable: true},
 			{header: "姓名", width: 8, dataIndex: 'XM',     sortable: true},
-			{header: "所属单位", width: 8, dataIndex: 'JQMC', sortable: true},
+			{header: "所属监区", width: 8, dataIndex: 'JQMC', sortable: true},
 			{header: "充值时间", width: 8, dataIndex: 'CZSJ', sortable: true},
 			{header: "充值类型", width: 8, dataIndex: 'CZLX', sortable: true},
 			{header: "审核状态", width: 8, dataIndex: 'SHZT', sortable: true,
