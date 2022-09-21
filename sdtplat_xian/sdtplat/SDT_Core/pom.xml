@@ -73,6 +73,7 @@
         <quartz.version>1.8.4</quartz.version>
         <jcaptcha-all.version>1.0-RC6</jcaptcha-all.version>
         <sigar.version>1.6.4</sigar.version>        
+        <cxf.version>2.7.3</cxf.version>
         <wro4j.version>1.7.0</wro4j.version>
         <aspectj.version>1.7.4</aspectj.version>
         <commons-net.version>3.3</commons-net.version>
@@ -700,6 +701,61 @@
             </exclusions>
         </dependency>
         
+        <!-- cxf webservice begin -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-core</artifactId>
+            <version>${cxf.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-javamail_1.4_spec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-activation_1.1_spec</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-javamail_1.4_spec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-activation_1.1_spec</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-security</artifactId>
+            <version>${cxf.version}</version>
+            <exclusions>                
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- webservice end -->
+
+        
+        
         <dependency>
             <groupId>ro.isdc.wro4j</groupId>
             <artifactId>wro4j-core</artifactId>
@@ -1032,6 +1088,33 @@
     </dependencies>
     <build>
         <plugins>
+            
+            <!--执行对JS和CSS的混淆压缩-->
+            <!-- The yuicompressor plugin will process the js files and css files in src/main/webapp, but they won't be included in the final war.
+           
+            <plugin>        
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>yuicompressor-maven-plugin</artifactId>
+                <version>${yuicompressor-maven-plugin}</version>
+                <executions>
+                    <execution>   
+                        <phase>compile</phase>                 
+                        <goals>
+                            <goal>jslint</goal>
+                            <goal>compress</goal>
+                        </goals>
+                    </execution>
+                </executions>       
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <nosuffix>true</nosuffix>
+                    <nomunge>false</nomunge>
+                    <disableOptimizations>false</disableOptimizations>
+                    <linebreakpos>7999</linebreakpos>
+                </configuration> 
+            </plugin>
+            -->
+            
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-release-plugin</artifactId>
