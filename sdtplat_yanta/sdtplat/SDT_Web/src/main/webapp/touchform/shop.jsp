@@ -225,15 +225,15 @@
 	    	return;
     	}
     	
-    	if(csxfxe>0){
-	    	if(byxfsy-bccshj<0){
-		    	d.set('content', "<div class=\"dialog_msg\" style=\"padding:20px 50px\">对不起，<br/>您本月可用额度"+csxfxe+"元，<br/>剩余额度"+byxfsy+"元。<br/>所选商品超额，不能完成购买，</div>");
-		    	d.show();
-                tjcs =0;
-                $('#jsuan').removeAttr("disabled"); 
-		    	return;
-	    	}
-    	}
+    	// if(csxfxe>0){
+	    // 	if(byxfsy-bccshj<0){
+		//     	d.set('content', "<div class=\"dialog_msg\" style=\"padding:20px 50px\">对不起，<br/>您本月可用额度"+csxfxe+"元，<br/>剩余额度"+byxfsy+"元。<br/>所选商品超额，不能完成购买，</div>");
+		//     	d.show();
+        //         tjcs =0;
+        //         $('#jsuan').removeAttr("disabled");
+		//     	return;
+	    // 	}
+    	// }
     	if(xyxfxe>0){
 	    	if(byxyxfsy-bcxyhj<0){
 		    	d.set('content', "<div class=\"dialog_msg\" style=\"padding:20px 50px\">对不起，<br/>您本月可用香烟额度"+xyxfxe+"元，<br/>剩余额度"+byxyxfsy+"元。<br/>本次消费超额，不能完成购买，</div>");

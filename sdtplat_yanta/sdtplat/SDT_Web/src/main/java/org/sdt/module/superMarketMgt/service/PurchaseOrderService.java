@@ -263,15 +263,15 @@ public class PurchaseOrderService {
 			
 			String autoStop = PropertyHolder.getProperty("autostop").replace("\"", "'");
 			
-			if(autoStop.equals("开启")){
-				String sql = "select * from PurchaseOrder where YEAR(createTime)=YEAR(NOW()) and MONTH(createTime)=MONTH(NOW())";
-				Query query = serviceFacade.getEntityManager().createNativeQuery(sql);
-				List<Object[]> result = query.getResultList();
-				if(result.size()>0){
-					return false;
-				}
-				
-			}
+//			if(autoStop.equals("开启")){
+//				String sql = "select * from PurchaseOrder where YEAR(createTime)=YEAR(NOW()) and MONTH(createTime)=MONTH(NOW())";
+//				Query query = serviceFacade.getEntityManager().createNativeQuery(sql);
+//				List<Object[]> result = query.getResultList();
+//				if(result.size()>0){
+//					return false;
+//				}
+//
+//			}
 		}
 		return true;
 	}
