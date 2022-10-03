@@ -368,7 +368,7 @@ public class SalesInfoService {
         Double bcJE = new Double(0);
         for (SalesInfoDetail t : detail) {
             String FLMC = t.getHPFL();
-            if (-1 != FLMC.indexOf("水果")) {
+            if (-1 != FLMC.indexOf("水果")  && !t.getHPFL().equals("金花医药") && !t.getHPFL().equals("老百姓大药房")) {
                 bcJE = bcJE + t.getJE();
             }
         }
@@ -413,10 +413,10 @@ public class SalesInfoService {
         Double bcJE = new Double(0);
         for (SalesInfoDetail t : detail) {
             String FLMC = t.getHPFL();
-            if (-1 != FLMC.indexOf("香烟")) {
+            if (-1 != FLMC.indexOf("香烟")  && !t.getHPFL().equals("金花医药") && !t.getHPFL().equals("老百姓大药房")) {
                 bcJE = bcJE + t.getJE();
             }
-        }
+            }
         String fromto[] = calcMonthBeginAndEnd();
         StringBuilder sql = new StringBuilder();
         sql.append("select sum(JE) as JE from v_sales where ");
@@ -459,7 +459,7 @@ public class SalesInfoService {
         Double bcJE = 0.0;
 
         for (SalesInfoDetail t : detail) {
-            if (!t.getHPFL().equals("香烟") && !t.getHPFL().equals("水果")) {
+            if (!t.getHPFL().equals("香烟") && !t.getHPFL().equals("水果") && !t.getHPFL().equals("金花医药") && !t.getHPFL().equals("老百姓大药房")) {
                 bcJE = bcJE + t.getJE();
             }
         }
@@ -469,7 +469,7 @@ public class SalesInfoService {
         sql.append("select sum(JE) as JE from v_sales where ");
         sql.append("XSSJ>='" + fromto[0] + "' and XSSJ <='" + fromto[1] + "'");
         sql.append(" and SHZT=\'已通过\' and RYBH=" + model.getRYBH());
-        sql.append(" and HPFL != '香烟' and HPFL !='水果' ");
+        sql.append(" and HPFL != '香烟' and HPFL !='水果' and HPFL != '金花医药' and HPFL !='老百姓大药房' ");
         sql.append(" group by RYBH");
         List<Object> result = serviceFacade.getEntityManager().createNativeQuery(sql.toString()).getResultList();
         Double zje = new Double(0.0);
