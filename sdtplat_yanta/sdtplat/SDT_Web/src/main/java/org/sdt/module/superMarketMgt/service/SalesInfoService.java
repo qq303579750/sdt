@@ -459,6 +459,7 @@ public class SalesInfoService {
         Double bcJE = 0.0;
 
         for (SalesInfoDetail t : detail) {
+            
             if (!t.getHPFL().equals("香烟") && !t.getHPFL().equals("水果") && !t.getHPFL().equals("金花医药") && !t.getHPFL().equals("老百姓大药房")) {
                 bcJE = bcJE + t.getJE();
             }
