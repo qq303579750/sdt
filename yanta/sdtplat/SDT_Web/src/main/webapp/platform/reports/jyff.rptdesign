@@ -1,0 +1,1610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
+    <list-property name="userProperties">
+        <structure>
+            <property name="name">Data Cube.salseDetail.x</property>
+            <property name="type">integer</property>
+            <property name="isVisible">false</property>
+        </structure>
+        <structure>
+            <property name="name">Data Cube.salseDetail.y</property>
+            <property name="type">integer</property>
+            <property name="isVisible">false</property>
+        </structure>
+        <structure>
+            <property name="name">Data Cube.salesDetail.x</property>
+            <property name="type">integer</property>
+            <property name="isVisible">false</property>
+        </structure>
+        <structure>
+            <property name="name">Data Cube.salesDetail.y</property>
+            <property name="type">integer</property>
+            <property name="isVisible">false</property>
+        </structure>
+    </list-property>
+    <property name="Data Cube.salseDetail.x">135</property>
+    <property name="Data Cube.salseDetail.y">80</property>
+    <property name="Data Cube.salesDetail.x">135</property>
+    <property name="Data Cube.salesDetail.y">80</property>
+    <list-property name="propertyBindings">
+        <structure>
+            <property name="name">queryText</property>
+            <property name="id">1439</property>
+        </structure>
+        <structure>
+            <property name="name">queryTimeOut</property>
+            <property name="id">1439</property>
+        </structure>
+        <structure>
+            <property name="name">rowFetchSize</property>
+            <property name="id">1439</property>
+        </structure>
+    </list-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">common.rptlibrary</property>
+            <property name="namespace">common</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="title" id="1026" extends="common.title"/>
+        <scalar-parameter name="infoLeft" id="1027" extends="common.infoLeft"/>
+        <scalar-parameter name="infoRight" id="1028" extends="common.infoRight"/>
+        <scalar-parameter name="condition" id="1029" extends="common.condition"/>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="sdtplatdb" id="1023">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://localhost:3306/sdtplat_db</property>
+            <property name="odaUser">root</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">cm9vdA==</encrypted-property>
+            <property name="odaJndiName">java:comp/env/jdbc/sdtplat_db</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="salesDetail" id="1439">
+            <property name="eventHandlerClass">org.sdt.platform.report.MyDataSetAdapter</property>
+            <property name="nullsOrdering">nulls lowest</property>
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">zhl</property>
+                    <expression name="expression">if(row["XRL"]&lt;=1){&#13;
+row["SL"]+row["DW"]&#13;
+}else{&#13;
+if(row["SL"]&lt;row["XRL"]){&#13;
+	row["SL"]+row["DW"]&#13;
+}else if(row["SL"]%row["XRL"]>0){&#13;
+	Math.floor(row["SL"]/row["XRL"])+"件"+(row["SL"]%row["XRL"])+row["DW"]&#13;
+	}else {&#13;
+	Math.floor(row["SL"]/row["XRL"])+"件"&#13;
+	&#13;
+}&#13;
+}</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">jehj</property>
+                    <expression name="expression">row["DJ"]*row["SL"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">HPBM</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">HPBM</text-property>
+                    <text-property name="heading">HPBM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">HPMC</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">HPMC</text-property>
+                    <text-property name="heading">HPMC</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">HPFL</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">HPFL</text-property>
+                    <text-property name="heading">HPFL</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">GGXH</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">GGXH</text-property>
+                    <text-property name="heading">GGXH</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">DW</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">DW</text-property>
+                    <text-property name="heading">DW</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">PP</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">PP</text-property>
+                    <text-property name="heading">PP</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">XRL</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">XRL</text-property>
+                    <text-property name="heading">XRL</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SL</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">SL</text-property>
+                    <text-property name="heading">SL</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">DJ</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">DJ</text-property>
+                    <text-property name="heading">DJ</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">HPBM</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">HPMC</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">HPFL</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">GGXH</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">DW</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">PP</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">XRL</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">SL</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">DJ</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">zhl</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">jehj</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">sdtplatdb</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">HPBM</property>
+                    <property name="nativeName">HPBM</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">HPMC</property>
+                    <property name="nativeName">HPMC</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">HPFL</property>
+                    <property name="nativeName">HPFL</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">GGXH</property>
+                    <property name="nativeName">GGXH</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">DW</property>
+                    <property name="nativeName">DW</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">PP</property>
+                    <property name="nativeName">PP</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">XRL</property>
+                    <property name="nativeName">XRL</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">SL</property>
+                    <property name="nativeName">SL</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">3</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">DJ</property>
+                    <property name="nativeName">DJ</property>
+                    <property name="dataType">float</property>
+                    <property name="nativeDataType">8</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select hpbm,HPMC,HPFL,GGXH,DW,PP,XRL,sum(sl) as SL,dj 
+from v_sales detail]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>HPFL_id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>HPFL_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>HPFL_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>HPFL</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>64</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>HPFL</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>HPFL</design:label>
+            <design:formattingHints>
+              <design:displaySize>64</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>ID</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>ID</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>ID</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>HPBM</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>HPBM</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>HPBM</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>HPMC</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>HPMC</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>HPMC</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>GGXH</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>GGXH</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>GGXH</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DW</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>16</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DW</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DW</design:label>
+            <design:formattingHints>
+              <design:displaySize>16</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>XRL</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>64</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>XRL</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>XRL</design:label>
+            <design:formattingHints>
+              <design:displaySize>64</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>id</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>SL</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>SL</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>SL</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>JE</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>JE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>JE</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>XSDJID_id</design:name>
+              <design:position>12</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>XSDJID_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>XSDJID_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <cubes>
+        <tabular-cube name="Data Cube" id="1388">
+            <property name="dimensions">
+                <tabular-dimension name="HPBM" id="1391">
+                    <property name="defaultHierarchy">NewTabularHierarchy</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy" id="1392">
+                            <property name="levels">
+                                <tabular-level name="HPBM" id="1393">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">HPBM</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="HPFL" id="1395">
+                    <property name="defaultHierarchy">NewTabularHierarchy1</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy1" id="1396">
+                            <property name="levels">
+                                <tabular-level name="HPFL" id="1397">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">HPFL</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="HPMC" id="1398">
+                    <property name="defaultHierarchy">NewTabularHierarchy2</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy2" id="1399">
+                            <property name="levels">
+                                <tabular-level name="HPMC" id="1400">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">HPMC</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="GGXH" id="1401">
+                    <property name="defaultHierarchy">NewTabularHierarchy3</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy3" id="1402">
+                            <property name="levels">
+                                <tabular-level name="GGXH" id="1403">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">GGXH</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="DW" id="1404">
+                    <property name="defaultHierarchy">NewTabularHierarchy4</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy4" id="1405">
+                            <property name="levels">
+                                <tabular-level name="DW" id="1406">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">DW</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="PP" id="2241">
+                    <property name="defaultHierarchy">NewTabularHierarchy5</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy5" id="2242">
+                            <property name="levels">
+                                <tabular-level name="PP" id="2243">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">PP</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="xrl" id="2244">
+                    <property name="defaultHierarchy">NewTabularHierarchy6</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy6" id="2245">
+                            <property name="levels">
+                                <tabular-level name="XRL" id="2246">
+                                    <property name="dataType">integer</property>
+                                    <property name="columnName">XRL</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="sl" id="2247">
+                    <property name="defaultHierarchy">NewTabularHierarchy7</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy7" id="2248">
+                            <property name="levels">
+                                <tabular-level name="SL" id="2249">
+                                    <property name="dataType">decimal</property>
+                                    <property name="columnName">SL</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="dj" id="2250">
+                    <property name="defaultHierarchy">NewTabularHierarchy8</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy8" id="2251">
+                            <property name="levels">
+                                <tabular-level name="DJ" id="2252">
+                                    <property name="dataType">float</property>
+                                    <property name="columnName">DJ</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="ZHL" id="2525">
+                    <property name="defaultHierarchy">NewTabularHierarchy9</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy9" id="2526">
+                            <property name="levels">
+                                <tabular-level name="zhl" id="2527">
+                                    <property name="dataType">string</property>
+                                    <property name="levelType">dynamic</property>
+                                    <property name="columnName">zhl</property>
+                                    <expression name="displayColumnName" type="javascript">dataSetRow["zhl"]</expression>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="JEHJ" id="2536">
+                    <property name="defaultHierarchy">NewTabularHierarchy10</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy10" id="2537">
+                            <property name="levels">
+                                <tabular-level name="jehj" id="2538">
+                                    <property name="dataType">float</property>
+                                    <property name="columnName">jehj</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+            </property>
+            <property name="measureGroups">
+                <tabular-measure-group name="Summary Field" id="3354">
+                    <property name="measures">
+                        <tabular-measure name="jehj" id="3355">
+                            <expression name="measureExpression" type="javascript">dataSetRow["jehj"]</expression>
+                            <property name="dataType">float</property>
+                        </tabular-measure>
+                    </property>
+                </tabular-measure-group>
+                <tabular-measure-group name="Summary Field1" id="3447">
+                    <property name="measures">
+                        <tabular-measure name="zhl" id="3448">
+                            <property name="function">max</property>
+                            <property name="isCalculated">false</property>
+                            <expression name="measureExpression" type="javascript">dataSetRow["zhl"]</expression>
+                            <property name="dataType">string</property>
+                            <property name="isVisible">true</property>
+                        </tabular-measure>
+                    </property>
+                </tabular-measure-group>
+            </property>
+            <property name="dataSet">salesDetail</property>
+            <property name="autoKey">false</property>
+        </tabular-cube>
+    </cubes>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="NewStyle" id="2345">
+            <property name="backgroundColor">#BFCBCE</property>
+            <property name="fontFamily">"宋体"</property>
+            <property name="fontSize">14px</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#000000</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="paddingTop">1px</property>
+            <property name="paddingLeft">1px</property>
+            <property name="paddingBottom">1px</property>
+            <property name="paddingRight">1px</property>
+            <property name="textAlign">center</property>
+            <property name="lineHeight">28px</property>
+            <property name="verticalAlign">middle</property>
+            <property name="wordSpacing">normal</property>
+        </style>
+        <style name="listStyle" id="2346">
+            <property name="fontFamily">"@宋体"</property>
+            <property name="fontSize">12px</property>
+            <property name="fontWeight">100</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="marginLeft">0pt</property>
+            <property name="marginRight">0pt</property>
+            <property name="paddingLeft">8px</property>
+            <property name="paddingRight">8px</property>
+            <property name="lineHeight">24px</property>
+            <property name="verticalAlign">middle</property>
+        </style>
+        <style name="footStyle" id="2366">
+            <property name="backgroundColor">#D9D9D9</property>
+            <property name="fontSize">12px</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="paddingLeft">5pt</property>
+            <property name="paddingRight">5pt</property>
+            <property name="lineHeight">24px</property>
+        </style>
+        <style name="TableStyle" id="2368">
+            <property name="borderBottomStyle">groove</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftStyle">groove</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightStyle">groove</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopStyle">groove</property>
+            <property name="borderTopWidth">1px</property>
+        </style>
+        <style name="FontStyle" id="3636"/>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="leftMargin">0.5416666666666666in</property>
+            <property name="rightMargin">0.6145833333333334in</property>
+            <page-footer>
+                <text id="3"/>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="2321">
+            <property name="marginLeft">0pt</property>
+            <property name="marginRight">0pt</property>
+            <property name="paddingLeft">20px</property>
+            <property name="paddingRight">20px</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">Column Binding</property>
+                    <expression name="expression" type="javascript">params["title"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">title</property>
+                    <expression name="expression" type="javascript">params["title"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">infoRight</property>
+                    <expression name="expression" type="javascript">params["infoRight"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <column id="2322"/>
+            <row id="2323">
+                <property name="height">0.4166666666666667in</property>
+                <cell id="2324">
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingLeft">0pt</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="paddingRight">0pt</property>
+                    <data id="2338">
+                        <property name="fontSize">18pt</property>
+                        <property name="fontWeight">bold</property>
+                        <property name="marginTop">0pt</property>
+                        <property name="marginBottom">0pt</property>
+                        <property name="textAlign">center</property>
+                        <property name="lineHeight">58px</property>
+                        <property name="verticalAlign">middle</property>
+                        <property name="resultSetColumn">title</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="2325">
+                <cell id="2326">
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingLeft">1px</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="paddingRight">1px</property>
+                    <grid id="2359">
+                        <property name="marginRight">auto</property>
+                        <column id="2360"/>
+                        <column id="2361"/>
+                        <row id="2362">
+                            <cell id="2363">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                                <data id="2358">
+                                    <property name="textAlign">right</property>
+                                    <property name="lineHeight">22px</property>
+                                    <property name="resultSetColumn">infoRight</property>
+                                </data>
+                                <data id="2365">
+                                    <property name="textAlign">right</property>
+                                    <property name="lineHeight">22px</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">infoLeft</property>
+                                            <expression name="expression" type="javascript">params["infoLeft"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">infoLeft</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                    <label id="2419">
+                        <property name="textAlign">right</property>
+                        <property name="lineHeight">22px</property>
+                        <text-property name="text">制单单位：陕西独角兽网络科技有限公司</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="2327">
+                <property name="height">1.5208333333333333in</property>
+                <cell id="2328">
+                    <property name="paddingTop">0pt</property>
+                    <property name="paddingLeft">1px</property>
+                    <property name="paddingBottom">0pt</property>
+                    <property name="paddingRight">1px</property>
+                    <extended-item extensionName="Crosstab" extensionVersion="3.7.0" id="3540">
+                        <property name="cube">Data Cube</property>
+                        <property name="measures">
+                            <extended-item extensionName="MeasureView" id="3597">
+                                <property name="measure">jehj</property>
+                                <property name="detail">
+                                    <extended-item extensionName="AggregationCell" id="3598">
+                                        <property name="aggregationOnRow">dj/DJ</property>
+                                        <property name="borderTopColor">black</property>
+                                        <property name="borderLeftColor">black</property>
+                                        <property name="borderBottomColor">black</property>
+                                        <property name="borderRightColor">black</property>
+                                        <property name="paddingLeft">4px</property>
+                                        <property name="paddingRight">4px</property>
+                                        <property name="width">70px</property>
+                                        <property name="content">
+                                            <data id="3599">
+                                                <property name="style">FontStyle</property>
+                                                <structure name="numberFormat">
+                                                    <property name="category">Fixed</property>
+                                                    <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                                                </structure>
+                                                <property name="textAlign">right</property>
+                                                <property name="resultSetColumn">jehj_dj/DJ</property>
+                                            </data>
+                                        </property>
+                                        <property name="style">listStyle</property>
+                                    </extended-item>
+                                </property>
+                                <property name="aggregations">
+                                    <extended-item extensionName="AggregationCell" id="3619">
+                                        <property name="borderTopColor">black</property>
+                                        <property name="borderLeftColor">black</property>
+                                        <property name="borderBottomColor">black</property>
+                                        <property name="borderRightColor">black</property>
+                                        <property name="paddingLeft">4px</property>
+                                        <property name="paddingRight">4px</property>
+                                        <property name="content">
+                                            <data id="3620">
+                                                <structure name="numberFormat">
+                                                    <property name="category">Fixed</property>
+                                                    <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                                                </structure>
+                                                <property name="textAlign">right</property>
+                                                <property name="resultSetColumn">jehj_1</property>
+                                            </data>
+                                        </property>
+                                        <property name="style">footStyle</property>
+                                    </extended-item>
+                                </property>
+                                <property name="header">
+                                    <extended-item extensionName="CrosstabCell" id="3600">
+                                        <property name="content">
+                                            <label id="3601">
+                                                <property name="textAlign">center</property>
+                                                <text-property name="text">金额</text-property>
+                                            </label>
+                                        </property>
+                                        <property name="textAlign">right</property>
+                                        <property name="borderTopColor">black</property>
+                                        <property name="borderLeftColor">black</property>
+                                        <property name="borderBottomColor">black</property>
+                                        <property name="borderRightColor">black</property>
+                                        <property name="style">NewStyle</property>
+                                    </extended-item>
+                                </property>
+                            </extended-item>
+                            <extended-item extensionName="MeasureView" id="3602">
+                                <property name="measure">zhl</property>
+                                <property name="detail">
+                                    <extended-item extensionName="AggregationCell" id="3603">
+                                        <property name="aggregationOnRow">dj/DJ</property>
+                                        <property name="borderTopColor">black</property>
+                                        <property name="borderLeftColor">black</property>
+                                        <property name="borderBottomColor">black</property>
+                                        <property name="borderRightColor">black</property>
+                                        <property name="paddingLeft">4px</property>
+                                        <property name="paddingRight">4px</property>
+                                        <property name="width">68px</property>
+                                        <property name="content">
+                                            <data id="3604">
+                                                <property name="style">FontStyle</property>
+                                                <property name="resultSetColumn">zhl_dj/DJ</property>
+                                            </data>
+                                        </property>
+                                        <property name="style">listStyle</property>
+                                    </extended-item>
+                                </property>
+                                <property name="aggregations">
+                                    <extended-item extensionName="AggregationCell" id="3621">
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="style">footStyle</property>
+                                    </extended-item>
+                                </property>
+                                <property name="header">
+                                    <extended-item extensionName="CrosstabCell" id="3605">
+                                        <property name="content">
+                                            <label id="3606">
+                                                <text-property name="text">整量</text-property>
+                                            </label>
+                                        </property>
+                                        <property name="borderTopColor">black</property>
+                                        <property name="borderLeftColor">black</property>
+                                        <property name="borderBottomColor">black</property>
+                                        <property name="borderRightColor">black</property>
+                                        <property name="style">NewStyle</property>
+                                    </extended-item>
+                                </property>
+                            </extended-item>
+                        </property>
+                        <property name="rows">
+                            <extended-item extensionName="CrosstabView" id="3542">
+                                <property name="grandTotal">
+                                    <extended-item extensionName="CrosstabCell" id="3618">
+                                        <property name="content">
+                                            <label id="3623">
+                                                <property name="textAlign">right</property>
+                                                <text-property name="text">金额合计：</text-property>
+                                            </label>
+                                        </property>
+                                        <property name="borderTopColor">black</property>
+                                        <property name="borderLeftColor">black</property>
+                                        <property name="borderBottomColor">black</property>
+                                        <property name="borderRightColor">black</property>
+                                        <property name="paddingLeft">4px</property>
+                                        <property name="paddingRight">4px</property>
+                                        <property name="style">footStyle</property>
+                                    </extended-item>
+                                </property>
+                                <property name="views">
+                                    <extended-item extensionName="DimensionView" id="3543">
+                                        <property name="dimension">HPBM</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View" id="3544">
+                                                <property name="level">HPBM/HPBM</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="3545">
+                                                        <property name="content">
+                                                            <data name="HPBM" id="3546">
+                                                                <property name="style">FontStyle</property>
+                                                                <property name="fontFamily">"@宋体"</property>
+                                                                <property name="resultSetColumn">HPBM</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="borderTopColor">black</property>
+                                                        <property name="borderLeftColor">black</property>
+                                                        <property name="borderBottomColor">black</property>
+                                                        <property name="borderRightColor">black</property>
+                                                        <property name="paddingLeft">4px</property>
+                                                        <property name="paddingRight">4px</property>
+                                                        <property name="width">58px</property>
+                                                        <property name="style">listStyle</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="3627">
+                                        <property name="dimension">HPMC</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View1" id="3628">
+                                                <property name="level">HPMC/HPMC</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="3629">
+                                                        <property name="content">
+                                                            <data name="HPMC" id="3631">
+                                                                <property name="style">FontStyle</property>
+                                                                <property name="fontSize">13px</property>
+                                                                <property name="fontWeight">bold</property>
+                                                                <property name="resultSetColumn">HPMC</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="borderTopColor">black</property>
+                                                        <property name="borderLeftColor">black</property>
+                                                        <property name="borderBottomColor">black</property>
+                                                        <property name="borderRightColor">black</property>
+                                                        <property name="paddingLeft">4px</property>
+                                                        <property name="paddingRight">4px</property>
+                                                        <property name="style">listStyle</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="3567">
+                                        <property name="dimension">PP</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View5" id="3568">
+                                                <property name="level">PP/PP</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="3569">
+                                                        <property name="content">
+                                                            <data name="PP" id="3571">
+                                                                <property name="style">FontStyle</property>
+                                                                <property name="fontFamily">"@宋体"</property>
+                                                                <property name="resultSetColumn">PP</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="borderTopColor">black</property>
+                                                        <property name="borderLeftColor">black</property>
+                                                        <property name="borderBottomColor">black</property>
+                                                        <property name="borderRightColor">black</property>
+                                                        <property name="paddingLeft">4px</property>
+                                                        <property name="paddingRight">4px</property>
+                                                        <property name="style">listStyle</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="3557">
+                                        <property name="dimension">GGXH</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View3" id="3558">
+                                                <property name="level">GGXH/GGXH</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="3559">
+                                                        <property name="content">
+                                                            <data name="GGXH" id="3561">
+                                                                <property name="style">FontStyle</property>
+                                                                <property name="fontFamily">"@宋体"</property>
+                                                                <property name="resultSetColumn">GGXH</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="borderTopColor">black</property>
+                                                        <property name="borderLeftColor">black</property>
+                                                        <property name="borderBottomColor">black</property>
+                                                        <property name="borderRightColor">black</property>
+                                                        <property name="paddingLeft">4px</property>
+                                                        <property name="paddingRight">4px</property>
+                                                        <property name="width">50px</property>
+                                                        <property name="style">listStyle</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="3562">
+                                        <property name="dimension">DW</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View4" id="3563">
+                                                <property name="level">DW/DW</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="3564">
+                                                        <property name="content">
+                                                            <data name="DW" id="3566">
+                                                                <property name="style">FontStyle</property>
+                                                                <property name="fontFamily">"@宋体"</property>
+                                                                <property name="resultSetColumn">DW</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="borderTopColor">black</property>
+                                                        <property name="borderLeftColor">black</property>
+                                                        <property name="borderBottomColor">black</property>
+                                                        <property name="borderRightColor">black</property>
+                                                        <property name="paddingLeft">4px</property>
+                                                        <property name="paddingRight">4px</property>
+                                                        <property name="width">40px</property>
+                                                        <property name="style">listStyle</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="3577">
+                                        <property name="dimension">sl</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View7" id="3578">
+                                                <property name="level">sl/SL</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="3579">
+                                                        <property name="content">
+                                                            <data name="SL" id="3581">
+                                                                <property name="style">FontStyle</property>
+                                                                <property name="fontFamily">"@宋体"</property>
+                                                                <property name="textAlign">right</property>
+                                                                <property name="resultSetColumn">SL</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="borderTopColor">black</property>
+                                                        <property name="borderLeftColor">black</property>
+                                                        <property name="borderBottomColor">black</property>
+                                                        <property name="borderRightColor">black</property>
+                                                        <property name="paddingLeft">4px</property>
+                                                        <property name="paddingRight">4px</property>
+                                                        <property name="width">40px</property>
+                                                        <property name="style">listStyle</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                    <extended-item extensionName="DimensionView" id="3582">
+                                        <property name="dimension">dj</property>
+                                        <property name="levels">
+                                            <extended-item extensionName="LevelView" name="NewLevel View8" id="3583">
+                                                <property name="level">dj/DJ</property>
+                                                <property name="member">
+                                                    <extended-item extensionName="CrosstabCell" id="3584">
+                                                        <property name="content">
+                                                            <data name="DJ" id="3586">
+                                                                <property name="style">FontStyle</property>
+                                                                <property name="fontFamily">"@宋体"</property>
+                                                                <structure name="numberFormat">
+                                                                    <property name="category">Fixed</property>
+                                                                    <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                                                                </structure>
+                                                                <property name="textAlign">right</property>
+                                                                <property name="resultSetColumn">DJ</property>
+                                                            </data>
+                                                        </property>
+                                                        <property name="borderTopColor">black</property>
+                                                        <property name="borderLeftColor">black</property>
+                                                        <property name="borderBottomColor">black</property>
+                                                        <property name="borderRightColor">black</property>
+                                                        <property name="paddingLeft">4px</property>
+                                                        <property name="paddingRight">4px</property>
+                                                        <property name="width">40px</property>
+                                                        <property name="style">listStyle</property>
+                                                    </extended-item>
+                                                </property>
+                                            </extended-item>
+                                        </property>
+                                    </extended-item>
+                                </property>
+                                <property name="grandTotalLocation">after</property>
+                            </extended-item>
+                        </property>
+                        <property name="header">
+                            <extended-item extensionName="CrosstabCell" id="3541">
+                                <property name="content">
+                                    <label id="3607">
+                                        <text-property name="text">编号</text-property>
+                                    </label>
+                                </property>
+                                <property name="borderTopColor">black</property>
+                                <property name="borderLeftColor">black</property>
+                                <property name="borderBottomColor">black</property>
+                                <property name="borderRightColor">black</property>
+                                <property name="style">NewStyle</property>
+                            </extended-item>
+                            <extended-item extensionName="CrosstabCell" id="3634">
+                                <property name="content">
+                                    <label id="3635">
+                                        <text-property name="text">货品名称</text-property>
+                                    </label>
+                                </property>
+                                <property name="borderTopColor">black</property>
+                                <property name="borderLeftColor">black</property>
+                                <property name="borderBottomColor">black</property>
+                                <property name="borderRightColor">black</property>
+                                <property name="style">NewStyle</property>
+                            </extended-item>
+                            <extended-item extensionName="CrosstabCell" id="3625">
+                                <property name="content">
+                                    <label id="3626">
+                                        <text-property name="text">品牌</text-property>
+                                    </label>
+                                </property>
+                                <property name="borderTopColor">black</property>
+                                <property name="borderLeftColor">black</property>
+                                <property name="borderBottomColor">black</property>
+                                <property name="borderRightColor">black</property>
+                                <property name="style">NewStyle</property>
+                            </extended-item>
+                            <extended-item extensionName="CrosstabCell" id="3560">
+                                <property name="content">
+                                    <label id="3610">
+                                        <text-property name="text">规格</text-property>
+                                    </label>
+                                </property>
+                                <property name="borderTopColor">black</property>
+                                <property name="borderLeftColor">black</property>
+                                <property name="borderBottomColor">black</property>
+                                <property name="borderRightColor">black</property>
+                                <property name="style">NewStyle</property>
+                            </extended-item>
+                            <extended-item extensionName="CrosstabCell" id="3565">
+                                <property name="content">
+                                    <label id="3611">
+                                        <text-property name="text">单位</text-property>
+                                    </label>
+                                </property>
+                                <property name="borderTopColor">black</property>
+                                <property name="borderLeftColor">black</property>
+                                <property name="borderBottomColor">black</property>
+                                <property name="borderRightColor">black</property>
+                                <property name="style">NewStyle</property>
+                            </extended-item>
+                            <extended-item extensionName="CrosstabCell" id="3580">
+                                <property name="content">
+                                    <label id="3614">
+                                        <text-property name="text">数量</text-property>
+                                    </label>
+                                </property>
+                                <property name="borderTopColor">black</property>
+                                <property name="borderLeftColor">black</property>
+                                <property name="borderBottomColor">black</property>
+                                <property name="borderRightColor">black</property>
+                                <property name="style">NewStyle</property>
+                            </extended-item>
+                            <extended-item extensionName="CrosstabCell" id="3585">
+                                <property name="content">
+                                    <label id="3615">
+                                        <text-property name="text">单价</text-property>
+                                    </label>
+                                </property>
+                                <property name="borderTopColor">black</property>
+                                <property name="borderLeftColor">black</property>
+                                <property name="borderBottomColor">black</property>
+                                <property name="borderRightColor">black</property>
+                                <property name="style">NewStyle</property>
+                            </extended-item>
+                        </property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderLeftColor">#000000</property>
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderRightColor">#000000</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">HPBM</property>
+                                <expression name="expression">dimension["HPBM"]["HPBM"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">GGXH</property>
+                                <expression name="expression">dimension["GGXH"]["GGXH"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">DW</property>
+                                <expression name="expression">dimension["DW"]["DW"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PP</property>
+                                <expression name="expression">dimension["PP"]["PP"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">SL</property>
+                                <expression name="expression">dimension["sl"]["SL"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">DJ</property>
+                                <expression name="expression">dimension["dj"]["DJ"]</expression>
+                                <property name="dataType">float</property>
+                            </structure>
+                            <structure>
+                                <property name="name">jehj_1</property>
+                                <expression name="expression">measure["jehj"]</expression>
+                                <property name="dataType">float</property>
+                                <property name="aggregateFunction">SUM</property>
+                            </structure>
+                            <structure>
+                                <property name="name">zhl_1</property>
+                                <expression name="expression">measure["zhl"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="aggregateFunction">MAX</property>
+                            </structure>
+                            <structure>
+                                <property name="name">jehj_dj/DJ</property>
+                                <expression name="expression">measure["jehj"]</expression>
+                                <property name="dataType">float</property>
+                                <simple-property-list name="aggregateOn">
+                                    <value>dj/DJ</value>
+                                </simple-property-list>
+                                <property name="aggregateFunction">SUM</property>
+                            </structure>
+                            <structure>
+                                <property name="name">zhl_dj/DJ</property>
+                                <expression name="expression">measure["zhl"]</expression>
+                                <property name="dataType">string</property>
+                                <simple-property-list name="aggregateOn">
+                                    <value>dj/DJ</value>
+                                </simple-property-list>
+                                <property name="aggregateFunction">MAX</property>
+                            </structure>
+                            <structure>
+                                <property name="name">HPMC</property>
+                                <expression name="expression">dimension["HPMC"]["HPMC"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                    </extended-item>
+                    <grid id="3643">
+                        <property name="borderTopWidth">medium</property>
+                        <property name="paddingLeft">1pt</property>
+                        <property name="paddingRight">1pt</property>
+                        <method name="onPrepare"><![CDATA[if(params["title"].indexOf('西安监狱')<0){
+	this.style.display='none';
+}]]></method>
+                        <column id="3644">
+                            <property name="width">150px</property>
+                        </column>
+                        <column id="3645"/>
+                        <column id="3657">
+                            <property name="width">150px</property>
+                        </column>
+                        <column id="3655"/>
+                        <column id="3653">
+                            <property name="width">150px</property>
+                        </column>
+                        <column id="3651"/>
+                        <row id="3646">
+                            <cell id="3647">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                                <label id="3648">
+                                    <property name="fontFamily">"宋体"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="lineHeight">48px</property>
+                                    <text-property name="text">供货单位代表：</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3649">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                            </cell>
+                            <cell id="3656">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                                <label id="3658">
+                                    <property name="fontFamily">"宋体"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="lineHeight">48px</property>
+                                    <text-property name="text">西安监狱接收人：</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3654">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                            </cell>
+                            <cell id="3652">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                                <label id="3659">
+                                    <property name="fontFamily">"宋体"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="lineHeight">48px</property>
+                                    <text-property name="text">关中生卫科：</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3650">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                            </cell>
+                        </row>
+                    </grid>
+                    <grid id="3663">
+                        <property name="borderTopWidth">medium</property>
+                        <property name="paddingLeft">1pt</property>
+                        <property name="paddingRight">1pt</property>
+                        <method name="onPrepare"><![CDATA[if(params["title"].indexOf('雁塔监狱')<0){
+	this.style.display='none';
+}]]></method>
+                        <column id="3664">
+                            <property name="width">150px</property>
+                        </column>
+                        <column id="3665"/>
+                        <column id="3666">
+                            <property name="width">150px</property>
+                        </column>
+                        <column id="3667"/>
+                        <column id="3668">
+                            <property name="width">150px</property>
+                        </column>
+                        <column id="3669"/>
+                        <row id="3670">
+                            <cell id="3671">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                                <label id="3672">
+                                    <property name="fontFamily">"宋体"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="lineHeight">48px</property>
+                                    <text-property name="text">供货单位代表：</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3673">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                            </cell>
+                            <cell id="3674">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                                <label id="3675">
+                                    <property name="fontFamily">"宋体"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="lineHeight">48px</property>
+                                    <text-property name="text">雁塔监狱接收人：</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3676">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                            </cell>
+                            <cell id="3677">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                                <label id="3678">
+                                    <property name="fontFamily">"宋体"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="lineHeight">48px</property>
+                                    <text-property name="text">关中生卫科：</text-property>
+                                </label>
+                            </cell>
+                            <cell id="3679">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                            </cell>
+                        </row>
+                    </grid>
+                    <grid id="2402">
+                        <property name="paddingLeft">1pt</property>
+                        <property name="paddingRight">1pt</property>
+                        <method name="onPrepare"><![CDATA[if(params["title"].indexOf('崔家沟招待所')>=0){
+	this.style.display='none';
+}]]></method>
+                        <column id="2403">
+                            <property name="width">80px</property>
+                        </column>
+                        <column id="2404"/>
+                        <row id="2405">
+                            <cell id="2406">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                                <label id="2416">
+                                    <property name="fontFamily">"宋体"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="textAlign">center</property>
+                                    <property name="lineHeight">120px</property>
+                                    <text-property name="text">收货情况</text-property>
+                                </label>
+                            </cell>
+                            <cell id="2407">
+                                <property name="style">listStyle</property>
+                                <property name="paddingLeft">1pt</property>
+                                <property name="paddingRight">1pt</property>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>

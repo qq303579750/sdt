@@ -274,7 +274,7 @@ dgrq = params["dgrq"];
 tjjzrq = params["tjjzrq"];
 this.queryText = this.queryText.replace("p.rybh=s.rybh","p.rybh=s.rybh where p.createTime<='"+tjjzrq+"'");
 this.queryText = this.queryText.replace("from salesinfo"," from salesinfo where shzt!='未通过' and zdlx='点购台' and cgddid_id in("+cgddid+") and jqmc in ('"+jqmc+"') group by rybh");
-this.queryText = this.queryText.replace("list","list where list.n_zhzt='启用' and ((n_zhzt!='离监') or (n_utime>='"+dgrq+"')) and ((n_shjq="+params["shjqid"]+") or (n_jqmc in ('"+jqmc+"'))) group by n_rybh");]]></method>
+this.queryText = this.queryText.replace("list","list where ((n_zhzt!='离监') or (n_utime>='"+dgrq+"')) and ((n_shjq="+params["shjqid"]+") or (n_jqmc in ('"+jqmc+"'))) group by n_rybh");]]></method>
             <method name="onFetch"><![CDATA[if(dataSetRow["n_zje"]!=null){
 vars["zje"]=vars["zje"]+dataSetRow["n_zje"];
 }
@@ -361,7 +361,7 @@ if(isrq==0 &amp;&amp; vars["rq"]==""){
                     <property name="nativeDataType">93</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select * from(select t.l_rybh as n_rybh,t.l_xm as n_xm,t.l_utime as n_utime,t.l_ye as n_ye,t.l_shjq as n_shjq,t.l_zhzt as n_zhzt,t.l_zje as n_zje,t.l_cgddid as n_cgddid,t.l_jqmc as n_jqmc,pu.dgrq as n_dgrq from (select p.rybh as l_rybh,p.xm as l_xm,p.ye as l_ye,p.shjq_id as l_shjq,p.zhzt as l_zhzt,p.updateTime as l_utime,s.zje as l_zje,s.CGDDID_id as l_cgddid,s.jqmc as l_jqmc from personinfo p left join (select rybh,jqmc,CGDDID_id,sum(zje) as zje from salesinfo) s ON p.rybh=s.rybh ) t left join purchaseorder pu on t.l_cgddid =pu.id) list
+            <xml-property name="queryText"><![CDATA[select * from(select t.l_rybh as n_rybh,t.l_xm as n_xm,t.l_utime as n_utime,t.l_ye as n_ye,t.l_shjq as n_shjq,t.l_zhzt as n_zhzt,t.l_zje as n_zje,t.l_cgddid as n_cgddid,t.l_jqmc as n_jqmc,pu.dgrq as n_dgrq from (select p.rybh as l_rybh,p.xm as l_xm,p.ye as l_ye,p.shjq_id as l_shjq,p.zhzt as l_zhzt,p.updateTime as l_utime,s.zje as l_zje,s.CGDDID_id as l_cgddid,s.jqmc as l_jqmc from personinfo p left join (select rybh,jqmc,CGDDID_id,sum(zje) as zje from salesinfo) s ON p.rybh=s.rybh) t left join purchaseorder pu on t.l_cgddid =pu.id) list
 
 ]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
@@ -1398,7 +1398,6 @@ return strOutput; &#13;
                                 <property name="style">listStyle</property>
                                 <label id="4008">
                                     <property name="fontSize">14px</property>
-                                    <property name="textAlign">center</property>
                                     <text-property name="text">监区经办人</text-property>
                                 </label>
                             </cell>
