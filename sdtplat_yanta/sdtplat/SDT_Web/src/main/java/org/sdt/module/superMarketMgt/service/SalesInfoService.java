@@ -223,6 +223,9 @@ public class SalesInfoService {
                 if (model.getSHZT().equals("已通过")) {
                     Double ye = person.getYE();
                     Double bcye = person.getBCJE();
+                    if (StringUtils.isEmpty(bcye)) {
+                        bcye = 0.0;
+                    }
                     MoneyDetail md = new MoneyDetail();
                     md.setXM(person.getXM());
                     md.setSHJQ(model.getJQMC());
@@ -370,7 +373,7 @@ public class SalesInfoService {
         Double bcJE = new Double(0);
         for (SalesInfoDetail t : detail) {
             String FLMC = t.getHPFL();
-            if (-1 != FLMC.indexOf("水果")) {
+            if (-1 != FLMC.indexOf("水果") && !t.getHPFL().equals("金花医药") && !t.getHPFL().equals("老百姓大药房")) {
                 bcJE = bcJE + t.getJE();
             }
         }
@@ -413,7 +416,7 @@ public class SalesInfoService {
         Double bcJE = new Double(0);
         for (SalesInfoDetail t : detail) {
             String FLMC = t.getHPFL();
-            if (-1 != FLMC.indexOf("香烟")) {
+            if (-1 != FLMC.indexOf("香烟") && !t.getHPFL().equals("金花医药") && !t.getHPFL().equals("老百姓大药房")) {
                 bcJE = bcJE + t.getJE();
             }
         }
@@ -460,7 +463,7 @@ public class SalesInfoService {
         Double bcJE = 0.0;
 
         for (SalesInfoDetail t : detail) {
-            if (!t.getHPFL().equals("香烟") && !t.getHPFL().equals("水果")) {
+            if (!t.getHPFL().equals("香烟") && !t.getHPFL().equals("水果") && !t.getHPFL().equals("金花医药") && !t.getHPFL().equals("老百姓大药房")) {
                 bcJE = bcJE + t.getJE();
             }
         }
@@ -470,13 +473,16 @@ public class SalesInfoService {
         sql.append("select sum(JE) as JE from v_sales where ");
         sql.append("XSSJ>='" + fromto[0] + "' and XSSJ <='" + fromto[1] + "'");
         sql.append(" and SHZT=\'已通过\' and RYBH=" + model.getRYBH());
-        sql.append(" and HPFL != '香烟' and HPFL !='水果' ");
+        sql.append(" and HPFL != '香烟' and HPFL !='水果' and HPFL != '金花医药' and HPFL !='老百姓大药房' ");
         sql.append(" group by RYBH");
         List<Object> result = serviceFacade.getEntityManager().createNativeQuery(sql.toString()).getResultList();
         Double zje = new Double(0.0);
         Double yxf = new Double(0.0);
         // 查询本月上账金额
         Double labor = personInfo.getBCJE();
+        if (StringUtils.isEmpty(labor)) {
+            labor = 0.0;
+        }
         if (result == null || result.size() == 0) {
             zje = 0.0;
             yxf = 0.0;
@@ -487,8 +493,8 @@ public class SalesInfoService {
 
         zje = zje + bcJE + cigaretteMoney;
         double xeje = Double.parseDouble(quota.getJE()) + Double.parseDouble(XYXEDJ.getJE());
-        LOG.info("xeje="+ xeje + labor);
-        LOG.info("zje="+ zje);
+        LOG.info("xeje=" + xeje + labor);
+        LOG.info("zje=" + zje);
         if (zje.compareTo(xeje + labor) > 0.0) {
             throw new RuntimeException("【" + model.getXM() + "】本月消费已超出 月限额【月限额:" + xeje
                     + "元,总消费已经超出】，不能进行消费！");
