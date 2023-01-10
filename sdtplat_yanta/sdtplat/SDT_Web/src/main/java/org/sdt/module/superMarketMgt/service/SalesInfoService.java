@@ -239,7 +239,9 @@ public class SalesInfoService {
                     md.setBZ(model.getId().toString());
                     serviceFacade.create(md);
                     ye = ye - model.getZJE();
-                    person.setBCJE(bcye - bcje);
+                    if (bcye > bcje) {
+                        person.setBCJE(bcye - bcje);
+                    }
                     person.setYE(ye);
                     serviceFacade.update(person);
                 }
@@ -495,11 +497,23 @@ public class SalesInfoService {
         double xeje = Double.parseDouble(quota.getJE()) + Double.parseDouble(XYXEDJ.getJE());
         LOG.info("xeje=" + xeje + labor);
         LOG.info("zje=" + zje);
-        if (zje.compareTo(xeje + labor) > 0.0) {
-            throw new RuntimeException("【" + model.getXM() + "】本月消费已超出 月限额【月限额:" + xeje
-                    + "元,总消费已经超出】，不能进行消费！");
+        if (yxf < xeje) {
+            if (zje.compareTo(xeje + labor) > 0.0) {
+                throw new RuntimeException("【" + model.getXM() + "】本月消费已超出 月限额【月限额:" + xeje
+                        + "元,总消费已经超出】，不能进行消费！");
+            }
+        } else {
+            if (bcJE.compareTo(labor) > 0.0) {
+                throw new RuntimeException("【" + model.getXM() + "】本月消费已超出 月限额【月限额:" + xeje
+                        + "元,总消费已经超出】，不能进行消费！");
+            }
         }
-        return labor - (zje - xeje);
+        if (yxf < xeje && zje > xeje) {
+            return zje - xeje;
+        } else if (yxf > xeje) {
+            return bcJE;
+        }
+        return 0.0;
     }
 
     /**
