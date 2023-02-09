@@ -1246,10 +1246,10 @@ public class PersonInfoAction extends ExtJSSimpleAction<PersonInfo> {
 			person.setXB("男");
 			person.setZHZT("启用");
 			person.setYE(Double.parseDouble("0"));
-			person.setCSXEDJ("三级");
-			person.setXYXEDJ("三级");
-			person.setDHXEDJ("三级");
-			person.setDCXEDJ("三级");
+			person.setCSXEDJ("二级");
+			person.setXYXEDJ("二级");
+			person.setDHXEDJ("二级");
+			person.setDCXEDJ("二级");
 			person.setRYBH_MD5(MD5Util.md5(rybh));
 			person.setZHBH(rybh);
 			person.setCSJQ(person.getSHJQ());
