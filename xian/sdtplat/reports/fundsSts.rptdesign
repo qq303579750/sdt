@@ -1,0 +1,1256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.1.v201408290142 Build &lt;4.4.1.v20140916-1320></property>
+    <list-property name="scriptLibs">
+        <structure>
+            <property name="name">JRPlat_Core-2.5.jar</property>
+        </structure>
+    </list-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/crosstab.gif</property>
+    <property name="cheatSheet">org.eclipse.birt.report.designer.ui.cheatsheet.crosstab</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">common.rptlibrary</property>
+            <property name="namespace">common</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="title" id="1026" extends="common.title"/>
+        <scalar-parameter name="infoLeft" id="1027" extends="common.infoLeft"/>
+        <scalar-parameter name="infoRight" id="1028" extends="common.infoRight"/>
+        <scalar-parameter name="condition" id="1029" extends="common.condition"/>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="sdtplatdb" id="1023"
+ extends="common.sdtplatdb">
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://localhost:3306/sdtplat_db</property>
+            <property name="odaUser">root</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">cm9vdA==</encrypted-property>
+            <property name="odaJndiName">java:comp/env/jdbc/sdtplat_db</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="v_sales" id="1263"
+ extends="common.v_sales">
+            <property name="nullsOrdering">nulls lowest</property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">XSZD_NAME</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">XSZD_NAME</text-property>
+                    <text-property name="heading">XSZD_NAME</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">HPFL</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">HPFL</text-property>
+                    <text-property name="heading">HPFL</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">HPMC</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">HPMC</text-property>
+                    <text-property name="heading">HPMC</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">HPBM</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">HPBM</text-property>
+                    <text-property name="heading">HPBM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">GGXH</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">GGXH</text-property>
+                    <text-property name="heading">GGXH</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">DW</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">DW</text-property>
+                    <text-property name="heading">DW</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">DJ</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">DJ</text-property>
+                    <text-property name="heading">DJ</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SL</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">SL</text-property>
+                    <text-property name="heading">SL</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">JE</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">JE</text-property>
+                    <text-property name="heading">JE</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">XSZD_NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">HPFL</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">HPMC</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">HPBM</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">GGXH</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">DW</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">DJ</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">SL</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">JE</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">XSZD_NAME</property>
+                    <property name="nativeName">XSZD_NAME</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">HPFL</property>
+                    <property name="nativeName">HPFL</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">HPMC</property>
+                    <property name="nativeName">HPMC</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">HPBM</property>
+                    <property name="nativeName">HPBM</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">GGXH</property>
+                    <property name="nativeName">GGXH</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">DW</property>
+                    <property name="nativeName">DW</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">DJ</property>
+                    <property name="nativeName">DJ</property>
+                    <property name="dataType">float</property>
+                    <property name="nativeDataType">8</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">SL</property>
+                    <property name="nativeName">SL</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">JE</property>
+                    <property name="nativeName">JE</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">3</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[ select XSZD_NAME,hpfl,hpmc,hpbm,GGXH,DW,DJ,sl,JE
+from v_sales]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>ICBH_id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>ICBH_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>ICBH_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>RYBH_id</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>RYBH_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>RYBH_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>ZDBH_id</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>ZDBH_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>ZDBH_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CGDDID_id</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CGDDID_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CGDDID_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>ZDLX</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>64</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>ZDLX</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>ZDLX</design:label>
+            <design:formattingHints>
+              <design:displaySize>64</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>XSSJ</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>XSSJ</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>XSSJ</design:label>
+            <design:formattingHints>
+              <design:displaySize>19</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>ZJE</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>ZJE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>ZJE</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DQZT</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DQZT</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DQZT</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>SHZT</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>64</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>SHZT</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>SHZT</design:label>
+            <design:formattingHints>
+              <design:displaySize>64</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>SFCZXF</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>64</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>SFCZXF</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>SFCZXF</design:label>
+            <design:formattingHints>
+              <design:displaySize>64</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>SL</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>SL</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>SL</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DJ</design:name>
+              <design:position>12</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DJ</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DJ</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>JE</design:name>
+              <design:position>13</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>JE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>JE</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>HPFL_id</design:name>
+              <design:position>14</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>HPFL_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>HPFL_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>P_FLMC</design:name>
+              <design:position>15</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>64</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>P_FLMC</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>P_FLMC</design:label>
+            <design:formattingHints>
+              <design:displaySize>64</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>P_ID</design:name>
+              <design:position>16</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>P_ID</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>P_ID</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>P_HPBM</design:name>
+              <design:position>17</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>P_HPBM</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>P_HPBM</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>P_HPMC</design:name>
+              <design:position>18</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>P_HPMC</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>P_HPMC</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>P_GGXH</design:name>
+              <design:position>19</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>P_GGXH</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>P_GGXH</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>P_DW</design:name>
+              <design:position>20</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>16</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>P_DW</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>P_DW</design:label>
+            <design:formattingHints>
+              <design:displaySize>16</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>D_SBLX</design:name>
+              <design:position>21</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>64</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>D_SBLX</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>D_SBLX</design:label>
+            <design:formattingHints>
+              <design:displaySize>64</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>D_SBMC</design:name>
+              <design:position>22</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>64</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>D_SBMC</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>D_SBMC</design:label>
+            <design:formattingHints>
+              <design:displaySize>64</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <cubes>
+        <tabular-cube name="Data Cube" id="1366">
+            <property name="dimensions">
+                <tabular-dimension name="XSZD" id="1446">
+                    <property name="defaultHierarchy">NewTabularHierarchy</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy" id="1447">
+                            <property name="levels">
+                                <tabular-level name="XSZD_NAME" id="1448">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">XSZD_NAME</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="HPBM" id="1449">
+                    <property name="defaultHierarchy">NewTabularHierarchy1</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy1" id="1450">
+                            <property name="levels">
+                                <tabular-level name="HPBM" id="1451">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">HPBM</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="HPMC" id="1452">
+                    <property name="defaultHierarchy">NewTabularHierarchy2</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy2" id="1453">
+                            <property name="levels">
+                                <tabular-level name="HPMC" id="1454">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">HPMC</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="HPFL" id="1455">
+                    <property name="defaultHierarchy">NewTabularHierarchy3</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy3" id="1456">
+                            <property name="levels">
+                                <tabular-level name="HPFL" id="1457">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">HPFL</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="GGXH" id="1458">
+                    <property name="defaultHierarchy">NewTabularHierarchy4</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy4" id="1459">
+                            <property name="levels">
+                                <tabular-level name="GGXH" id="1460">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">GGXH</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="DW" id="1461">
+                    <property name="defaultHierarchy">NewTabularHierarchy5</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy5" id="1462">
+                            <property name="levels">
+                                <tabular-level name="DW" id="1463">
+                                    <property name="dataType">string</property>
+                                    <property name="columnName">DW</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="DJ" id="1464">
+                    <property name="defaultHierarchy">NewTabularHierarchy6</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy6" id="1465">
+                            <property name="levels">
+                                <tabular-level name="DJ" id="1466">
+                                    <property name="dataType">float</property>
+                                    <property name="columnName">DJ</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+                <tabular-dimension name="SL" id="1467">
+                    <property name="defaultHierarchy">NewTabularHierarchy7</property>
+                    <property name="hierarchies">
+                        <tabular-hierarchy name="NewTabularHierarchy7" id="1468">
+                            <property name="levels">
+                                <tabular-level name="SL" id="1469">
+                                    <property name="dataType">integer</property>
+                                    <property name="columnName">SL</property>
+                                </tabular-level>
+                            </property>
+                        </tabular-hierarchy>
+                    </property>
+                </tabular-dimension>
+            </property>
+            <property name="measureGroups">
+                <tabular-measure-group name="Summary Field" id="1390">
+                    <property name="measures">
+                        <tabular-measure name="JE" id="1391">
+                            <expression name="measureExpression" type="javascript">dataSetRow["JE"]</expression>
+                            <property name="dataType">decimal</property>
+                        </tabular-measure>
+                    </property>
+                </tabular-measure-group>
+            </property>
+            <property name="dataSet">v_sales</property>
+        </tabular-cube>
+    </cubes>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="rightMargin">0in</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <data id="821">
+            <property name="fontSize">16pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="paddingTop">10pt</property>
+            <property name="paddingBottom">10pt</property>
+            <structure name="numberFormat">
+                <property name="category">Custom</property>
+            </structure>
+            <property name="textAlign">center</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">title</property>
+                    <expression name="expression" type="javascript">params["title"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="resultSetColumn">title</property>
+        </data>
+        <grid id="832">
+            <column id="833"/>
+            <column id="834"/>
+            <row id="835">
+                <cell id="836">
+                    <data id="839">
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">infoLeft</property>
+                                <expression name="expression" type="javascript">params["infoLeft"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">infoLeft</property>
+                    </data>
+                </cell>
+                <cell id="837">
+                    <data id="841">
+                        <property name="textAlign">right</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">infoRight</property>
+                                <expression name="expression" type="javascript">params["infoRight"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">infoRight</property>
+                    </data>
+                </cell>
+            </row>
+        </grid>
+        <extended-item extensionName="Crosstab" extensionVersion="3.7.0" id="1470">
+            <property name="cube">Data Cube</property>
+            <property name="measures">
+                <extended-item extensionName="MeasureView" id="1512">
+                    <property name="measure">JE</property>
+                    <property name="detail">
+                        <extended-item extensionName="AggregationCell" id="1513">
+                            <property name="aggregationOnRow">SL/SL</property>
+                            <property name="textAlign">center</property>
+                            <property name="verticalAlign">middle</property>
+                            <property name="content">
+                                <data id="1514">
+                                    <structure name="numberFormat">
+                                        <property name="category">Fixed</property>
+                                        <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                                    </structure>
+                                    <property name="resultSetColumn">JE_SL/SL</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="aggregations">
+                        <extended-item extensionName="AggregationCell" id="1526">
+                            <property name="content">
+                                <data id="1527">
+                                    <structure name="numberFormat">
+                                        <property name="category">Fixed</property>
+                                        <property name="pattern">###0.00{RoundingMode=HALF_UP}</property>
+                                    </structure>
+                                    <property name="textAlign">center</property>
+                                    <property name="resultSetColumn">JE</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="header">
+                        <extended-item extensionName="CrosstabCell" id="1515">
+                            <property name="content">
+                                <label id="1516">
+                                    <text-property name="text">金额</text-property>
+                                </label>
+                            </property>
+                            <property name="textAlign">center</property>
+                            <property name="verticalAlign">middle</property>
+                            <property name="height">26px</property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+            </property>
+            <property name="rows">
+                <extended-item extensionName="CrosstabView" id="1472">
+                    <property name="grandTotal">
+                        <extended-item extensionName="CrosstabCell" id="1525">
+                            <property name="content">
+                                <label id="1528">
+                                    <property name="textAlign">right</property>
+                                    <text-property name="text">合计：</text-property>
+                                </label>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="views">
+                        <extended-item extensionName="DimensionView" id="1473">
+                            <property name="dimension">XSZD</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View" id="1474">
+                                    <property name="level">XSZD/XSZD_NAME</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1475">
+                                            <property name="content">
+                                                <data name="XSZD_NAME" id="1476">
+                                                    <property name="resultSetColumn">XSZD_NAME</property>
+                                                </data>
+                                            </property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1477">
+                            <property name="dimension">HPBM</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View1" id="1478">
+                                    <property name="level">HPBM/HPBM</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1479">
+                                            <property name="content">
+                                                <data name="HPBM" id="1481">
+                                                    <property name="resultSetColumn">HPBM</property>
+                                                </data>
+                                            </property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1482">
+                            <property name="dimension">HPMC</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View2" id="1483">
+                                    <property name="level">HPMC/HPMC</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1484">
+                                            <property name="content">
+                                                <data name="HPMC" id="1486">
+                                                    <property name="resultSetColumn">HPMC</property>
+                                                </data>
+                                            </property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1487">
+                            <property name="dimension">HPFL</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View3" id="1488">
+                                    <property name="level">HPFL/HPFL</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1489">
+                                            <property name="content">
+                                                <data name="HPFL" id="1491">
+                                                    <property name="resultSetColumn">HPFL</property>
+                                                </data>
+                                            </property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1492">
+                            <property name="dimension">GGXH</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View4" id="1493">
+                                    <property name="level">GGXH/GGXH</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1494">
+                                            <property name="content">
+                                                <data name="GGXH" id="1496">
+                                                    <property name="resultSetColumn">GGXH</property>
+                                                </data>
+                                            </property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1497">
+                            <property name="dimension">DW</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View5" id="1498">
+                                    <property name="level">DW/DW</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1499">
+                                            <property name="content">
+                                                <data name="DW" id="1501">
+                                                    <property name="resultSetColumn">DW</property>
+                                                </data>
+                                            </property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1502">
+                            <property name="dimension">DJ</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View6" id="1503">
+                                    <property name="level">DJ/DJ</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1504">
+                                            <property name="content">
+                                                <data name="DJ" id="1506">
+                                                    <property name="resultSetColumn">DJ</property>
+                                                </data>
+                                            </property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1507">
+                            <property name="dimension">SL</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View7" id="1508">
+                                    <property name="level">SL/SL</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1509">
+                                            <property name="content">
+                                                <data name="SL" id="1511">
+                                                    <property name="resultSetColumn">SL</property>
+                                                </data>
+                                            </property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="grandTotalLocation">after</property>
+                </extended-item>
+            </property>
+            <property name="header">
+                <extended-item extensionName="CrosstabCell" id="1471">
+                    <property name="content">
+                        <label id="1517">
+                            <text-property name="text">销售终端</text-property>
+                        </label>
+                    </property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1480">
+                    <property name="content">
+                        <label id="1518">
+                            <text-property name="text">货品编码</text-property>
+                        </label>
+                    </property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1485">
+                    <property name="content">
+                        <label id="1519">
+                            <text-property name="text">货品名称</text-property>
+                        </label>
+                    </property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1490">
+                    <property name="content">
+                        <label id="1520">
+                            <text-property name="text">货品分类</text-property>
+                        </label>
+                    </property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1495">
+                    <property name="content">
+                        <label id="1521">
+                            <text-property name="text">规格型号</text-property>
+                        </label>
+                    </property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1500">
+                    <property name="content">
+                        <label id="1522">
+                            <text-property name="text">单位</text-property>
+                        </label>
+                    </property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1505">
+                    <property name="content">
+                        <label id="1523">
+                            <text-property name="text">单价</text-property>
+                        </label>
+                    </property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1510">
+                    <property name="content">
+                        <label id="1524">
+                            <text-property name="text">数量</text-property>
+                        </label>
+                    </property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                </extended-item>
+            </property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">XSZD_NAME</property>
+                    <expression name="expression">dimension["XSZD"]["XSZD_NAME"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">HPBM</property>
+                    <expression name="expression">dimension["HPBM"]["HPBM"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">HPMC</property>
+                    <expression name="expression">dimension["HPMC"]["HPMC"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">HPFL</property>
+                    <expression name="expression">dimension["HPFL"]["HPFL"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">GGXH</property>
+                    <expression name="expression">dimension["GGXH"]["GGXH"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">DW</property>
+                    <expression name="expression">dimension["DW"]["DW"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">DJ</property>
+                    <expression name="expression">dimension["DJ"]["DJ"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">SL</property>
+                    <expression name="expression">dimension["SL"]["SL"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">JE_SL/SL</property>
+                    <expression name="expression">measure["JE"]</expression>
+                    <property name="dataType">decimal</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>SL/SL</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">JE</property>
+                    <expression name="expression">measure["JE"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+            </list-property>
+        </extended-item>
+    </body>
+</report>

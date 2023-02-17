@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.3.1.v201309091055 Build &lt;4.3.1.v20130917-1035></property>
+    <list-property name="scriptLibs">
+        <structure>
+            <property name="name">SDT_Core-2.5.jar</property>
+        </structure>
+    </list-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/crosstab.gif</property>
+    <property name="cheatSheet">org.eclipse.birt.report.designer.ui.cheatsheet.crosstab</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">common.rptlibrary</property>
+            <property name="namespace">common</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="title" id="1026" extends="common.title"/>
+        <scalar-parameter name="infoLeft" id="1027" extends="common.infoLeft"/>
+        <scalar-parameter name="infoRight" id="1028" extends="common.infoRight"/>
+        <scalar-parameter name="condition" id="1029" extends="common.condition"/>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="sdtplatdb" id="1023"
+ extends="common.sdtplatdb"/>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="vall_stock_rk" id="1368"
+ extends="common.vall_stock_rk"/>
+    </data-sets>
+    <cubes>
+        <tabular-cube name="vall_stock_rk_cube" id="1369" extends="common.vall_stock_rk_cube">
+            <overridden-values>
+                <ref-entry baseId="323" name="货品分类___" id="323">
+                    <property name="defaultHierarchy">NewTabularHierarchy22</property>
+                </ref-entry>
+                <ref-entry baseId="324" name="NewTabularHierarchy22" id="324"/>
+                <ref-entry baseId="325" name="FLMC" id="325"/>
+                <ref-entry baseId="326" name="规格型号____" id="326">
+                    <property name="defaultHierarchy">NewTabularHierarchy23</property>
+                </ref-entry>
+                <ref-entry baseId="327" name="NewTabularHierarchy23" id="327"/>
+                <ref-entry baseId="328" name="GGXH" id="328"/>
+                <ref-entry baseId="329" name="货品编码____" id="329">
+                    <property name="defaultHierarchy">NewTabularHierarchy24</property>
+                </ref-entry>
+                <ref-entry baseId="330" name="NewTabularHierarchy24" id="330"/>
+                <ref-entry baseId="331" name="HPBM" id="331"/>
+                <ref-entry baseId="332" name="货品名称____" id="332">
+                    <property name="defaultHierarchy">NewTabularHierarchy25</property>
+                </ref-entry>
+                <ref-entry baseId="333" name="NewTabularHierarchy25" id="333"/>
+                <ref-entry baseId="334" name="HPMC" id="334"/>
+                <ref-entry baseId="335" name="入库单价" id="335">
+                    <property name="defaultHierarchy">NewTabularHierarchy26</property>
+                </ref-entry>
+                <ref-entry baseId="336" name="NewTabularHierarchy26" id="336"/>
+                <ref-entry baseId="337" name="DJ" id="337"/>
+                <ref-entry baseId="403" name="入库订单类型" id="403">
+                    <property name="defaultHierarchy">NewTabularHierarchy35</property>
+                </ref-entry>
+                <ref-entry baseId="404" name="NewTabularHierarchy35" id="404"/>
+                <ref-entry baseId="405" name="DDLX" id="405"/>
+                <ref-entry baseId="338" name="入库数量___" id="338"/>
+                <ref-entry baseId="339" name="SL2" id="339"/>
+                <ref-entry baseId="340" name="入库金额__" id="340"/>
+                <ref-entry baseId="341" name="JE" id="341"/>
+            </overridden-values>
+        </tabular-cube>
+    </cubes>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="rightMargin">0in</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <data id="821">
+            <property name="fontSize">16pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="paddingTop">10pt</property>
+            <property name="paddingBottom">10pt</property>
+            <structure name="numberFormat">
+                <property name="category">Custom</property>
+            </structure>
+            <property name="textAlign">center</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">title</property>
+                    <expression name="expression" type="javascript">params["title"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="resultSetColumn">title</property>
+        </data>
+        <grid id="832">
+            <column id="833"/>
+            <column id="834"/>
+            <row id="835">
+                <cell id="836">
+                    <data id="839">
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">infoLeft</property>
+                                <expression name="expression" type="javascript">params["infoLeft"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">infoLeft</property>
+                    </data>
+                </cell>
+                <cell id="837">
+                    <data id="841">
+                        <property name="textAlign">right</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">infoRight</property>
+                                <expression name="expression" type="javascript">params["infoRight"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">infoRight</property>
+                    </data>
+                </cell>
+            </row>
+        </grid>
+        <extended-item extensionName="Crosstab" extensionVersion="3.7.0" id="1378">
+            <property name="cube">vall_stock_rk_cube</property>
+            <property name="measures">
+                <extended-item extensionName="MeasureView" id="1416">
+                    <property name="measure">SL2</property>
+                    <property name="detail">
+                        <extended-item extensionName="AggregationCell" id="1417">
+                            <property name="aggregationOnRow">入库单价/DJ</property>
+                            <property name="fontWeight">normal</property>
+                            <property name="textAlign">right</property>
+                            <property name="verticalAlign">middle</property>
+                            <property name="content">
+                                <data id="1418">
+                                    <property name="textAlign">left</property>
+                                    <property name="resultSetColumn">SL2_入库单价/DJ</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="aggregations">
+                        <extended-item extensionName="AggregationCell" id="1427">
+                            <property name="backgroundColor">orange</property>
+                            <property name="textAlign">right</property>
+                            <property name="verticalAlign">middle</property>
+                            <property name="content">
+                                <data id="1428">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="textAlign">left</property>
+                                    <property name="resultSetColumn">SL2</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="header">
+                        <extended-item extensionName="CrosstabCell" id="1419">
+                            <property name="content">
+                                <label id="1420">
+                                    <text-property name="text">入库数量</text-property>
+                                </label>
+                            </property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+                <extended-item extensionName="MeasureView" id="1421">
+                    <property name="measure">JE</property>
+                    <property name="detail">
+                        <extended-item extensionName="AggregationCell" id="1422">
+                            <property name="aggregationOnRow">入库单价/DJ</property>
+                            <property name="fontWeight">normal</property>
+                            <property name="textAlign">right</property>
+                            <property name="verticalAlign">middle</property>
+                            <property name="content">
+                                <data id="1423">
+                                    <structure name="numberFormat">
+                                        <property name="category">Custom</property>
+                                        <property name="pattern">¤###,##0.00</property>
+                                    </structure>
+                                    <property name="textAlign">left</property>
+                                    <property name="resultSetColumn">JE_入库单价/DJ</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="aggregations">
+                        <extended-item extensionName="AggregationCell" id="1429">
+                            <property name="backgroundColor">orange</property>
+                            <property name="textAlign">right</property>
+                            <property name="verticalAlign">middle</property>
+                            <property name="content">
+                                <data id="1430">
+                                    <property name="fontWeight">bold</property>
+                                    <structure name="numberFormat">
+                                        <property name="category">Custom</property>
+                                        <property name="pattern">¤###,##0.00</property>
+                                    </structure>
+                                    <property name="textAlign">left</property>
+                                    <property name="resultSetColumn">JE</property>
+                                </data>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="header">
+                        <extended-item extensionName="CrosstabCell" id="1424">
+                            <property name="content">
+                                <label id="1425">
+                                    <text-property name="text">入库金额</text-property>
+                                </label>
+                            </property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                        </extended-item>
+                    </property>
+                </extended-item>
+            </property>
+            <property name="rows">
+                <extended-item extensionName="CrosstabView" id="1380">
+                    <property name="grandTotal">
+                        <extended-item extensionName="CrosstabCell" id="1426">
+                            <property name="content">
+                                <label id="1431">
+                                    <property name="backgroundColor">orange</property>
+                                    <property name="fontWeight">bold</property>
+                                    <property name="textAlign">right</property>
+                                    <text-property name="text">合计   </text-property>
+                                </label>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="views">
+                        <extended-item extensionName="DimensionView" id="1381">
+                            <property name="dimension">入库订单类型</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View" id="1382">
+                                    <property name="level">入库订单类型/DDLX</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1383">
+                                            <property name="content">
+                                                <data name="DDLX" id="1384">
+                                                    <property name="resultSetColumn">DDLX</property>
+                                                </data>
+                                            </property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1386">
+                            <property name="dimension">货品分类___</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View1" id="1387">
+                                    <property name="level">货品分类___/FLMC</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1388">
+                                            <property name="content">
+                                                <data name="FLMC" id="1390">
+                                                    <property name="resultSetColumn">FLMC</property>
+                                                </data>
+                                            </property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1392">
+                            <property name="dimension">货品名称____</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View2" id="1393">
+                                    <property name="level">货品名称____/HPMC</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1394">
+                                            <property name="content">
+                                                <data name="HPMC" id="1396">
+                                                    <property name="resultSetColumn">HPMC</property>
+                                                </data>
+                                            </property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1398">
+                            <property name="dimension">货品编码____</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View3" id="1399">
+                                    <property name="level">货品编码____/HPBM</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1400">
+                                            <property name="content">
+                                                <data name="HPBM" id="1402">
+                                                    <property name="resultSetColumn">HPBM</property>
+                                                </data>
+                                            </property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1404">
+                            <property name="dimension">规格型号____</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View4" id="1405">
+                                    <property name="level">规格型号____/GGXH</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1406">
+                                            <property name="content">
+                                                <data name="GGXH" id="1408">
+                                                    <property name="resultSetColumn">GGXH</property>
+                                                </data>
+                                            </property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                        <extended-item extensionName="DimensionView" id="1410">
+                            <property name="dimension">入库单价</property>
+                            <property name="levels">
+                                <extended-item extensionName="LevelView" name="NewLevel View5" id="1411">
+                                    <property name="level">入库单价/DJ</property>
+                                    <property name="member">
+                                        <extended-item extensionName="CrosstabCell" id="1412">
+                                            <property name="content">
+                                                <data name="DJ" id="1414">
+                                                    <structure name="numberFormat">
+                                                        <property name="category">Custom</property>
+                                                        <property name="pattern">¤###,##0.00</property>
+                                                    </structure>
+                                                    <property name="textAlign">left</property>
+                                                    <property name="resultSetColumn">DJ</property>
+                                                </data>
+                                            </property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="textAlign">center</property>
+                                            <property name="verticalAlign">middle</property>
+                                        </extended-item>
+                                    </property>
+                                </extended-item>
+                            </property>
+                        </extended-item>
+                    </property>
+                    <property name="grandTotalLocation">after</property>
+                </extended-item>
+            </property>
+            <property name="header">
+                <extended-item extensionName="CrosstabCell" id="1379">
+                    <property name="content">
+                        <label id="1385">
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">入库订单类型</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">normal</property>
+                    <property name="textAlign">center</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1389">
+                    <property name="content">
+                        <label id="1391">
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">分类名称</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">normal</property>
+                    <property name="textAlign">center</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1395">
+                    <property name="content">
+                        <label id="1397">
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">货品名称</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">normal</property>
+                    <property name="textAlign">center</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1401">
+                    <property name="content">
+                        <label id="1403">
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">货品编码</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">normal</property>
+                    <property name="textAlign">center</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1407">
+                    <property name="content">
+                        <label id="1409">
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">规格型号</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">normal</property>
+                    <property name="textAlign">center</property>
+                </extended-item>
+                <extended-item extensionName="CrosstabCell" id="1413">
+                    <property name="content">
+                        <label id="1415">
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">入库单价</text-property>
+                        </label>
+                    </property>
+                    <property name="fontWeight">normal</property>
+                    <property name="textAlign">center</property>
+                </extended-item>
+            </property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">DDLX</property>
+                    <expression name="expression">dimension["入库订单类型"]["DDLX"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">FLMC</property>
+                    <expression name="expression">dimension["货品分类___"]["FLMC"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">HPMC</property>
+                    <expression name="expression">dimension["货品名称____"]["HPMC"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">HPBM</property>
+                    <expression name="expression">dimension["货品编码____"]["HPBM"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">GGXH</property>
+                    <expression name="expression">dimension["规格型号____"]["GGXH"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">DJ</property>
+                    <expression name="expression">dimension["入库单价"]["DJ"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">SL2_入库单价/DJ</property>
+                    <expression name="expression">measure["SL2"]</expression>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>入库单价/DJ</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">JE_入库单价/DJ</property>
+                    <expression name="expression">measure["JE"]</expression>
+                    <property name="dataType">float</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>入库单价/DJ</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">SL2</property>
+                    <expression name="expression">measure["SL2"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+                <structure>
+                    <property name="name">JE</property>
+                    <expression name="expression">measure["JE"]</expression>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                </structure>
+            </list-property>
+        </extended-item>
+    </body>
+</report>
